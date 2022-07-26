@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
-import './Home.scss'
+import './Home.scss';
+import {FaWpforms} from 'react-icons/fa';
 
 function Home(props) {
     return (
@@ -50,7 +51,58 @@ function Home(props) {
                 </Container>
 
             </div>
+            <div className = 'qoute-1 front'>
+            <p >“The best way to find yourself is to lose yourself in the service of others.”</p>
 
+            <p>
+            Mahatma Gandh
+            </p>
+
+            </div>
+            <div className='ambass-form'>
+                <Container>
+                    <Row>
+                    <Col className='ambass-col1 front' md={6} >
+                            <h3 >Become An Ambassador</h3>
+                            <div className='content'>
+                                <p>
+                                CARE hosts an ambassador programme where individuals who would like to volunteer on an events basis could join the society. Primary objective of starting this programme is to reduce the workload of CARE members and also increase volunteer participation of students who cannot volunteer as full time CARE members. Ambassadors shall not be promoted and will have to fulfill all their responsibilities to stay in the society.If an ambassador desires to join any other department, they will have to go through the standard recruitment process and will be subject to the same responsibilities as regular members.
+                                </p>
+                            </div>
+                        <Row>
+                            <Col>
+                            <div >
+                                <FaWpforms size={30} />
+                                <p className ='p-header'> 
+                                    We Appreciate You
+                                </p>
+                                <p>
+                                For the services of all ambassadors CARE would provide certificates of appreciation at the end of year to all ambassadors that stay affiliated until the end of year.
+                                </p>
+                            </div>
+                            </Col>
+                            <Col>
+                            <div>
+                                <FaWpforms size={30}/>
+                                <p className= 'p-header'> 
+                                    Get Recruited
+                                </p>
+                                <p>
+                                For recruitment related queries you can mail us at dimccaresorg.hr@gmail.com. CARE reserves the right to make any amends in the ambassadorship programme, provided it is beneficial for all parties involved. 
+                                </p>
+                            </div>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col className='ambass-col2 front' >
+                            <div className='ambass-image-container front'>
+                                <img src='/ambass-image.jpg' alt="main_image" />
+                            </div>
+                    </Col>
+                    </Row>
+                </Container>
+
+            </div>
 
 
             <div className="donate-distributed front">
