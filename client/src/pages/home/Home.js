@@ -55,7 +55,7 @@ function Home(props) {
             <p >“The best way to find yourself is to lose yourself in the service of others.”</p>
 
             <p>
-            Mahatma Gandh
+            Mahatma Gandhi
             </p>
 
             </div>
