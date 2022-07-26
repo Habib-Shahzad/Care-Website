@@ -1,5 +1,7 @@
 // @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;500&display=swap");
 
 $font-lato: "Lato", sans-serif;
 
@@ -57,9 +59,18 @@ $padding-image-large: 0 10rem;
 }
 
 .page {
+  font-family: "Montserrat", sans-serif !important;
   position: absolute;
   background-color: white;
   width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  height: 100vh;
+  margin: 0;
 }
 
 .page-enter {
@@ -664,5 +675,7 @@ $padding-image-large: 0 10rem;
   }
 }
 
-// XX-Large devices (larger desktops)
-// No media query since the xxl breakpoint has no upper bound on its width
+.front {
+  z-index: 1 !important;
+  position: relative !important;
+}

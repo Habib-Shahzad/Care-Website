@@ -5,7 +5,7 @@ import {
     useLocation,
 } from "react-router-dom";
 import { MainNavbar, Footer } from './components';
-import { Home } from './pages';
+import { Home, Department } from './pages';
 import {
     TransitionGroup,
     CSSTransition
@@ -28,11 +28,20 @@ function RoutesFile(props) {
                 >
                     <div className="page">
                         <MainNavbar />
+
                         <Switch location={location}>
+
+                            <Route path="/department/:departmentName">
+                                <Department />
+                            </Route>
+
                             <Route path="/">
                                 <Home />
                             </Route>
+
+
                         </Switch>
+
                         <Footer />
                     </div>
                 </CSSTransition>
