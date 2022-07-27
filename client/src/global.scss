@@ -64,6 +64,9 @@ $padding-image-large: 0 10rem;
   background-color: white;
   width: 100%;
 
+  max-width: 100%;
+  overflow-x: hidden;
+
   display: flex;
   flex-direction: column;
 }
@@ -678,4 +681,12 @@ $padding-image-large: 0 10rem;
 .front {
   z-index: 1 !important;
   position: relative !important;
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 35.99875em) {
+  .page {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 }

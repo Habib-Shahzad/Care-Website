@@ -1,7 +1,18 @@
 .home {
   .circle-thing {
+    overflow: hidden;
     position: absolute;
     bottom: 10rem;
+    right: 0;
+    img {
+      width: 100%;
+    }
+  }
+
+  .wavy-thing {
+    height: 100vh !important;
+    overflow: hidden;
+    position: absolute;
     right: 0;
     img {
       width: 100%;
@@ -38,13 +49,18 @@
       }
     }
 
-    .home-first-col {
-      margin-left: 2.1rem;
+    .home-init-col1 {
+      padding-left: 2rem !important;
+      padding-top: 5rem !important;
+      padding-bottom: 2rem !important;
+      height: fit-content !important;
+      margin-right: 11rem !important;
     }
     h2 {
       color: #e82fb4;
     }
     .content {
+      width: 100%;
       margin-top: 2rem;
     }
   }
@@ -111,28 +127,27 @@
       }
     }
   }
-  .ambass-form{
-    margin-top: 7rem;
+  .ambass-form {
     margin-bottom: 3rem;
-    h3{
+    h3 {
       color: #e82fb4;
     }
-    .ambass-col2{
+    .ambass-col2 {
       margin-left: 2.1rem;
     }
-    .p-header{
+    .p-header {
       margin-top: 1rem;
       font-weight: 600;
       font-size: 1rem;
-      color: #E82FB4;
+      color: #e82fb4;
     }
-
   }
-  .qoute-1{
+  .qoute-1 {
+    margin-bottom: 4rem;
     margin-top: 1rem;
-    font-weight: 300;
-    font-size: 2rem;
-    color: #E82FB4;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #e82fb4;
     text-align: center;
   }
 }
@@ -146,23 +161,76 @@
 
 // Medium devices (tablets, less than 992px)
 @media (max-width: 61.99875em) {
-
+  .home-initial {
+    text-align: center;
+    margin: 0 auto;
+    .content {
+      width: 90% !important;
+    }
+  }
+  .member-button {
+    margin-bottom: 1rem !important;
+  }
 }
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 47.99875em) {
-  .qoute-1{
-    font-weight: 200;
-    font-size: 1rem !important;
-    
+  .qoute-1 {
+    font-weight: 600 !important;
+    font-size: 1.2rem !important;
   }
-  .ambass-image-container img{
+  .ambass-image-container img {
     width: 80%;
   }
 
+  .home-initial {
+    text-align: center;
+    margin: 0 auto;
+
+    .content {
+      width: 85% !important;
+    }
+
+    .home-init-col1 {
+      padding-left: 0 !important;
+      padding-top: 0 !important;
+    }
+  }
+  .member-button {
+    margin-bottom: 1rem !important;
+  }
 }
 
 // X-Small devices (portrait phones, less than 576px)
 @media (max-width: 35.99875em) {
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
+  .home {
+    margin: 0 auto;
+    .home-initial {
+      .home-init-col1 {
+        margin-left: 0 !important;
+        padding-left: 0rem !important;
+
+        .content {
+          margin-left: 2rem;
+        }
+      }
+
+      .home-init-col2 {
+        width: 100% !important;
+        .home-image-container {
+          img {
+            width: 17rem;
+          }
+        }
+      }
+    }
+  }
+  .member-button {
+    margin-bottom: 1rem !important;
+  }
 }
