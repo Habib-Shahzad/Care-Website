@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import './MainNavbar.scss';
 
@@ -12,18 +13,19 @@ function MainNavbar(props) {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse >
                         <Nav className="me-auto front">
-                            <Nav.Link href="/">Code of Ethics</Nav.Link>
-                            <Nav.Link href="/">Our Aims</Nav.Link>
-                            <Nav.Link href="/">Know the Team</Nav.Link>
+                            <Link to='/events'>Community Outreach</Link>
+                            <Link to='/events'>Our Aims</Link>
+                            <Link to='/events'>Know the Team</Link>
                         </Nav>
 
-                        <Navbar.Brand className="me-auto nav-logo front" href="/">
+                        <Link className="me-auto nav-logo navbar-brand front" to="/" >
                             <img src='/frame_logo.png' alt="logo" />
-                        </Navbar.Brand>
+                        </Link>
 
                         <Nav className="me-auto front">
-                            <Nav.Link href="/">Departments</Nav.Link>
-                            <Nav.Link href="/">Contact Us</Nav.Link>
+                            <Link to='/events'>Patient Welfare</Link>
+                            <Link to='/events'>Our Activities</Link>
+                            <Link to='/events'>Contact Us</Link>
                         </Nav>
 
                     </Navbar.Collapse>

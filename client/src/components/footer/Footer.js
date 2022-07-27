@@ -9,10 +9,10 @@ function Footer(props) {
             <Container>
                 <Row>
                     <Col md={5}>
-                        <p className="footer-links">
+                        <div className="footer-links">
                             <a href="/">Home</a>
                             <p className="footer-company-name">CARE © 2022</p>
-                        </p>
+                        </div>
 
                     </Col>
 

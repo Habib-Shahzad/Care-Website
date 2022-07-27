@@ -1,28 +1,49 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
-import './App.scss';
-import RoutesFile from './_Routes';
+// import { Routes, Route, Link, useLocation } from "react-router-dom";
+// import RoutesFile from './RoutesFile';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Footer, MainNavbar } from './components';
+import { Home, EventsCamp } from './pages';
 import 'swiper/scss'; // core Swiper
-// import 'swiper/modules/navigation/navigation.scss'; // Navigation module
-import 'swiper/scss/navigation';
-// import 'swiper/modules/pagination/pagination.scss';
-import 'swiper/scss/pagination';
+import 'swiper/scss/navigation'; // Navigation module
+import 'swiper/scss/pagination'; // Pagination module
+import './App.scss';
+import './global.scss';
+
 
 function App() {
+  const location = useLocation();
 
   return (
-    <Router>
-      <Switch>
-        <Route path="*">
-          <RoutesFile />
-        </Route>
-      </Switch>
-    </Router>
+    <TransitionGroup component={null}>
+      <MainNavbar />
+      <CSSTransition key={location.key} classNames="fade" timeout={300}>
+        <Routes location={location}>
+
+          <Route path="/events" element=
+            {
+              <>
+                <EventsCamp />
+                <Footer />
+              </>
+            } />
+          <Route path="*" element={
+            <>
+              <Home />
+              <Footer />
+            </>
+          } />
+        </Routes>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }
+
+
 
 export default App;
