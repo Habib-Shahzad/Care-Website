@@ -43,20 +43,20 @@
 // Medium devices (tablets, less than 992px)
 @media (max-width: 61.99875em) {
   .nav-logo {
-    display: none;
+    display: none !important;
   }
 }
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 47.99875em) {
   .nav-logo {
-    display: none;
+    display: none !important;
   }
 }
 
 // X-Small devices (portrait phones, less than 576px)
 @media (max-width: 35.99875em) {
   .nav-logo {
-    display: none;
+    display: none !important;
   }
 }
