@@ -1,21 +1,21 @@
 .home {
+  max-width: 100%;
+  max-height: 100% !important;
+  overflow-x: hidden;
+
   .circle-thing {
-    overflow: hidden;
-    position: absolute;
-    bottom: 10rem;
+    top: 0;
     right: 0;
     img {
-      width: 100%;
+      width: 70rem;
     }
   }
 
   .wavy-thing {
-    height: 100vh !important;
-    overflow: hidden;
-    position: absolute;
+    height: 100vh;
     right: 0;
     img {
-      width: 100%;
+      width: 80rem;
     }
   }
 
@@ -143,14 +143,16 @@
     }
   }
   .qoute-1 {
+    padding: 4rem !important;
     margin-bottom: 4rem;
     margin-top: 1rem;
     font-weight: 400;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #e82fb4;
     text-align: center;
   }
 }
+
 // X-Large devices (large desktops, less than 1400px)
 @media (max-width: 87.49875em) {
 }
@@ -232,5 +234,13 @@
   }
   .member-button {
     margin-bottom: 1rem !important;
+  }
+
+  .wavy-thing {
+    top: 140rem !important;
+    right: inherit !important;
+    img {
+      width: 90rem !important;
+    }
   }
 }

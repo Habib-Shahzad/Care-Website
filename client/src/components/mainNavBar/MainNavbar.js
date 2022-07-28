@@ -10,8 +10,8 @@ function MainNavbar(props) {
 
             <Navbar expand="lg">
                 <Container>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse >
+                    <Navbar.Toggle className="front" aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse className="front">
                         <Nav className="me-auto front">
                             <Link to='/events'>Community Outreach</Link>
                             <Link to='/events'>Our Aims</Link>

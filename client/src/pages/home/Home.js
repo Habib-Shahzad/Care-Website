@@ -7,7 +7,8 @@ function Home(props) {
     return (
         <div className='home'>
 
-            <div className='circle-thing'>
+
+            <div className='circle-thing absolute'>
                 <img src='/designer_1.svg' alt="logo" />
             </div>
 
@@ -62,7 +63,7 @@ function Home(props) {
                 </p>
             </div>
 
-            <div className='wavy-thing'>
+            <div className='wavy-thing absolute'>
                 <img src='/designer_2.svg' alt="logo" />
             </div>
 

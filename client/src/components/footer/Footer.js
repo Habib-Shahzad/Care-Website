@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Row, Col, Container } from 'react-bootstrap';
 import './Footer.scss'
 
@@ -10,7 +11,7 @@ function Footer(props) {
                 <Row>
                     <Col md={5}>
                         <div className="footer-links">
-                            <a href="/">Home</a>
+                            <Link to="/">Home</Link>
                             <p className="footer-company-name">CARE © 2022</p>
                         </div>
 

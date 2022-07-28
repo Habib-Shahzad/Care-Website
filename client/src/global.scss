@@ -108,6 +108,10 @@ body {
   color: $secondary-color;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -327,6 +331,10 @@ body {
 
 .margin-global-top-15 {
   margin-top: 15rem;
+}
+
+.div-margin-0 {
+  margin: 0 auto !important;
 }
 
 .padding-left-0-5 {
@@ -653,4 +661,16 @@ body {
     max-width: 100%;
     overflow-x: hidden;
   }
+}
+
+.pink-text {
+  color: #e82fb4;
+}
+.black-text {
+  color: #000;
+}
+
+.absolute {
+  position: absolute !important;
+  overflow: hidden !important;
 }

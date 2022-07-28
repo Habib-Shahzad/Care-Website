@@ -25,6 +25,9 @@ function App() {
       <CSSTransition key={location.key} classNames="fade" timeout={300}>
         <Routes location={location}>
 
+
+
+
           <Route path="/events" element=
             {
               <>
@@ -32,6 +35,8 @@ function App() {
                 <Footer />
               </>
             } />
+
+
           <Route path="*" element={
             <>
               <Home />
