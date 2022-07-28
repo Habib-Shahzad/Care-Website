@@ -55,10 +55,10 @@ function Home(props) {
 
 
             <div className='qoute-1 front'>
-                <p >“The best way to find yourself is to lose yourself in the service of others.”</p>
+                <p >“The way you get meaning into your life is to devote yourself to loving others, devote yourself to your community around you, and devote yourself to creating something that gives you purpose and meaning.”</p>
 
                 <p>
-                    Mahatma Gandhi
+                    Mitch Albom
                 </p>
             </div>
 
