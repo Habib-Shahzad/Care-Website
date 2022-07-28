@@ -29,6 +29,10 @@ function EventsCamp(props) {
                 <img src='/designer_31.svg' alt="logo" />
             </div>
 
+            <div className='absolute weird-circle6'>
+                <img src='/designer_31.svg' alt="logo" />
+            </div>
+
 
 
             {/* <div className='weird-circle2'>

@@ -59,6 +59,8 @@ $padding-image-large: 0 10rem;
 }
 
 body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
   font-family: "Montserrat", sans-serif !important;
 }
 
@@ -672,5 +674,22 @@ body {
 
 .absolute {
   position: absolute !important;
+}
+
+.over-h {
+  overflow: hidden;
+}
+
+.relative {
   overflow: hidden !important;
+}
+
+.header-text {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #e82fb4;
+}
+
+.black-text {
+  color: #000 !important;
 }

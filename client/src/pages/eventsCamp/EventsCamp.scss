@@ -32,12 +32,14 @@
   }
 
   .weird-circle4 {
-    overflow: hidden;
     display: none;
   }
 
   .weird-circle5 {
-    overflow: hidden;
+    display: none;
+  }
+
+  .weird-circle6 {
     display: none;
   }
 
@@ -373,26 +375,31 @@
   }
 
   .weird-circle1 {
+    top: 5rem !important;
+    right: 0 !important;
     img {
       width: 30rem !important;
     }
   }
 
   .weird-circle2 {
+    right: 0 !important;
     top: 50rem !important;
     img {
-      width: 30rem !important;
+      width: 40rem !important;
     }
   }
 
   .weird-circle3 {
+    right: 0 !important;
     top: 100rem !important;
     img {
-      width: 30rem !important;
+      width: 40rem !important;
     }
   }
 
   .weird-circle4 {
+    right: 0 !important;
     display: block !important;
     top: 160rem !important;
     img {
@@ -401,10 +408,22 @@
   }
 
   .weird-circle5 {
+    right: 0 !important;
     display: block !important;
     top: 220rem !important;
     img {
-      width: 30rem !important;
+      width: 40rem !important;
+    }
+  }
+
+  .weird-circle6 {
+    right: 0 !important;
+    display: block !important;
+    top: 280rem !important;
+    img {
+      width: 45rem !important;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
     }
   }
 }

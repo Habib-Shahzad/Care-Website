@@ -7,15 +7,14 @@ function Home(props) {
     return (
         <div className='home'>
 
-
-            <div className='circle-thing absolute'>
+            <div className='absolute circle-thing'>
                 <img src='/designer_1.svg' alt="logo" />
             </div>
 
             <div className='home-initial'>
                 <Container>
                     <Row>
-                        <Col className='home-init-col1 front' md={5} >
+                        <Col className='home-init-col1 front' md="auto">
                             <h2 >As here we Care</h2>
                             <div className='content'>
                                 <p>
@@ -63,15 +62,17 @@ function Home(props) {
                 </p>
             </div>
 
-            <div className='wavy-thing absolute'>
-                <img src='/designer_2.svg' alt="logo" />
+            <div className='wavy-container'>
+                <div className='wavy-thing'>
+                    <img src='/designer_2.svg' alt="logo" />
+                </div>
             </div>
 
 
             <div className='ambass-form'>
                 <Container>
                     <Row>
-                        <Col className='ambass-col1 front' md={6} >
+                        <Col className='ambass-col1 front' md={6}>
                             <h3 >Become An Ambassador</h3>
                             <div className='content'>
                                 <p>
@@ -79,22 +80,20 @@ function Home(props) {
                                 </p>
                             </div>
                             <Row>
-                                <Col>
-                                    <div >
-                                        <FaWpforms size={30} />
-                                        <p className='p-header'>
-                                            We Appreciate You
+                                <Col >
+                                    <div className='appreciate-container' >
+                                        <p className='header-text'>
+                                            <FaWpforms size={30} /> We Appreciate You
                                         </p>
                                         <p>
                                             For the services of all ambassadors CARE would provide certificates of appreciation at the end of year to all ambassadors that stay affiliated until the end of year.
                                         </p>
                                     </div>
                                 </Col>
-                                <Col>
-                                    <div>
-                                        <FaWpforms size={30} />
-                                        <p className='p-header'>
-                                            Get Recruited
+                                <Col  >
+                                    <div className='recruit-container'  >
+                                        <p className='header-text'>
+                                            <FaWpforms size={30} /> Get Recruited
                                         </p>
                                         <p>
                                             For recruitment related queries you can mail us at dimccaresorg.hr@gmail.com. CARE reserves the right to make any amends in the ambassadorship programme, provided it is beneficial for all parties involved.
