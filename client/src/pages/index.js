@@ -1,3 +1,3 @@
 export { default as Home } from './home/Home';
-export { default as EventsCamp } from './eventsCamp/EventsCamp';
+export { default as CommunityOutreach } from './communityOutreach/CommunityOutreach';
 export { default as PatientWelfare } from './patientWelfare/PatientWelfare';

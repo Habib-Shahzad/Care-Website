@@ -23,10 +23,10 @@ function Home(props) {
                             </div>
 
                             <Row>
-                                <Col md={5} className='member-button'>
+                                <Col md={4} className='member-button'>
                                     <Button
                                         variant='custom'
-                                        className='home-donate-button'>
+                                        className='pink-care-button home-main-button'>
                                         Member Support
                                     </Button>
                                 </Col>
@@ -34,7 +34,7 @@ function Home(props) {
                                 <Col md={3} className='support-button'>
                                     <Button
                                         variant='custom'
-                                        className='home-donate-button'>
+                                        className='pink-care-button home-main-button'>
                                         Support Us
                                     </Button>
                                 </Col>
@@ -52,9 +52,7 @@ function Home(props) {
 
             </div>
 
-
-
-            <div className='qoute-1 front'>
+            <div className='quote-1 front'>
                 <p >“The way you get meaning into your life is to devote yourself to loving others, devote yourself to your community around you, and devote yourself to creating something that gives you purpose and meaning.”</p>
 
                 <p>
@@ -134,7 +132,7 @@ function Home(props) {
 
                     <Button
                         variant='custom'
-                        className='donate-button'
+                        className='pink-care-button'
                     >Donate Now </Button>
 
                 </div>

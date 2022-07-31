@@ -13,9 +13,9 @@ function MainNavbar(props) {
                     <Navbar.Toggle className="front" aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className="front">
                         <Nav className="me-auto front">
-                            <Link to='/events'>Community Outreach</Link>
-                            <Link to='/events'>Our Aims</Link>
-                            <Link to='/events'>Know the Team</Link>
+                            <Link to='/community-outreach'>Community Outreach</Link>
+                            <Link to='/'>Our Aims</Link>
+                            <Link to='/'>Know the Team</Link>
                         </Nav>
 
                         <Link className="me-auto nav-logo navbar-brand front" to="/" >
@@ -23,9 +23,9 @@ function MainNavbar(props) {
                         </Link>
 
                         <Nav className="me-auto front">
-                            <Link to='/events'>Patient Welfare</Link>
-                            <Link to='/events'>Our Activities</Link>
-                            <Link to='/events'>Contact Us</Link>
+                            <Link to='/patient-welfare'>Patient Welfare</Link>
+                            <Link to='/'>Our Activities</Link>
+                            <Link to='/'>Contact Us</Link>
                         </Nav>
 
                     </Navbar.Collapse>

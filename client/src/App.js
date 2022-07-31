@@ -8,7 +8,7 @@ import {
 // import RoutesFile from './RoutesFile';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Footer, MainNavbar } from './components';
-import { Home, EventsCamp, PatientWelfare } from './pages';
+import { Home, CommunityOutreach, PatientWelfare } from './pages';
 import 'swiper/scss'; // core Swiper
 import 'swiper/scss/navigation'; // Navigation module
 import 'swiper/scss/pagination'; // Pagination module
@@ -26,12 +26,10 @@ function App() {
         <Routes location={location}>
 
 
-
-
-          <Route path="/events" element=
+          <Route path="/community-outreach" element=
             {
               <>
-                <EventsCamp />
+                <CommunityOutreach />
                 <Footer />
               </>
             } />

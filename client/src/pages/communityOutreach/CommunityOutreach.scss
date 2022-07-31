@@ -57,8 +57,9 @@
 
   .events-initial {
     margin-top: 5rem;
+    margin-bottom: 3rem;
 
-    .qoute-1 {
+    .quote-1 {
       text-align: center;
       margin: 0 auto;
       max-width: 100%;
@@ -69,79 +70,30 @@
       font-size: 1.5rem;
     }
 
-    .events-main-text-box {
+    .main-text-area {
       margin: 0 auto;
       max-width: 100%;
       width: 55rem !important;
       margin-bottom: 3rem;
     }
-  }
-  .climate-change-text {
-    margin: 0 auto;
-    max-width: 100%;
-    width: 55rem;
-    margin-bottom: 3rem;
+
+    .box2 {
+      margin-top: 3rem !important;
+    }
   }
 
-  .events-container {
+  .blogs-container {
     margin-left: 5rem;
-  }
-
-  .suicide-container {
-    .suicide-col2 {
-      padding-left: 10rem !important;
-    }
-    img {
-      width: 20rem;
-      height: auto;
-      margin-bottom: 3rem;
-    }
-  }
-
-  .hygiene-container {
-    margin-left: 7rem;
-
-    img {
-      width: 20rem;
-    }
-  }
-
-  .childabuse-container {
-    margin-left: 7rem;
-  }
-
-  .mental-container {
-    img {
-      width: 20rem;
-    }
-  }
-
-  .donate-button {
-    padding: 0.625rem 0;
-    background-color: #f178b6 !important;
-    color: white;
-    cursor: pointer;
-    width: 9rem;
-    text-align: center;
-    font-weight: 400;
-    font-size: 1rem;
-    border: 1px solid transparent !important;
-    text-transform: uppercase;
-    border-radius: 10px;
-    transition: ease-in-out 0.3s;
-    margin: 0 !important;
-    box-shadow: none;
-    &:hover {
-      background-color: transparent;
-      color: black !important;
-    }
-    &:active {
-      color: black !important;
-      box-shadow: none;
-    }
-    &:focus {
-      box-shadow: none;
-      color: black !important;
+    .blog {
+      margin-top: 1rem;
+      .image-container {
+        img {
+          border: 2px solid #e82fb4;
+          border-radius: 1rem;
+          width: 25rem;
+          height: auto;
+        }
+      }
     }
   }
 }
@@ -184,12 +136,12 @@
   }
 
   .events-initial {
-    .qoute-1 {
+    .quote-1 {
       padding-left: 2rem;
       padding-right: 2rem;
       font-size: 1rem !important;
     }
-    .events-main-text-box {
+    .main-text-area {
       h1 {
         font-size: 1.5rem !important;
       }
@@ -198,35 +150,27 @@
     }
   }
 
-  .events-container {
+  .blogs-container {
     margin-left: 0 !important;
     padding-left: 2rem;
 
     .image-container {
       text-align: center;
     }
+  }
 
-    .suicide-container {
-      margin: 0 auto !important;
-
-      .suicide-col1 {
-        padding-left: 0 !important;
-      }
-
-      .suicide-col2 {
-        padding-left: 0 !important;
-        text-align: center;
-      }
+  .weird-circle3 {
+    top: 110rem !important;
+    img {
+      width: 50rem !important;
     }
+  }
 
-    .hygiene-container {
-      margin: 0 auto !important;
-      margin-top: 2rem !important;
-    }
-
-    .childabuse-container {
-      margin: 0 auto !important;
-      margin-top: 2rem !important;
+  .weird-circle4 {
+    display: block !important;
+    top: 180rem !important;
+    img {
+      width: 50rem !important;
     }
   }
 }
@@ -242,44 +186,17 @@
   }
 
   .events-initial {
-    .qoute-1 {
+    .quote-1 {
       padding-left: 2rem;
       padding-right: 2rem;
       font-size: 1rem !important;
     }
-    .events-main-text-box {
+    .main-text-area {
       h1 {
         font-size: 1.5rem !important;
       }
       padding-left: 2rem;
       padding-right: 2rem;
-    }
-  }
-
-  .events-container {
-    margin-left: 0 !important;
-    padding-left: 2rem;
-
-    .suicide-container {
-      margin: 0 auto !important;
-
-      .suicide-col1 {
-        padding-left: 0 !important;
-      }
-
-      .suicide-col2 {
-        padding-left: 0 !important;
-      }
-    }
-
-    .hygiene-container {
-      margin: 0 auto !important;
-      margin-top: 2rem !important;
-    }
-
-    .childabuse-container {
-      margin: 0 auto !important;
-      margin-top: 2rem !important;
     }
   }
 
@@ -339,12 +256,12 @@
   }
 
   .events-initial {
-    .qoute-1 {
+    .quote-1 {
       padding-left: 2rem;
       padding-right: 2rem;
       font-size: 1rem !important;
     }
-    .events-main-text-box {
+    .main-text-area {
       h1 {
         font-size: 1.5rem !important;
       }
@@ -353,30 +270,15 @@
     }
   }
 
-  .events-container {
+  .blogs-container {
     margin-left: 0 !important;
-    padding-left: 2rem;
-
-    .suicide-container {
-      margin: 0 auto !important;
-
-      .suicide-col1 {
-        padding-left: 0 !important;
+    padding-left: 2rem !important;
+    .blog {
+      .image-container {
+        img {
+          width: 18rem !important;
+        }
       }
-
-      .suicide-col2 {
-        padding-left: 0 !important;
-      }
-    }
-
-    .hygiene-container {
-      margin: 0 auto !important;
-      margin-top: 2rem !important;
-    }
-
-    .childabuse-container {
-      margin: 0 auto !important;
-      margin-top: 2rem !important;
     }
   }
 
