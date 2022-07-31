@@ -45,7 +45,7 @@ function EventsCamp(props) {
 
                     <div className='box1'>
                         <h1 className='pink-text'>
-                            Events Campaigning And Outreach
+                            Community Outreach Programme
                         </h1>
                         <p >
                             In pursuance of raising awareness CARE has initiated its innovative and much needed Community Outreach Programme (COP). The COP is aimed to start a conversation on alarming issues that are predominant in our society, however, it is unfortunate that these issues are not actively recognized or are as informed as they should be. The CARE team is currently working on seeking institutional participation in spreading awareness on the following topics:
