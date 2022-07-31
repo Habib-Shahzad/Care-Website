@@ -68,6 +68,21 @@ function EventsCamp(props) {
 
             </div>
 
+            <div className='text-center climate-change-text front'>
+                <div className='front'>
+                    <h3 className='pink-text'>
+                        Climate Change
+                    </h3>
+                    <h5 className ='pink-text'>
+                        What Is Climate Change?
+                    </h5>
+                    <p >
+                        According to NASA, climate change is long-term change is a lonng-term change in the average weather patterns that have come to 
+                        define Earth's local, regional and global climates. It refers to both human and naturally produced warming effects on our planet.<br/>
+                        We are bringing this campaign to all schools and the colleges very soon, if you are interested you can mail us at dimccaresorg.pr@gmail.com
+                    </p>
+                </div>
+            </div>
 
             <div className='events-container' >
 
