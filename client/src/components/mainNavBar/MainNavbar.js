@@ -14,8 +14,8 @@ function MainNavbar(props) {
                     <Navbar.Collapse className="front">
                         <Nav className="me-auto front">
                             <Link to='/community-outreach'>Community Outreach</Link>
-                            <Link to='/'>Our Aims</Link>
-                            <Link to='/'>Know the Team</Link>
+                            <Link to='/our-aims'>Our Aims</Link>
+                            <Link to='/our-team'>Know the Team</Link>
                         </Nav>
 
                         <Link className="me-auto nav-logo navbar-brand front" to="/" >
@@ -24,7 +24,7 @@ function MainNavbar(props) {
 
                         <Nav className="me-auto front">
                             <Link to='/patient-welfare'>Patient Welfare</Link>
-                            <Link to='/'>Our Activities</Link>
+                            <Link to='/our-activities'>Our Activities</Link>
                             <Link to='/'>Contact Us</Link>
                         </Nav>
 

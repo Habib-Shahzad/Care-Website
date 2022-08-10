@@ -8,7 +8,7 @@ import {
 // import RoutesFile from './RoutesFile';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Footer, MainNavbar } from './components';
-import { Home, CommunityOutreach, PatientWelfare } from './pages';
+import { Home, CommunityOutreach, PatientWelfare, OurTeam, OurAims, OurActivities} from './pages';
 import 'swiper/scss'; // core Swiper
 import 'swiper/scss/navigation'; // Navigation module
 import 'swiper/scss/pagination'; // Pagination module
@@ -38,6 +38,30 @@ function App() {
             {
               <>
                 <PatientWelfare />
+                <Footer />
+              </>
+            } />
+          
+          <Route path="/our-team" element=
+            {
+              <>
+                <OurTeam />
+                <Footer />
+              </>
+            } />
+          
+          <Route path="/our-aims" element=
+            {
+              <>
+                <OurAims />
+                <Footer />
+              </>
+            } />
+          
+          <Route path="/our-activities" element=
+            {
+              <>
+                <OurActivities />
                 <Footer />
               </>
             } />
