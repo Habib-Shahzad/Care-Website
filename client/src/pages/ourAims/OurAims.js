@@ -1,7 +1,5 @@
 import React from "react";
-// import { Button, Container, Row, Col } from 'react-bootstrap';
 import './OurAims.scss';
-import { useState } from 'react';
 
 
 function OurAims(props) {
@@ -13,7 +11,7 @@ function OurAims(props) {
                     Our Aims
                 </h1>
 
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Fundraising
                 </h3>
                 <p >
@@ -27,7 +25,7 @@ function OurAims(props) {
                     future collaboration and donation drives,
                     and welfare projects initiated by CARE.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Awareness Campaigns
                 </h3>
                 <p >
@@ -43,7 +41,7 @@ function OurAims(props) {
                     treatment of disease will be shared with
                     the public via CARE.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Bringing Social Changes
                 </h3>
                 <p >
@@ -59,7 +57,7 @@ function OurAims(props) {
                     delivered to school, college, and
                     university students across Karachi.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Medical Development and Research
                 </h3>
                 <p >
@@ -74,7 +72,7 @@ function OurAims(props) {
                     understanding regarding disease
                     prevalence within our community.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Collaborations:
                 </h3>
                 <p >
@@ -84,10 +82,10 @@ function OurAims(props) {
                     with alike interests. Collectively, we can
                     achieve a better tomorrow.
                 </p>
-                
+
             </div>
-        </div>   
-            
+        </div>
+
     )
 }
 

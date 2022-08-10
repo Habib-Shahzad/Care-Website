@@ -1,15 +1,9 @@
 import React from "react";
-// import { Button, Container, Row, Col } from 'react-bootstrap';
 import './OurTeam.scss';
-import { useState } from 'react';
 
 
 function OurTeam(props) {
-    const [index, setIndex] = useState(0);
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
     const members = [
         {
             name: 'Mustafa',
@@ -32,7 +26,7 @@ function OurTeam(props) {
             image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
         }
 
-    ]; 
+    ];
     return (
         <div className='text-center team-main front'>
             <div className='front'>
@@ -57,7 +51,7 @@ function OurTeam(props) {
                     return (
                         <div className='member-card'>
                             <div className='member-image'>
-                                <img src={member.image} alt={member.name} style={{'width': '25rem'}} />
+                                <img src={member.image} alt={member.name} style={{ 'width': '25rem' }} />
                             </div>
                             <div className='member-details'>
                                 <h3>{member.name}</h3>
@@ -67,8 +61,8 @@ function OurTeam(props) {
                     )
                 })
             }
-         </div>   
-            
+        </div>
+
     )
 }
 

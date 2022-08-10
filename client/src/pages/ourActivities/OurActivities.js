@@ -1,5 +1,4 @@
 import React from "react";
-// import { Button, Container, Row, Col } from 'react-bootstrap';
 import './OurActivities.scss';
 
 
@@ -12,9 +11,8 @@ function OurActivities(props) {
                     The Work We Have Done
                 </h1>
 
-                <h3 className ='pink-text'>
-                    “ W O R L D B L O O D
-                    D O N O R D A Y 2 0 2 1
+                <h3 className='pink-text'>
+                    World Blood Donor Day
                 </h3>
                 <p >
                     CARE takes priority for various
@@ -27,7 +25,7 @@ function OurActivities(props) {
                     future collaboration and donation drives,
                     and welfare projects initiated by CARE.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Awareness Campaigns
                 </h3>
                 <p >
@@ -43,7 +41,7 @@ function OurActivities(props) {
                     treatment of disease will be shared with
                     the public via CARE.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Bringing Social Changes
                 </h3>
                 <p >
@@ -59,7 +57,7 @@ function OurActivities(props) {
                     delivered to school, college, and
                     university students across Karachi.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Medical Development and Research
                 </h3>
                 <p >
@@ -74,7 +72,7 @@ function OurActivities(props) {
                     understanding regarding disease
                     prevalence within our community.
                 </p>
-                <h3 className ='pink-text'>
+                <h3 className='pink-text'>
                     Collaborations:
                 </h3>
                 <p >
@@ -84,10 +82,10 @@ function OurActivities(props) {
                     with alike interests. Collectively, we can
                     achieve a better tomorrow.
                 </p>
-                
+
             </div>
-        </div>   
-            
+        </div>
+
     )
 }
 
