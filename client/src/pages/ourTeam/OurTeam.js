@@ -6,75 +6,68 @@ import './OurTeam.scss';
 
 function OurTeam(props) {
 
-    const leaders = [
-        {
-            name: 'Wajiha',
-            description: 'President',
-            image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-
-        },
-
-        {
-            name: 'Mustafa',
-            description: 'Head of Human Resources',
-            image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-        },
-    ]
-
     const departments = [
+
+
+        {
+            name: 'Care Leadership',
+
+            members: [
+                {
+                    name: 'Wajiha Asim',
+                    text: 'President',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Muhammad Mustafa',
+                    text: 'Gen Sec',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+
+            ]
+        },
+
+
+        {
+            name: 'IT department',
+
+            members: [
+                {
+                    name: 'Mufize Firoz Vohra',
+                    text: 'Head of Public Relations',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Mufize Firoz Vohra',
+                    text: 'Member',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+
+            ]
+        },
+
         {
             name: 'Public Relations',
 
             members: [
                 {
-                    name: 'Mufize Firoz Vohra',
+                    name: 'Hammad Ahmad',
+                    text: 'Head of Public Relations',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Hammad Ahmad',
+                    text: 'Head of Public Relations',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Hammad Ahmad',
+                    text: 'Head of Public Relations',
                     image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
                 },
                 {
                     name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                },
-                {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                }, {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                },
-            ]
-        },
-
-        {
-            name: 'Second Department',
-
-            members: [
-                {
-                    name: 'Mufize Firoz Vohra',
-                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-                },
-                {
-                    name: 'Mufize Firoz Vohra',
+                    text: 'Member',
                     image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
                 },
             ]
@@ -105,29 +98,7 @@ function OurTeam(props) {
             </div>
 
 
-            <h3 className="pink-text">Care Leadership</h3>
-
-            <div className="department-members">
-                {
-                    leaders.map((leader, index) => {
-                        return (
-                            <Card className='member-card' key={index} style={{ width: '18rem' }}>
-                                <Card.Img
-                                    variant="top"
-                                    src={leader.image} />
-                                <Card.Body>
-                                    <Card.Title>{leader.name}</Card.Title>
-                                    <Card.Text>
-                                        {leader.description}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        )
-                    })
-                }
-            </div>
-
-            <div className='margin-global-top-5' />
+            <div className='margin-global-top-3' />
 
             {
                 departments.map((department, index) => {
@@ -148,7 +119,7 @@ function OurTeam(props) {
                                                 <Card.Body>
                                                     <Card.Title>{member.name}</Card.Title>
                                                     <Card.Text>
-                                                        Member
+                                                        {member.text}
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Card>
