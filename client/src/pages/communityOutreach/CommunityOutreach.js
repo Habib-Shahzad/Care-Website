@@ -1,34 +1,109 @@
 import React from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col, Carousel } from 'react-bootstrap';
+
+
+
 import './CommunityOutreach.scss';
 
 
 function EventsCamp(props) {
 
+
+
+    const blogs = [
+        {
+            title: 'Self Harm and Suicide',
+            description: 'Suicide and self-harm are major global public health problems with more than 800,000 (suicide) incidents worldwide annually. Seventy-five percent of the global suicides occur in low and middle-income countries (LMICs). Pakistan being one these LMICs has one of the population most vulnerable to suicide and self-harm. More alarmingly there is a lack of information on suicidal behavior. Considering all of the above CARE has decided to engage with the student body opting for various approaches, like conducting workshops and educating the ones who are more likely to indulge in such activities.',
+            images: [
+                'https://swiperjs.com/demos/images/nature-1.jpg',
+                'https://swiperjs.com/demos/images/nature-2.jpg',
+            ]
+        },
+        {
+            title: 'Mental Health',
+            description: 'Maintaining sound mental health is crucial for everyone, from a child to an elderly individual alike.A recent study, the first of its kind in Pakistan, has revealed that a substantial number of school - going adolescents are suffering from symptoms of anxiety and depression.Both of these, and other mental health impairments, can have a debilitating impact on the developing mind of a teenager if not managed properly.Unfortunately, a lack of mental health awareness, negative stigmas around therapy and the paucity of trained professionals in schools and healthcare facilities has led to a growing proportion of our adolescents with their mental health needs unmet and no proper guidance on where to seek help.Addressing these issues is an urgent need of the Pakistani population.',
+            images: [
+                'https://swiperjs.com/demos/images/nature-1.jpg',
+                'https://swiperjs.com/demos/images/nature-2.jpg',
+            ]
+        },
+
+        {
+            title: 'Personal Hygiene',
+            description: 'Puberty and Self hygiene is an important topic yet, it is something which is not discussed freely in our society. Young individuals are often left to deal with their bodies and the changes they are going through all by themselves, which unfortunately leads to the spread of incorrect information within these children.CARE plans to eradicate myths prevalent among children.Our goal is to educate them about the right ways to deal with puberty and all the changes our body goes through while also maintaining a sense of personal hygiene.CARE plans to do this by having a small workshop with girls and boys of ages close to puberty where we are going to teach them about how to process the effects of puberty.',
+            images: [
+                'https://swiperjs.com/demos/images/nature-1.jpg',
+                'https://swiperjs.com/demos/images/nature-2.jpg',
+            ]
+        },
+
+
+        {
+            title: 'Racism',
+            description: 'Racism is one of the major global issues that needs to be addressed. It includes differentiating people on the basis of their religion, ethnicity and skin tone.Unfortunately, it is far more common in Pakistan than acknowledged.Based on the survey we conducted, as part of our research, 52% of the respondents were a victim to Racism.This is an unnerving figure.CARE intends to remedy this by conducting seminars and workshop on absolving prejudices and having a spirit of acceptance.CARE shall also provide information material such as brochures.',
+            images: []
+        },
+
+
+
+        {
+            title: 'Child Abuse',
+            description: 'The Child abuse campaign revolves around fighting against the stigma and neglect around child abuse awareness, since 2018 there has been an 11% increase in reports of child abuse incidents. Children in Pakistan are vulnerable to many forms of violence(physical, psychological, sexual) and exploitation, the shocking statistics on child abuse is testimony of the severity of the issue at hand.CARE intends to host online campaigns as well as workshops for children in schools to teach them about what child abuse is and how it can be prevented.',
+            images: []
+        },
+
+
+    ]
+
     return (
         <div className='events-page'>
 
             <div className='absolute weird-circle1 '>
-                <img src='/designer_31.svg' alt="logo" />
+                <svg width="1306" height="1373" viewBox="0 0 1306 1373" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                        <path d="M-141.158 438.147C-190.535 586.646 -106.643 758.222 -102.234 920.219C-100.71 976.595 -108.907 1032.94 -96.7397 1089.03C-69.0008 1217.47 56.0093 1305.53 176.271 1347.01C233.627 1366.81 294.419 1379.87 351.053 1368.22C394.605 1359.26 433.076 1336.29 470.725 1313.56L1130.82 916.128C1204.51 871.743 1284.23 818.926 1302.05 729.937C1314.35 668.642 1294.05 602.7 1273.12 540.72C1247.4 464.56 1216.71 383.554 1153.65 334.775C1081.56 278.939 987.092 280.328 905.536 244.068C773.284 185.392 680.2 30.7445 541.526 4.29519C476.794 -8.04306 413.008 10.7805 355.194 36.165C246.186 84.0023 167.407 169.038 66.5633 226.087C-19.6343 274.857 -107.362 336.486 -141.158 438.147Z" fill="#ED56A8" fill-opacity="0.5" stroke="none" style={{ mixBlendMode: 'color-dodge' }} />
+                    </g>
+                </svg>
             </div>
+
             <div className='absolute weird-circle2 '>
-                <img src='/designer_31.svg' alt="logo" />
+                <svg width="1306" height="1373" viewBox="0 0 1306 1373" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                        <path d="M-141.158 438.147C-190.535 586.646 -106.643 758.222 -102.234 920.219C-100.71 976.595 -108.907 1032.94 -96.7397 1089.03C-69.0008 1217.47 56.0093 1305.53 176.271 1347.01C233.627 1366.81 294.419 1379.87 351.053 1368.22C394.605 1359.26 433.076 1336.29 470.725 1313.56L1130.82 916.128C1204.51 871.743 1284.23 818.926 1302.05 729.937C1314.35 668.642 1294.05 602.7 1273.12 540.72C1247.4 464.56 1216.71 383.554 1153.65 334.775C1081.56 278.939 987.092 280.328 905.536 244.068C773.284 185.392 680.2 30.7445 541.526 4.29519C476.794 -8.04306 413.008 10.7805 355.194 36.165C246.186 84.0023 167.407 169.038 66.5633 226.087C-19.6343 274.857 -107.362 336.486 -141.158 438.147Z" fill="#ED56A8" fill-opacity="0.5" stroke="none" style={{ mixBlendMode: 'color-dodge' }} />
+                    </g>
+                </svg>
             </div>
 
             <div className='absolute weird-circle3 '>
-                <img src='/designer_31.svg' alt="logo" />
+                <svg width="1306" height="1373" viewBox="0 0 1306 1373" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                        <path d="M-141.158 438.147C-190.535 586.646 -106.643 758.222 -102.234 920.219C-100.71 976.595 -108.907 1032.94 -96.7397 1089.03C-69.0008 1217.47 56.0093 1305.53 176.271 1347.01C233.627 1366.81 294.419 1379.87 351.053 1368.22C394.605 1359.26 433.076 1336.29 470.725 1313.56L1130.82 916.128C1204.51 871.743 1284.23 818.926 1302.05 729.937C1314.35 668.642 1294.05 602.7 1273.12 540.72C1247.4 464.56 1216.71 383.554 1153.65 334.775C1081.56 278.939 987.092 280.328 905.536 244.068C773.284 185.392 680.2 30.7445 541.526 4.29519C476.794 -8.04306 413.008 10.7805 355.194 36.165C246.186 84.0023 167.407 169.038 66.5633 226.087C-19.6343 274.857 -107.362 336.486 -141.158 438.147Z" fill="#ED56A8" fill-opacity="0.5" stroke="none" style={{ mixBlendMode: 'color-dodge' }} />
+                    </g>
+                </svg>
             </div>
 
             <div className='absolute weird-circle4'>
-                <img src='/designer_31.svg' alt="logo" />
+                <svg width="1306" height="1373" viewBox="0 0 1306 1373" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                        <path d="M-141.158 438.147C-190.535 586.646 -106.643 758.222 -102.234 920.219C-100.71 976.595 -108.907 1032.94 -96.7397 1089.03C-69.0008 1217.47 56.0093 1305.53 176.271 1347.01C233.627 1366.81 294.419 1379.87 351.053 1368.22C394.605 1359.26 433.076 1336.29 470.725 1313.56L1130.82 916.128C1204.51 871.743 1284.23 818.926 1302.05 729.937C1314.35 668.642 1294.05 602.7 1273.12 540.72C1247.4 464.56 1216.71 383.554 1153.65 334.775C1081.56 278.939 987.092 280.328 905.536 244.068C773.284 185.392 680.2 30.7445 541.526 4.29519C476.794 -8.04306 413.008 10.7805 355.194 36.165C246.186 84.0023 167.407 169.038 66.5633 226.087C-19.6343 274.857 -107.362 336.486 -141.158 438.147Z" fill="#ED56A8" fill-opacity="0.5" stroke="none" style={{ mixBlendMode: 'color-dodge' }} />
+                    </g>
+                </svg>
             </div>
 
             <div className='absolute weird-circle5'>
-                <img src='/designer_31.svg' alt="logo" />
+                <svg width="1306" height="1373" viewBox="0 0 1306 1373" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                        <path d="M-141.158 438.147C-190.535 586.646 -106.643 758.222 -102.234 920.219C-100.71 976.595 -108.907 1032.94 -96.7397 1089.03C-69.0008 1217.47 56.0093 1305.53 176.271 1347.01C233.627 1366.81 294.419 1379.87 351.053 1368.22C394.605 1359.26 433.076 1336.29 470.725 1313.56L1130.82 916.128C1204.51 871.743 1284.23 818.926 1302.05 729.937C1314.35 668.642 1294.05 602.7 1273.12 540.72C1247.4 464.56 1216.71 383.554 1153.65 334.775C1081.56 278.939 987.092 280.328 905.536 244.068C773.284 185.392 680.2 30.7445 541.526 4.29519C476.794 -8.04306 413.008 10.7805 355.194 36.165C246.186 84.0023 167.407 169.038 66.5633 226.087C-19.6343 274.857 -107.362 336.486 -141.158 438.147Z" fill="#ED56A8" fill-opacity="0.5" stroke="none" style={{ mixBlendMode: 'color-dodge' }} />
+                    </g>
+                </svg>
             </div>
 
             <div className='absolute weird-circle6'>
-                <img src='/designer_31.svg' alt="logo" />
+                <svg width="1306" height="1373" viewBox="0 0 1306 1373" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.5">
+                        <path d="M-141.158 438.147C-190.535 586.646 -106.643 758.222 -102.234 920.219C-100.71 976.595 -108.907 1032.94 -96.7397 1089.03C-69.0008 1217.47 56.0093 1305.53 176.271 1347.01C233.627 1366.81 294.419 1379.87 351.053 1368.22C394.605 1359.26 433.076 1336.29 470.725 1313.56L1130.82 916.128C1204.51 871.743 1284.23 818.926 1302.05 729.937C1314.35 668.642 1294.05 602.7 1273.12 540.72C1247.4 464.56 1216.71 383.554 1153.65 334.775C1081.56 278.939 987.092 280.328 905.536 244.068C773.284 185.392 680.2 30.7445 541.526 4.29519C476.794 -8.04306 413.008 10.7805 355.194 36.165C246.186 84.0023 167.407 169.038 66.5633 226.087C-19.6343 274.857 -107.362 336.486 -141.158 438.147Z" fill="#ED56A8" fill-opacity="0.5" stroke="none" style={{ mixBlendMode: 'color-dodge' }} />
+                    </g>
+                </svg>
             </div>
 
 
@@ -70,91 +145,65 @@ function EventsCamp(props) {
             </div>
 
 
-            <Container className='blogs-container'>
-                <Row>
-                    <Col >
-                        <div className='blog'>
-                            <h3 className='pink-text'>
-                                Self Harm and Suicide
-                            </h3>
-                            <p>
-                                Suicide and self-harm are major global public health problems with more than 800,000 (suicide) incidents worldwide annually. Seventy-five percent of the global suicides occur in low and middle-income countries (LMICs). Pakistan being one these LMICs has one of the population most vulnerable to suicide and self-harm. More alarmingly there is a lack of information on suicidal behavior. Considering all of the above CARE has decided to engage with the student body opting for various approaches, like conducting workshops and educating the ones who are more likely to indulge in such activities.
-                            </p>
-                            <div className='image-container front'>
-                                <img src='/home-image.jpeg' alt="main_image" />
-                            </div>
-                        </div>
+            <div className='margin-global-top-5' />
 
-                        <div className='blog'>
-                            <h3 className='pink-text'>
-                                Mental Health
-                            </h3>
-                            <p>
-                                Maintaining sound mental health is crucial for everyone, from a child to an elderly individual alike. A recent study, the first of its kind in Pakistan, has revealed that a substantial number of school-going adolescents are suffering from symptoms of anxiety and depression. Both of these, and other mental health impairments, can have a debilitating impact on the developing mind of a teenager if not managed properly. Unfortunately, a lack of mental health awareness, negative stigmas around therapy and the paucity of trained professionals in schools and healthcare facilities has led to a growing proportion of our adolescents with their mental health needs unmet and no proper guidance on where to seek help. Addressing these
-                                issues is an urgent need of the Pakistani population.
-                            </p>
-                            <div className='image-container front'>
-                                <img src='/home-image.jpeg' alt="main_image" />
-                            </div>
-                        </div>
+            <Container className='all-blogs-container'>
 
-                        <div className='blog'>
+                {
+                    blogs.map((blog, index) => {
+                        return (
+                            <Row className='blog-container'>
 
-                        </div>
+                                <Col>
+                                    {blog.images.length > 0 ?
+                                        <div className='blog'>
+                                            <h3 className='pink-text'>
+                                                {blog.title}
+                                            </h3>
+                                            <p>
+                                                {blog.description}
+                                            </p>
+                                        </div>
+                                        :
+                                        <div className='blog-center'>
+                                            <h3 className='pink-text'>
+                                                {blog.title}
+                                            </h3>
+                                            <p>
+                                                {blog.description}
+                                            </p>
+                                        </div>
+                                    }
 
-                    </Col>
+                                </Col>
 
-                    <Col >
+                                {blog.images.length > 0 &&
+                                    <Col>
+                                        <Carousel interval={3000 + (index * 100)} fade>
+                                            {
+                                                blog.images.map((image, index) => {
+                                                    return (
+                                                        <Carousel.Item>
+                                                            <img
+                                                                className="d-block w-100"
+                                                                src={image}
+                                                                alt="First slide"
+                                                            />
+                                                        </Carousel.Item>
+                                                    )
+                                                })
+                                            }
 
-                        <div className='blog'>
-                            <h3 className='pink-text'>
-                                Personal Hygiene
-                            </h3>
-                            <p>
-                                Puberty and Self hygiene is an important topic yet, it is something which is not discussed freely in our society. Young individuals are often
-                                left to deal with their bodies and the changes they are going through all
-                                by themselves, which unfortunately leads to the spread of incorrect
-                                information within these children. CARE plans to eradicate myths
-                                prevalent among children. Our goal is to educate them about the right
-                                ways to deal with puberty and all the changes our body goes through
-                                while also maintaining a sense of personal hygiene. CARE plans to do
-                                this by having a small workshop with girls and boys of ages close to
-                                puberty where we are going to teach them about how to process the
-                                effects of puberty.
-                            </p>
-                            <div className='image-container front'>
-                                <img src='/home-image.jpeg' alt="main_image" />
-                            </div>
-
-                        </div>
-
-                        <div className='blog'>
-                            <h3 className='pink-text'>
-                                Racism
-                            </h3>
-                            <p>
-                                Racism is one of the major global issues that needs to be addressed. It includes differentiating people on the basis of their religion, ethnicity
-                                and skin tone. Unfortunately, it is far more common in Pakistan than acknowledged. Based on the survey we conducted, as part of our
-                                research, 52% of the respondents were a victim to Racism. This is an unnerving figure. CARE intends to remedy this by conducting seminars
-                                and workshop on absolving prejudices and having a spirit of acceptance. CARE shall also provide information material such as brochures.
-                            </p>
-                        </div>
-
-                        <div className='blog'>
-                            <h3 className='pink-text'>
-                                Child Abuse
-                            </h3>
-                            <p>
-                                The Child abuse campaign revolves around fighting against the stigma and neglect around child abuse awareness, since 2018 there has been an 11% increase in reports of child abuse incidents. Children in Pakistan
-                                are vulnerable to many forms of violence (physical, psychological, sexual) and exploitation, the shocking statistics on child abuse is testimony of the severity of the issue at hand. CARE intends to host
-                                online campaigns as well as workshops for children in schools to teach them about what child abuse is and how it can be prevented.
-                            </p>
-                        </div>
-
-                    </Col>
+                                        </Carousel>
+                                    </Col>
+                                }
+                                <hr />
+                            </Row>
+                        );
+                    })
+                }
 
 
-                </Row>
             </Container>
 
 

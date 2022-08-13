@@ -6,7 +6,7 @@
     overflow: hidden;
     left: 0;
     top: 0;
-    img {
+    svg {
       width: 60rem;
     }
   }
@@ -15,7 +15,7 @@
     overflow: hidden;
     right: 0;
     top: 40rem;
-    img {
+    svg {
       width: 60rem;
       -webkit-transform: scaleX(-1);
       transform: scaleX(-1);
@@ -25,8 +25,8 @@
   .weird-circle3 {
     overflow: hidden;
     left: 0;
-    top: 90rem;
-    img {
+    top: 95rem;
+    svg {
       width: 100%;
     }
   }
@@ -82,17 +82,29 @@
     }
   }
 
-  .blogs-container {
-    margin-left: 5rem;
-    .blog {
-      margin-top: 1rem;
-      .image-container {
+  .all-blogs-container {
+    .blog-container {
+      .carousel {
+        width: 25rem;
+        height: 25rem !important;
+        margin: auto;
+
         img {
           border: 2px solid #e82fb4;
           border-radius: 1rem;
-          width: 25rem;
+          width: 26rem;
           height: auto;
         }
+      }
+
+      .blog {
+        padding-left: 4rem;
+      }
+      .blog-center {
+        padding-left: 4rem;
+        margin: 0 auto !important;
+        text-align: center;
+        width: 55rem;
       }
     }
   }
@@ -105,21 +117,21 @@
 // Large devices (desktops, less than 1200px)
 @media (max-width: 74.99875em) {
   .weird-circle1 {
-    img {
+    svg {
       width: 50rem !important;
     }
   }
 
   .weird-circle2 {
     top: 50rem !important;
-    img {
+    svg {
       width: 60rem !important;
     }
   }
 
   .weird-circle3 {
     top: 100rem !important;
-    img {
+    svg {
       width: 50rem !important;
     }
   }
@@ -150,7 +162,7 @@
     }
   }
 
-  .blogs-container {
+  .all-blogs-container {
     margin-left: 0 !important;
     padding-left: 2rem;
 
@@ -161,7 +173,7 @@
 
   .weird-circle3 {
     top: 110rem !important;
-    img {
+    svg {
       width: 50rem !important;
     }
   }
@@ -169,7 +181,7 @@
   .weird-circle4 {
     display: block !important;
     top: 180rem !important;
-    img {
+    svg {
       width: 50rem !important;
     }
   }
@@ -201,21 +213,21 @@
   }
 
   .weird-circle1 {
-    img {
+    svg {
       width: 30rem !important;
     }
   }
 
   .weird-circle2 {
     top: 50rem !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
 
   .weird-circle3 {
     top: 100rem !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
@@ -223,7 +235,7 @@
   .weird-circle4 {
     display: block !important;
     top: 160rem !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
@@ -231,7 +243,7 @@
   .weird-circle5 {
     display: block !important;
     top: 220rem !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
@@ -239,7 +251,7 @@
   .weird-circle6 {
     display: block !important;
     top: 280rem !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
@@ -270,10 +282,10 @@
     }
   }
 
-  .blogs-container {
+  .all-blogs-container {
     margin-left: 0 !important;
     padding-left: 2rem !important;
-    .blog {
+    .blog-container {
       .image-container {
         img {
           width: 18rem !important;
@@ -285,7 +297,7 @@
   .weird-circle1 {
     top: 5rem !important;
     right: 0 !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
@@ -293,7 +305,7 @@
   .weird-circle2 {
     right: 0 !important;
     top: 50rem !important;
-    img {
+    svg {
       width: 40rem !important;
     }
   }
@@ -301,7 +313,7 @@
   .weird-circle3 {
     right: 0 !important;
     top: 100rem !important;
-    img {
+    svg {
       width: 40rem !important;
     }
   }
@@ -310,7 +322,7 @@
     right: 0 !important;
     display: block !important;
     top: 160rem !important;
-    img {
+    svg {
       width: 30rem !important;
     }
   }
@@ -319,7 +331,7 @@
     right: 0 !important;
     display: block !important;
     top: 220rem !important;
-    img {
+    svg {
       width: 40rem !important;
     }
   }
@@ -328,7 +340,7 @@
     right: 0 !important;
     display: block !important;
     top: 280rem !important;
-    img {
+    svg {
       width: 45rem !important;
       -webkit-transform: scaleX(-1);
       transform: scaleX(-1);
