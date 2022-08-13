@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import './Home.scss';
+import { Designer1, Designer2 } from '../../components';
 import { FaWpforms } from 'react-icons/fa';
 
 function Home(props) {
@@ -8,7 +9,7 @@ function Home(props) {
         <div className='home'>
 
             <div className='absolute circle-thing'>
-                <img src='/designer_1.svg' alt="logo" />
+                <Designer1 />
             </div>
 
             <div className='home-initial'>
@@ -62,7 +63,7 @@ function Home(props) {
 
             <div className='wavy-container'>
                 <div className='wavy-thing'>
-                    <img src='/designer_2.svg' alt="logo" />
+                    <Designer2 />
                 </div>
             </div>
 
