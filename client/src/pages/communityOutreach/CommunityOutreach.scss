@@ -96,15 +96,15 @@
           height: auto;
         }
       }
-
       .blog {
         padding-left: 4rem;
       }
-      .blog-center {
-        padding-left: 4rem;
+      .blog-center-container {
         margin: 0 auto !important;
         text-align: center;
-        width: 55rem;
+        max-width: 100%;
+        width: 55rem !important;
+        margin-bottom: 3rem;
       }
     }
   }
@@ -197,6 +197,20 @@
     padding-right: 2rem;
   }
 
+  .all-blogs-container {
+    .blog-container {
+      .carousel {
+        width: 20rem !important;
+        height: 20rem !important;
+        margin: auto;
+
+        img {
+          width: 20rem !important;
+        }
+      }
+    }
+  }
+
   .events-initial {
     .quote-1 {
       padding-left: 2rem;
@@ -286,9 +300,17 @@
     margin-left: 0 !important;
     padding-left: 2rem !important;
     .blog-container {
-      .image-container {
+      .blog {
+        padding: 0 !important;
+      }
+
+      .carousel {
+        width: 20rem !important;
+        height: 20rem !important;
+        margin: auto;
+
         img {
-          width: 18rem !important;
+          width: 20rem !important;
         }
       }
     }

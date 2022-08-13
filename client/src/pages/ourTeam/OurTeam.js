@@ -157,7 +157,7 @@ function OurTeam(props) {
                                     )
                                 }
                             </div>
-                            <hr />
+                            <div className='margin-global-top-2' />
                         </div>
                     )
                 })

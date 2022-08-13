@@ -1,14 +1,9 @@
 import React from 'react';
 import { Button, Container, Row, Col, Carousel } from 'react-bootstrap';
-
-
-
 import './CommunityOutreach.scss';
 
 
 function EventsCamp(props) {
-
-
 
     const blogs = [
         {
@@ -165,7 +160,7 @@ function EventsCamp(props) {
                                             </p>
                                         </div>
                                         :
-                                        <div className='blog-center'>
+                                        <div className='blog-center-container'>
                                             <h3 className='pink-text'>
                                                 {blog.title}
                                             </h3>
@@ -197,8 +192,10 @@ function EventsCamp(props) {
                                             }
 
                                         </Carousel>
+                                        <div className='margin-global-top-2' />
                                     </Col>
                                 }
+
                                 <hr />
                             </Row>
                         );
