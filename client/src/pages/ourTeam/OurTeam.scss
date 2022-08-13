@@ -1,0 +1,63 @@
+.teams-page {
+  padding-top: 2rem;
+
+  .main-text-area {
+    margin: 0 auto;
+    max-width: 100%;
+    width: 55rem !important;
+    margin-bottom: 3rem;
+  }
+
+  .department-director {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .department-members {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .member-card {
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+}
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 87.49875em) {
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 74.99875em) {
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 61.99875em) {
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 47.99875em) {
+  .main-text-area {
+    h1 {
+      font-size: 1.5rem !important;
+    }
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 35.99875em) {
+  .main-text-area {
+    h1 {
+      font-size: 1.5rem !important;
+    }
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

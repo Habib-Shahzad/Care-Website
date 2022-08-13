@@ -1,35 +1,92 @@
 import React from "react";
+import { Card } from 'react-bootstrap';
+
 import './OurTeam.scss';
 
 
 function OurTeam(props) {
 
-    const members = [
+    const leaders = [
+        {
+            name: 'Wajiha',
+            description: 'President',
+            image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+
+        },
+
         {
             name: 'Mustafa',
-            position: 'President',
+            description: 'Head of Human Resources',
             image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
         },
+    ]
+
+    const departments = [
         {
-            name: 'Mustafa',
-            position: 'President',
-            image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+            name: 'Public Relations',
+
+            members: [
+                {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                }, {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+            ]
         },
+
         {
-            name: 'Mustafa',
-            position: 'President',
-            image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+            name: 'Second Department',
+
+            members: [
+                {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+                {
+                    name: 'Mufize Firoz Vohra',
+                    image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                },
+            ]
         },
-        {
-            name: 'Mustafa',
-            position: 'President',
-            image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-        }
 
     ];
+
+
     return (
-        <div className='text-center team-main front'>
-            <div className='front'>
+        <div className='text-center teams-page front'>
+
+            <div className='text-center main-text-area front'>
                 <h1 className='pink-text'>
                     Meet The Team
                 </h1>
@@ -46,17 +103,61 @@ function OurTeam(props) {
                     online or physically.
                 </p>
             </div>
+
+
+            <h3 className="pink-text">Care Leadership</h3>
+
+            <div className="department-members">
+                {
+                    leaders.map((leader, index) => {
+                        return (
+                            <Card className='member-card' key={index} style={{ width: '18rem' }}>
+                                <Card.Img
+                                    variant="top"
+                                    src={leader.image} />
+                                <Card.Body>
+                                    <Card.Title>{leader.name}</Card.Title>
+                                    <Card.Text>
+                                        {leader.description}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        )
+                    })
+                }
+            </div>
+
+            <div className='margin-global-top-5' />
+
             {
-                members.map((member, index) => {
+                departments.map((department, index) => {
                     return (
-                        <div className='member-card'>
-                            <div className='member-image'>
-                                <img src={member.image} alt={member.name} style={{ 'width': '25rem' }} />
+                        <div key={index} >
+                            <div className="text-center">
+                                <h3 className="pink-text">{department.name}</h3>
                             </div>
-                            <div className='member-details'>
-                                <h3>{member.name}</h3>
-                                <p>{member.position}</p>
+
+                            <div className="department-members">
+                                {
+                                    department.members.map((member, index) => {
+                                        return (
+                                            <Card className='member-card' key={index} style={{ width: '18rem' }}>
+                                                <Card.Img
+                                                    variant="top"
+                                                    src={member.image} />
+                                                <Card.Body>
+                                                    <Card.Title>{member.name}</Card.Title>
+                                                    <Card.Text>
+                                                        Member
+                                                    </Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        )
+                                    }
+                                    )
+                                }
                             </div>
+                            <hr />
                         </div>
                     )
                 })
