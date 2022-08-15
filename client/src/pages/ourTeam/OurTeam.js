@@ -144,7 +144,7 @@ function OurTeam(props) {
 
             members: [
                 { 
-                    name: 'Unknown',
+                    name: 'Moeez Ibrahim',
                     text: 'Head of World Health Organisation',
                     image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
                 },
@@ -250,7 +250,7 @@ function OurTeam(props) {
 
             members: [
                 { 
-                    name: 'Unknown',
+                    name: 'Bilal Khan',
                     text: 'Head of Finance',
                     image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
                 },

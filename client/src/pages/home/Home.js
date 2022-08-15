@@ -54,11 +54,11 @@ function Home(props) {
             </div>
 
             <div className='quote-1 front'>
-                <p >“The way you get meaning into your life is to devote yourself to loving others, devote yourself to your community around you, and devote yourself to creating something that gives you purpose and meaning.”</p>
+                <h4 className='pink-text' >“The way you get meaning into your life is to devote yourself to loving others, devote yourself to your community around you, and devote yourself to creating something that gives you purpose and meaning.”</h4>
 
-                <p>
+                <h4 className='pink-text'>
                     Mitch Albom
-                </p>
+                </h4>
             </div>
 
             <div className='wavy-container'>
