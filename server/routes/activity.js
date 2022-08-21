@@ -8,4 +8,8 @@ router.get('/table-data', async (req, res) => {
 });
 
 
+module.exports = router;
+
+
+
 
