@@ -1,0 +1,42 @@
+.admin-login-container {
+  // padding: 0;
+  img {
+    height: inherit;
+    position: absolute;
+    right: 0;
+  }
+  position: relative;
+  background: #ef99c7;
+
+  height: 100vh;
+
+  .admin-card-formcontrol {
+    margin: 10px 0;
+    width: 100%;
+  }
+  .admin-login-base {
+    padding: 50px 30px;
+  }
+  .admin-login-card {
+    position: absolute;
+    z-index: 2;
+    width: 450px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .login-logo {
+    width: 15rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .admin-login-button {
+    top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+  }
+}

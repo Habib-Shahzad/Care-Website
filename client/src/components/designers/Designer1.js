@@ -14,94 +14,94 @@ export default function desginer1() {
             <rect opacity="0.65" x="1318.51" y="476.903" width="24.0166" height="5" transform="rotate(-31.641 1318.51 476.903)" fill="url(#paint8_linear_159_13)" />
             <defs>
                 <linearGradient id="paint0_linear_159_13" x1="1267.37" y1="411.816" x2="1371.44" y2="322.033" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_159_13" x1="1274.19" y1="422.884" x2="1378.26" y2="333.101" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint2_linear_159_13" x1="1280.48" y1="433.121" x2="1384.55" y2="343.338" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint3_linear_159_13" x1="1287.3" y1="444.188" x2="1391.37" y2="354.406" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint4_linear_159_13" x1="1294.07" y1="455.235" x2="1398.4" y2="365.513" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint5_linear_159_13" x1="1300.89" y1="466.303" x2="1405.22" y2="376.58" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint6_linear_159_13" x1="1307.71" y1="477.37" x2="1412.04" y2="387.648" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint7_linear_159_13" x1="1314.01" y1="487.586" x2="1418.34" y2="397.864" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
                 <linearGradient id="paint8_linear_159_13" x1="1320.82" y1="498.654" x2="1425.16" y2="408.931" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" stop-opacity="0.01" />
-                    <stop offset="0.07" stop-color="white" stop-opacity="0.22" />
-                    <stop offset="0.16" stop-color="white" stop-opacity="0.45" />
-                    <stop offset="0.25" stop-color="white" stop-opacity="0.65" />
-                    <stop offset="0.33" stop-color="white" stop-opacity="0.8" />
-                    <stop offset="0.4" stop-color="white" stop-opacity="0.91" />
-                    <stop offset="0.46" stop-color="white" stop-opacity="0.98" />
-                    <stop offset="0.51" stop-color="white" />
+                    <stop stopColor="white" stopOpacity="0.01" />
+                    <stop offset="0.07" stopColor="white" stopOpacity="0.22" />
+                    <stop offset="0.16" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="0.25" stopColor="white" stopOpacity="0.65" />
+                    <stop offset="0.33" stopColor="white" stopOpacity="0.8" />
+                    <stop offset="0.4" stopColor="white" stopOpacity="0.91" />
+                    <stop offset="0.46" stopColor="white" stopOpacity="0.98" />
+                    <stop offset="0.51" stopColor="white" />
                 </linearGradient>
             </defs>
         </svg>

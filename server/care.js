@@ -52,6 +52,9 @@ const createServer = async () => {
     const activityRoutes = require('./routes/activity');
     app.use('/api/actvity', activityRoutes);
 
+    const userRoutes = require('./routes/user');
+    app.use('/api/user', userRoutes);
+
     app.get('*', function (req, res) {
         res.sendFile(path.resolve('./build/index.html'));
     });
