@@ -3,6 +3,15 @@ const User = require("../schema").user;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const admin_auth = require("./middleware/admin_auth");
+
+router.get("/table-data", admin_auth, async (req, res) => {
+    const users = await User.find({}, { uid: 0 });
+    if (!users) res.json({ data: [] });
+    else res.json({ data: users });
+});
+
+
 router.get("/loggedIn", async (req, res, next) => {
 
     const admin_token = (req.cookies?.['access_token_admin']);
@@ -20,7 +29,6 @@ router.get("/loggedIn", async (req, res, next) => {
 
     next();
 });
-
 
 
 router.post("/admin-login", async (req, res) => {
@@ -67,6 +75,8 @@ router.post("/admin-login", async (req, res) => {
         res.json({ data: null, success: false, message: "User not found!" });
     }
 });
+
+
 
 
 module.exports = router;

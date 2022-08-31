@@ -7,7 +7,6 @@ function Admin(props) {
 
     const adminUser = React.useContext(AdminUserContext);
 
-
     const myTheme = createTheme({
         palette: {
             type: 'dark',

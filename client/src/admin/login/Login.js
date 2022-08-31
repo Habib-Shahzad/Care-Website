@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Card, IconButton, CardContent, Button, CardMedia, InputAdornment, InputLabel, Input, FormControl, Typography } from '@mui/material';
 import { Email, Visibility, VisibilityOff, Lock } from '@mui/icons-material';
-// import loginUser from '../../loginUser';
 import './Login.scss';
 import api from '../../api';
-
 
 import { useForm } from "react-hook-form";
 
@@ -20,7 +18,6 @@ function Login(props) {
     const handleClickShowPassword = _ => {
         setShowPassword(!showPassword);
     }
-
 
     const onSubmit = async (data) => {
 

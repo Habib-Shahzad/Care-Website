@@ -4,8 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-// import { Routes, Route, Link, useLocation } from "react-router-dom";
-// import RoutesFile from './RoutesFile';
+
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Footer, MainNavbar } from './components';
 import { Home, CommunityOutreach, PatientWelfare, OurTeam, OurAims, OurActivities } from './pages';
@@ -61,12 +60,22 @@ function App() {
         <CSSTransition key={location.key} classNames="fade" timeout={300}>
           <Routes location={location}>
 
-            <Route path="/admin" element=
+
+            <Route path="/" element={
+              <>
+                <MainNavbar />
+                <Home />
+                <Footer />
+              </>
+            } />
+
+            <Route path="admin/*" element=
               {
                 <>
                   <Admin loading={loading} />
                 </>
               } />
+
 
             <Route path="/community-outreach" element=
               {
@@ -114,13 +123,8 @@ function App() {
               } />
 
 
-            <Route path="*" element={
-              <>
-                <MainNavbar />
-                <Home />
-                <Footer />
-              </>
-            } />
+
+
           </Routes>
         </CSSTransition>
       </TransitionGroup>
