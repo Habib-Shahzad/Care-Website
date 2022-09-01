@@ -77,6 +77,28 @@ router.post("/admin-login", async (req, res) => {
 });
 
 
+router.post("/set-active", admin_auth, async (req, res) => {
+    const { active, selected } = req.body;
+    await User.updateMany({ _id: { $in: selected } }, { active: active });
+    const users = await User.find({}, { uid: 0 });
+    res.json({ success: true, data: users });
+});
+
+router.post("/set-admin", admin_auth, async (req, res) => {
+    const { admin, selected } = req.body;
+    await User.updateMany({ _id: { $in: selected } }, { admin: admin });
+    const users = await User.find({}, { uid: 0 });
+    res.json({ success: true, data: users });
+});
+
+
+
+router.post("/logout-admin", admin_auth, async (req, res) => {
+    return res
+        .clearCookie("access_token_admin")
+        .status(200)
+        .json({ message: "Successfully logged out" });
+});
 
 
 module.exports = router;
