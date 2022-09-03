@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
-import { userObj } from '../../db';
+import { userObj, activityObj, blogObj, imageObj } from '../../db';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
@@ -84,6 +84,9 @@ export default function EnhancedTable(props) {
   let tableFetch = {};
 
   if (model === 'user') tableFetch = userObj;
+  else if (model === 'activity') tableFetch = activityObj;
+  else if (model === 'blog') tableFetch = blogObj;
+  else if (model === 'image') tableFetch = imageObj;
   else tableFetch = {};
 
   const [order, setOrder] = React.useState('asc');
@@ -339,7 +342,7 @@ export default function EnhancedTable(props) {
                     else if (key === 'image') {
                       tableRow.push(
                         <TableCell key={c} component="th" id={labelId} scope="row" padding="none">
-                          <img className={'img'} src={row[key]} alt="Preview"></img>
+                          <img className={'img'} src={row[key].filePath} alt="Preview"></img>
                         </TableCell>
                       );
                     }

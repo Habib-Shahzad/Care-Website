@@ -26,7 +26,9 @@ import AdminForm from '../adminForm/AdminForm';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import WebIcon from '@mui/icons-material/Web';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import FeedIcon from '@mui/icons-material/Feed';
+import ImageIcon from '@mui/icons-material/Image';
 
 const drawerWidth = 240;
 
@@ -210,6 +212,42 @@ export default function AdminLayout(props) {
                             <ListItemText
                                 disableTypography
                                 primary={<Typography style={{ color: 'black' }}>Users</Typography>}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem component={Link} to="/admin/image" disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <ImageIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                disableTypography
+                                primary={<Typography style={{ color: 'black' }}>Images</Typography>}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+
+
+                    <ListItem component={Link} to="/admin/activity" disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <GroupWorkIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                disableTypography
+                                primary={<Typography style={{ color: 'black' }}>Activities</Typography>}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem component={Link} to="/admin/blog" disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <FeedIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                disableTypography
+                                primary={<Typography style={{ color: 'black' }}>Blogs</Typography>}
                             />
                         </ListItemButton>
                     </ListItem>

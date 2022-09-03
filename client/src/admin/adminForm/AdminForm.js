@@ -1,14 +1,14 @@
 import React from 'react';
 import { Divider, Typography } from '@mui/material';
 import { Container, Col, Row } from 'react-bootstrap';
-import { userObj } from '../../db';
+import { userObj, activityObj, blogObj, imageObj } from '../../db';
 import { useParams } from 'react-router';
 import './AdminForm.scss';
 
 const classes = {
     title: {
         flex: '1 1 100%',
-        marginBottom: 10
+        marginBottom: 5
     },
     demo: {
         marginBottom: 15
@@ -50,6 +50,9 @@ function AdminForm(props) {
 
     let formFetch = {};
     if (model === 'user') formFetch = userObj;
+    else if (model === 'activity') formFetch = activityObj;
+    else if (model === 'blog') formFetch = blogObj;
+    else if (model === 'image') formFetch = imageObj;
     else formFetch = {};
 
 

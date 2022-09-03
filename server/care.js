@@ -50,14 +50,14 @@ const createServer = async () => {
     app.use('/api/blog', blogRoutes);
 
     const activityRoutes = require('./routes/activity');
-    app.use('/api/actvity', activityRoutes);
+    app.use('/api/activity', activityRoutes);
 
     const userRoutes = require('./routes/user');
     app.use('/api/user', userRoutes);
 
-    app.get('*', function (req, res) {
-        res.sendFile(path.resolve('./build/index.html'));
-    });
+    const imageRoutes = require('./routes/image');
+    app.use('/api/image', imageRoutes);
+
 
     app.listen(port, () => {
         console.log(`Example app listening at http://localhost:${port}`);
