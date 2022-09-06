@@ -28,7 +28,7 @@ const startAction = async (obj, selected, setOriginalTableRows, setTableRows) =>
         let active = true;
         if (obj.value === 'in-active') active = false;
 
-        const response = await fetch(`${api}/blog/set-active`, {
+        const response = await fetch(`${api}/outreachBlog/set-active`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,9 +47,9 @@ const startAction = async (obj, selected, setOriginalTableRows, setTableRows) =>
 }
 
 
-const blogObj = {
-    apiTable: `${api}/blog/table-data`,
-    deleteApi: `${api}/blog/delete`,
+const outreachBlogObj = {
+    apiTable: `${api}/outreachBlog/table-data`,
+    deleteApi: `${api}/outreachBlog/delete`,
     createTableData: createTableData,
     headCells: [
         { id: 'title', numeric: false, disablePadding: true, label: 'Title' },
@@ -61,7 +61,7 @@ const blogObj = {
     editAllowed: true,
     deleteAllowed: true,
     addAllowed: true,
-    modelName: 'Blog',
+    modelName: 'Community Outreach Blog',
     ordering: 'name',
     searchField: 'name',
     rightAllign: [],
@@ -79,16 +79,16 @@ const blogObj = {
         if (id != null) queryID = id;
 
 
-        const blogEditObj = {
+        const outreachBlogEditObj = {
             title: '',
             content: '',
             active: true,
             imageList: [],
         };
 
-        const [editObj, setEditObj] = useState(blogEditObj);
+        const [editObj, setEditObj] = useState(outreachBlogEditObj);
 
-        const [blogsArray, setBlogsArray] = useState([]);
+        const [outreachBlogsArray, setoutreachBlogsArray] = useState([]);
         const [pressedBtn, setPressedBtn] = useState(null);
         const [loading, setLoading] = useState(true);
 
@@ -114,7 +114,7 @@ const blogObj = {
         useEffect(() => {
             (
                 async () => {
-                    const response = await fetch(`${api}/blog/table-data-auto`, {
+                    const response = await fetch(`${api}/outreachBlog/table-data-auto`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Cache-Control': 'no-store'
@@ -122,8 +122,8 @@ const blogObj = {
                     });
                     const content = await response.json();
                     const obj = content.data.find(o => o._id === queryID);
-                    setEditObj(obj != null ? obj : blogEditObj);
-                    setBlogsArray(content.data);
+                    setEditObj(obj != null ? obj : outreachBlogEditObj);
+                    setoutreachBlogsArray(content.data);
                     setLoading(false);
                 })();
             // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -145,7 +145,7 @@ const blogObj = {
             setLoading(true);
 
             if (queryID === '') {
-                const response = await fetch(`${api}/blog/add`, {
+                const response = await fetch(`${api}/outreachBlog/add`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -156,9 +156,9 @@ const blogObj = {
                     body: JSON.stringify(data),
                 });
                 const content = await response.json();
-                setBlogsArray([...blogsArray, content.data]);
+                setoutreachBlogsArray([...outreachBlogsArray, content.data]);
             } else {
-                const response = await fetch(`${api}/blog/update`, {
+                const response = await fetch(`${api}/outreachBlog/update`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -169,21 +169,21 @@ const blogObj = {
                     body: JSON.stringify({ _id: queryID, ...data }),
                 });
                 const content = await response.json();
-                const objArray = [...blogsArray];
+                const objArray = [...outreachBlogsArray];
                 const index = objArray.findIndex(obj => obj._id === queryID);
                 objArray[index] = content.data;
                 queryID = '';
-                setBlogsArray(objArray);
+                setoutreachBlogsArray(objArray);
             }
             reset();
             if (pressedBtn === 1) {
-                navigate('/admin/blog');
+                navigate('/admin/outreachBlog');
             }
             else {
                 setEditObj(null);
                 setLoading(false);
                 queryID = '';
-                navigate('/admin/blog/add');
+                navigate('/admin/outreachBlog/add');
             }
         };
 
@@ -219,7 +219,7 @@ const blogObj = {
                                     aria-describedby="title-helper"
                                 />
                                 {!errors.title &&
-                                    <FormHelperText id="title-helper">Enter Blog Title</FormHelperText>
+                                    <FormHelperText id="title-helper">Enter outreachBlog Title</FormHelperText>
                                 }
                                 <FormHelperText error={errors.title ? true : false} id="name-helper">{errors.title && <>{errors.title.message}</>}</FormHelperText>
 
@@ -245,7 +245,7 @@ const blogObj = {
                                     aria-describedby="content-helper"
                                 />
                                 {!errors.title &&
-                                    <FormHelperText id="content-helper">Type the content of the blog</FormHelperText>
+                                    <FormHelperText id="content-helper">Type the content of the outreachBlog</FormHelperText>
                                 }
                                 <FormHelperText error={errors.content ? true : false} id="content-helper">{errors.content && <>{errors.content.message}</>}</FormHelperText>
 
@@ -303,7 +303,6 @@ const blogObj = {
                                             }
                                         />
                                     )}
-                                    rules={{ required: "Select atleast one image!" }}
                                     onChange={([, data]) => data}
                                     defaultValue={undefined}
                                     name={"imageList"}
@@ -343,7 +342,7 @@ const blogObj = {
     },
 }
 
-export default blogObj;
+export default outreachBlogObj;
 
 
 

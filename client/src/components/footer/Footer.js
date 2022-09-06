@@ -24,6 +24,9 @@ function Footer(props) {
                     <Col md={3}>
                         <div className='footer-right'>
                             <Button
+                                onClick={() => {
+                                    window.open("https://drive.google.com/file/d/1ZFRCvcHLq_MdlO5kkWp3prp_Vvz_Jm6A/view", "_blank");
+                                }}
                                 variant="custom"
                                 className='footer-button'
                             >
@@ -39,9 +42,21 @@ function Footer(props) {
                 <Row>
                     <Col md={9}>
                         <div className="special">
-                            <i className="fa fa-facebook" />
-                            <i className="fa fa-instagram" />
-                            <i className="fa fa-envelope" />
+                            <i
+                                onClick={() => {
+                                    window.open("https://www.facebook.com/Caredimc", "_blank");
+                                }}
+                                className="fa fa-facebook" />
+                            <i
+                                onClick={() => {
+                                    window.open("https://instagram.com/dimc_cares", "_blank");
+                                }}
+                                className="fa fa-instagram" />
+                            <i
+                                onClick={() => {
+                                    window.open("https://api.whatsapp.com/send?phone=923332401013", "_blank");
+                                }}
+                                className="fa fa-whatsapp" />
                         </div>
                     </Col>
 

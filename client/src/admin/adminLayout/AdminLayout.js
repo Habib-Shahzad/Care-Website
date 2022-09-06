@@ -29,6 +29,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import FeedIcon from '@mui/icons-material/Feed';
 import ImageIcon from '@mui/icons-material/Image';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import ForumIcon from '@mui/icons-material/Forum';
 
 const drawerWidth = 240;
 
@@ -250,6 +252,34 @@ export default function AdminLayout(props) {
                                 primary={<Typography style={{ color: 'black' }}>Blogs</Typography>}
                             />
                         </ListItemButton>
+                    </ListItem>
+
+
+                    <ListItem component={Link} to="/admin/department" disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <ApartmentIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                disableTypography
+                                primary={<Typography style={{ color: 'black' }}>Departments</Typography>}
+                            />
+                        </ListItemButton>
+                        
+                    </ListItem>
+
+
+                    <ListItem component={Link} to="/admin/outreachBlog" disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <ForumIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                disableTypography
+                                primary={<Typography style={{ color: 'black' }}>Commmunity Outreach</Typography>}
+                            />
+                        </ListItemButton>
+
                     </ListItem>
                 </List>
             </Drawer>

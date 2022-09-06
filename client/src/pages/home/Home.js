@@ -26,6 +26,9 @@ function Home(props) {
                             <Row>
                                 <Col md={4} className='member-button'>
                                     <Button
+                                        onClick={() => {
+                                            window.open("https://linktr.ee/CAREHumanResources", "_blank");
+                                        }}
                                         variant='custom'
                                         className='pink-care-button home-main-button'>
                                         Member Support
@@ -34,6 +37,9 @@ function Home(props) {
 
                                 <Col md={3} className='support-button'>
                                     <Button
+                                        onClick={() => {
+                                            window.open("https://api.whatsapp.com/send?phone=923332401013", "_blank");
+                                        }}
                                         variant='custom'
                                         className='pink-care-button home-main-button'>
                                         Support Us
@@ -132,9 +138,13 @@ function Home(props) {
                     <p style={{ fontWeight: '500', margin: '0' }}> Make a Change </p>
 
                     <Button
+                        onClick={() => {
+                            window.open("https://api.whatsapp.com/send?phone=923332401013", "_blank");
+                        }}
                         variant='custom'
                         className='pink-care-button'
-                    >Donate Now </Button>
+                    >Donate Now 
+                    </Button>
 
                 </div>
 

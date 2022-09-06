@@ -58,6 +58,12 @@ const createServer = async () => {
     const imageRoutes = require('./routes/image');
     app.use('/api/image', imageRoutes);
 
+    const departmentRoutes = require('./routes/department');
+    app.use('/api/department', departmentRoutes);
+
+    const outreachBlogRoutes = require('./routes/outreachBlog');
+    app.use('/api/outreachBlog', outreachBlogRoutes);
+
 
     app.listen(port, () => {
         console.log(`Example app listening at http://localhost:${port}`);

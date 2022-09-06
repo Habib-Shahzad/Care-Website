@@ -25,7 +25,10 @@ function MainNavbar(props) {
                         <Nav className="me-auto front">
                             <Link to='/patient-welfare'>Patient Welfare</Link>
                             <Link to='/our-activities'>Our Activities</Link>
-                            <Link to='/'>Contact Us</Link>
+                            <a                            
+                            href="https://api.whatsapp.com/send?phone=923332401013"
+                                target='_blank' rel="noreferrer"
+                            >Contact Us</a>
                         </Nav>
 
                     </Navbar.Collapse>

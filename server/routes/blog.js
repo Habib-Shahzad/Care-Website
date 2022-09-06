@@ -4,7 +4,9 @@ const Blog = require('../schema').blog;
 const admin_auth = require("./middleware/admin_auth");
 
 router.get('/table-data', async (req, res) => {
-    const blogs = await Blog.find({});
+    const blogs = await Blog.find({})
+        .populate('imageList');
+    ;
     res.json({ data: blogs });
 });
 
@@ -41,5 +43,12 @@ router.post('/delete', admin_auth, async (req, res) => {
     res.json({ success: true, data: blogs });
 });
 
+
+router.post("/set-active", admin_auth, async (req, res) => {
+    const { active, selected } = req.body;
+    await Blog.updateMany({ _id: { $in: selected } }, { active: active });
+    const blogs = await Blog.find({}, { uid: 0 });
+    res.json({ success: true, data: blogs });
+});
 
 module.exports = router;
