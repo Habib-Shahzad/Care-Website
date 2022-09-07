@@ -11,15 +11,17 @@
     .activity-row {
       justify-content: center;
       align-items: center;
-
       display: flex;
       margin: 0 auto !important;
     }
     .activity-image {
+      position: relative;
+      
       img {
         border: 2px solid #e82fb4;
         border-radius: 1rem;
-        height: auto;
+        object-fit: cover;
+        height: 22rem;
       }
     }
     .activity-text {
