@@ -84,6 +84,14 @@ router.post("/set-active", admin_auth, async (req, res) => {
     res.json({ success: true, data: users });
 });
 
+
+router.post('/add', admin_auth, async (req, res) => {
+    const data = req.body;
+    const newUser = new User(data);
+    newUser.save();
+    res.json({ data: newUser });
+});
+
 router.post("/set-admin", admin_auth, async (req, res) => {
     const { admin, selected } = req.body;
     await User.updateMany({ _id: { $in: selected } }, { admin: admin });

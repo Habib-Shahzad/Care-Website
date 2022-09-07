@@ -105,7 +105,7 @@ const userObj = {
         const [pressedBtn, setPressedBtn] = useState(null);
         const [loading, setLoading] = useState(true);
 
-        const [errorMessage, setErrorMessage] = useState("");
+        const [errorMessage, ] = useState("");
 
         useEffect(() => {
             (
@@ -127,9 +127,8 @@ const userObj = {
         const { register, handleSubmit, formState: { errors }, reset, watch, control } = useForm();
 
         const onSubmit = async (data) => {
-            setLoading(true);
 
-            let success = false;
+            setLoading(true);
 
             if (queryID === '') {
                 const response = await fetch(`${api}/user/add`, {
@@ -140,44 +139,22 @@ const userObj = {
                     },
                     credentials: 'include',
                     withCredentials: true,
-                    body: JSON.stringify({
-                        firstName: data.firstName,
-                        lastName: data.lastName,
-                        email: data.email,
-                        password: data.password,
-                        active: data.active,
-                        admin: data.admin,
-                    }),
+                    body: JSON.stringify(data),
                 });
                 const content = await response.json();
-
-                if (content.success) {
-                    setUsersArray([...usersArray, content.data]);
-                    success = true;
-                }
-
-                else {
-                    setErrorMessage(content.error);
-                    setLoading(false);
-                }
-
+                setUsersArray([...usersArray, content.data]);
+            } else {
+               
             }
-
-            if (success) {
-
-                reset();
-                if (pressedBtn === 1) {
-                    if (queryID === '') {
-                        navigate({
-                            pathname: `/admin/user`,
-                            state: { data: 'added', name: data.firstName }
-                        });
-                    }
-                }
-                else {
-                    setLoading(false);
-                    navigate('/admin/user/add');
-                }
+            reset();
+            if (pressedBtn === 1) {
+                navigate('/admin/user');
+            }
+            else {
+                // setEditObj(null);
+                setLoading(false);
+                queryID = '';
+                navigate('/admin/user/add');
             }
         };
 
