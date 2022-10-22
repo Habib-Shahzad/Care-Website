@@ -1,4 +1,5 @@
 import React from "react";
+import { Designer2 } from "../../components";
 import './OurAims.scss';
 
 
@@ -29,21 +30,40 @@ function OurAims(props) {
     ]
 
     return (
-        <div className='text-center our-aims-main front'>
-            {
-                aims.map((aim, index) => {
-                    return (
-                        <div className='aim front' key={index}>
-                            <h3 className='pink-text'>
-                                {aim.name}
-                            </h3>
-                            <p>{aim.content}</p>
-                        </div>
+        <div className="aims-page">
+
+
+            <div className='wavy-container'>
+                <div className='wavy-thing'>
+                    <Designer2 />
+                </div>
+            </div>
+
+            <div className='wavy-container'>
+                <div className='wavy-thing2'>
+                    <Designer2 />
+                </div>
+            </div>
+
+
+            <div className='text-center our-aims-main front'>
+
+
+                {
+                    aims.map((aim, index) => {
+                        return (
+                            <div className='aim front' key={index}>
+                                <h3 className='pink-text'>
+                                    {aim.name}
+                                </h3>
+                                <p>{aim.content}</p>
+                            </div>
+                        )
+                    }
                     )
                 }
-                )
-            }
 
+            </div>
         </div>
 
     )

@@ -109,6 +109,8 @@ function OurActivities(props) {
 
     return (
         <div className='activities-page'>
+
+
             <div className="margin-global-top-3" />
 
             <div className='front text-center'>
@@ -123,42 +125,45 @@ function OurActivities(props) {
                 {
                     activities.map((activity, index) => {
                         const date = new Date(activity.activityDate);
-                        const formattedDate =  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                        const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                         return (
-                            <Container key={index} className='activity-card'>
-                                <Row  className="activity-row align-items-start">
-                                    <Col lg={4}>
-                                        <div className='activity-image'>
-                                            <Carousel style={{ verticalAlign: 'top' }} interval={2000 + (index * 100)} fade>
-                                                {
-                                                    activity.imageList.map((imageObj, key) => {
-                                                        return (
-                                                            <Carousel.Item
-                                                                key={key}
-                                                            >
-                                                                <img
-                                                                    className="d-block w-100"
-                                                                    src={imageObj.image.filePath}
-                                                                    alt={`${activity.title}`}
-                                                                />
-                                                            </Carousel.Item>
-                                                        )
-                                                    })
-                                                }
+                            <div key={index} className='box'>
+                                <Container className='activity-card'>
 
-                                            </Carousel>
-                                        </div>
-                                    </Col>
-                                    <Col lg={5}>
-                                        <div className='activity-text'>
-                                            <h2 className="pink-text">{activity.title}</h2>
-                                            <h3>{formattedDate}</h3>
-                                            <p>{activity.content}</p>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <hr />
-                            </Container>
+                                    <Row className="activity-row align-items-start">
+                                        <Col lg={4}>
+                                            <div className='activity-image'>
+                                                <Carousel style={{ verticalAlign: 'top' }} interval={2000 + (index * 100)} fade>
+                                                    {
+                                                        activity.imageList.map((imageObj, key) => {
+                                                            return (
+                                                                <Carousel.Item
+                                                                    key={key}
+                                                                >
+                                                                    <img
+                                                                        className="d-block w-100"
+                                                                        src={imageObj.image.filePath}
+                                                                        alt={`${activity.title}`}
+                                                                    />
+                                                                </Carousel.Item>
+                                                            )
+                                                        })
+                                                    }
+
+                                                </Carousel>
+                                            </div>
+                                        </Col>
+                                        <Col lg={5}>
+                                            <div className='activity-text'>
+                                                <h2 className="pink-text">{activity.title}</h2>
+                                                <h3>{formattedDate}</h3>
+                                                <p>{activity.content}</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <hr />
+                                </Container>
+                            </div>
                         )
                     })
                 }

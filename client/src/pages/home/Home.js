@@ -15,16 +15,16 @@ function Home(props) {
             <div className='home-initial'>
                 <Container>
                     <Row>
-                        <Col className='home-init-col1 front' md="auto">
+                        <Col className='home-init-col1 front' >
                             <h2 >As here we Care</h2>
-                            <div className='content'>
+                            <div className='content w-100'>
                                 <p>
                                     CARE is a student-led society established at the Dow International Medical College, Karachi, and aims to create a viable, purposeful, and an unfaltering difference within our problem-ridden community and city in order to have a better tomorrow for all.
                                 </p>
                             </div>
 
-                            <Row>
-                                <Col md={4} className='member-button'>
+                            <div className='home-init-buttons' style={{display: 'flex'}}>
+                                <div className='member-button'>
                                     <Button
                                         onClick={() => {
                                             window.open("https://linktr.ee/CAREHumanResources", "_blank");
@@ -33,9 +33,9 @@ function Home(props) {
                                         className='pink-care-button home-main-button'>
                                         Member Support
                                     </Button>
-                                </Col>
+                                </div>
 
-                                <Col md={3} className='support-button'>
+                                <div style={{paddingLeft: '2rem'}} className='support-button'>
                                     <Button
                                         onClick={() => {
                                             window.open("https://api.whatsapp.com/send?phone=923332401013", "_blank");
@@ -44,11 +44,11 @@ function Home(props) {
                                         className='pink-care-button home-main-button'>
                                         Support Us
                                     </Button>
-                                </Col>
-                            </Row>
+                                </div>
+                            </div>
                         </Col>
 
-                        <Col className='home-init-col2 front' >
+                        <Col className='front' >
                             <div className='home-image-container front'>
                                 <img src='/home-image.jpeg' alt="main_image" />
                             </div>
@@ -143,7 +143,7 @@ function Home(props) {
                         }}
                         variant='custom'
                         className='pink-care-button'
-                    >Donate Now 
+                    >Donate Now
                     </Button>
 
                 </div>

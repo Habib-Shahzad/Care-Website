@@ -2,6 +2,13 @@
   max-width: 100% !important;
   overflow-x: hidden;
 
+  .weird-circle1 {
+    left: 0;
+    top: 0;
+    svg {
+      width: 60rem;
+    }
+  }
   .all-activities {
     margin: 0 auto !important;
   }
@@ -16,7 +23,7 @@
     }
     .activity-image {
       position: relative;
-      
+
       img {
         border: 2px solid #e82fb4;
         border-radius: 1rem;
@@ -25,11 +32,58 @@
       }
     }
     .activity-text {
+      color: black;
+      font-family: "Montserrat" !important;
+      font-weight: normal !important;
+      font-size: medium !important;
       margin: 0 auto;
       max-width: 100%;
       margin-bottom: 3rem;
     }
   }
+
+  // ------------
+
+  .box {
+    --s: 0.3em; /* control the wave*/
+    padding: 0.7em 0.1em;
+    padding-bottom: 0;
+    background-color: #f8bdd6;
+    color: #fff;
+    --_s: calc(var(--s) * 4) 51% repeat-x;
+    --_r: calc(1.345 * var(--s)) at left 50%;
+    --_g1: #000 99%, #0000 101%;
+    --_g2: #0000 99%, #000 101%;
+    --mask: radial-gradient(var(--_r) top calc(var(--s) * 1.9), var(--_g1))
+        calc(50% - 2 * var(--s) - var(--_i, 0px)) 0 / var(--_s),
+      radial-gradient(var(--_r) top calc(var(--s) * -0.9), var(--_g2))
+        calc(50% - var(--_i, 0px)) var(--s) / var(--_s),
+      radial-gradient(var(--_r) bottom calc(var(--s) * 1.9), var(--_g1))
+        calc(50% - 2 * var(--s) + var(--_i, 0px)) 100% / var(--_s),
+      radial-gradient(var(--_r) bottom calc(var(--s) * -0.9), var(--_g2))
+        calc(50% + var(--_i, 0px)) calc(100% - var(--s)) / var(--_s);
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+  .box:hover {
+    --_i: calc(4 * var(--s));
+    transition: 0.35s;
+  }
+
+  .box:focus-visible {
+    outline-offset: 0.1em;
+    padding: 0.2em 0.5em;
+    margin: 0.2em 0;
+  }
+
+  .box {
+    font-weight: bold;
+    font-size: 7rem;
+    margin: 0;
+    border: none;
+  }
+
+  // -----------
 }
 
 // X-Large devices (large desktops, less than 1400px)

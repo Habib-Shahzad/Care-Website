@@ -51,7 +51,7 @@ function PatientWelfare(props) {
             <div className="margin-global-top-3" />
 
             <div className='text-center pw-text-area front'>
-                <div className='box'>
+                <div className='main-box'>
                     <h1 className='pink-text'>
                         Care Patient Welfare
                     </h1>
@@ -68,32 +68,34 @@ function PatientWelfare(props) {
             {
                 patientBlogs.map((blog, index) => {
                     return (
-                        <div key={index} className='blog-card text-center'>
-                            <div className='blog-details'>
-                                <h3 className="pink-text">{blog.title}</h3>
-                                <div className='blog-image'>
-                                    <Carousel interval={2000 + (index * 100)} fade>
-                                        {
-                                            blog.imageList.map((imageObj, key) => {
-                                                return (
-                                                    <Carousel.Item
-                                                        key={key}
-                                                    >
-                                                        <img
-                                                            className="d-block w-100"
-                                                            src={imageObj.image.filePath}
-                                                            alt={`${blog.title}`}
-                                                        />
-                                                    </Carousel.Item>
-                                                )
-                                            })
-                                        }
+                        <div key={index} className='box'>
+                            <div className='blog-card text-center'>
+                                <div className='blog-details'>
+                                    <h3 className="pink-text">{blog.title}</h3>
+                                    <div className='blog-image'>
+                                        <Carousel interval={2000 + (index * 100)} fade>
+                                            {
+                                                blog.imageList.map((imageObj, key) => {
+                                                    return (
+                                                        <Carousel.Item
+                                                            key={key}
+                                                        >
+                                                            <img
+                                                                className="d-block w-100"
+                                                                src={imageObj.image.filePath}
+                                                                alt={`${blog.title}`}
+                                                            />
+                                                        </Carousel.Item>
+                                                    )
+                                                })
+                                            }
 
-                                    </Carousel>
+                                        </Carousel>
+                                    </div>
+                                    <div className="blog-text">{blog.content}</div>
                                 </div>
-                                <div className="blog-text">{blog.content}</div>
-                            </div>
 
+                            </div>
                         </div>
                     )
                 })

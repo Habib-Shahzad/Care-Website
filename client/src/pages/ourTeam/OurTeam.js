@@ -389,7 +389,7 @@ function OurTeam(props) {
             {
                 departments.map((department, index) => {
                     return (
-                        <div key={index} >
+                        <div className='box' key={index} >
                             <div className="text-center">
                                 <h3 className="pink-text">{department.name}</h3>
                             </div>
