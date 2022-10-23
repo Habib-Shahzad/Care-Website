@@ -139,14 +139,14 @@ const departmentObj = {
             formState: { errors },
             reset,
         } = useForm(
-                {
-                    defaultValues: {
-                        members: editObj.members,
-                    }
+            {
+                defaultValues: {
+                    members: editObj.members,
                 }
+            }
         );
 
-        useEffect(()=> {
+        useEffect(() => {
             if (editObj) {
                 reset({
                     name: editObj.name,
@@ -348,7 +348,7 @@ const departmentObj = {
                                                     <Controller
                                                         render={(props) => (
                                                             <Autocomplete
-                                                                defaultValue={editObj.members[index].image}
+                                                                defaultValue={editObj?.members[index]?.image}
                                                                 isOptionEqualToValue={(option, value) => option._id === value._id}
                                                                 id="combo-box-image"
                                                                 color="secondary"
@@ -378,9 +378,11 @@ const departmentObj = {
 
                                                 </FormControl>
                                             </Form.Group>
+
+                                       
                                         </Row>
 
-                             
+
                                         <hr />
                                     </div>
                                 );
@@ -390,9 +392,9 @@ const departmentObj = {
                     </fieldset>
 
 
-            
 
-           
+
+
 
 
                 </fieldset>
