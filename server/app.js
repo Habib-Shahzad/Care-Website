@@ -14,6 +14,7 @@ const createServer = async () => {
 
     console.log("Server is saying Hello!");
 
+
     mongoose
         .connect(process.env.DATABASE_URL, {
             useNewUrlParser: true,
@@ -35,6 +36,7 @@ const createServer = async () => {
     let corsOptions = [process.env.API_URL3];
 
     if (process.env.NODE_ENV === 'development') {
+        corsOptions.push(process.env.API_URL3);
         corsOptions.push(process.env.API_URL2);
         corsOptions.push(process.env.API_URL1);
     }
@@ -64,6 +66,10 @@ const createServer = async () => {
     const outreachBlogRoutes = require('./routes/outreachBlog');
     app.use('/api/outreachBlog', outreachBlogRoutes);
 
+
+    app.get('*', function (req, res) {
+        res.sendFile(path.resolve('./build/index.html'));
+    });
 
     app.listen(port, () => {
         console.log(`Example app listening at http://localhost:${port}`);

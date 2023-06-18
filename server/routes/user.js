@@ -43,32 +43,37 @@ router.post("/admin-login", async (req, res) => {
         if (!user.admin) {
             return res.json({ success: false, data: null, message: "User is not an admin" });
         }
-
-        if (user && (await bcrypt.compare(password, user.password))) {
-            // Create token
-            const token = jwt.sign(
-                { user_id: user._id, email },
-                process.env.TOKEN_SECRET,
-                {
-                    expiresIn: "7000h",
-                }
-            );
-
-            // save user token
-            user.token = token;
-
-            res.cookie("access_token_admin", token, {
-                httpOnly: true,
-                maxAge: 1000 * 60 * 60 * 7,
-            })
-                .status(200)
-                .json({
-                    success: true,
-                    data: user
-                });
-        }
         else {
-            res.json({ success: false, data: null, message: "Email and Password do not match!" });
+
+            // console.log(password, user.password);
+            // console.log("PASSWORD COMPARE", await bcrypt.compare(password, user.password));
+
+            if (user && (await bcrypt.compare(password, user.password))) {
+                // Create token
+                const token = jwt.sign(
+                    { user_id: user._id, email },
+                    process.env.TOKEN_SECRET,
+                    {
+                        expiresIn: "7000h",
+                    }
+                );
+
+                // save user token
+                user.token = token;
+
+                res.cookie("access_token_admin", token, {
+                    httpOnly: true,
+                    maxAge: 1000 * 60 * 60 * 7,
+                })
+                    .status(200)
+                    .json({
+                        success: true,
+                        data: user
+                    });
+            }
+            else {
+                res.json({ success: false, data: null, message: "Email and Password do not match!" });
+            }
         }
     } catch (err) {
         console.log(err);
@@ -87,6 +92,7 @@ router.post("/set-active", admin_auth, async (req, res) => {
 
 router.post('/add', admin_auth, async (req, res) => {
     const data = req.body;
+    data.password = await bcrypt.hash(data.password, 10);
     const newUser = new User(data);
     newUser.save();
     res.json({ data: newUser });

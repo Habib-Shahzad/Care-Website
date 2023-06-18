@@ -5,10 +5,14 @@ const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 
+imagePath = path.resolve('../client/public/allImages');
+imagePath2 = path.resolve('build/allImages');
+
+const deployed = false;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.resolve('../client/public/allImages'));
+        cb(null, path.resolve(deployed ? imagePath2 : imagePath));
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);
@@ -25,13 +29,12 @@ router.get('/table-data', async (req, res) => {
 });
 
 
-
 router.post('/delete', admin_auth, async (req, res) => {
     const deleteable_images = await Image.find({ _id: { $in: req.body.data } });
 
     await Image.deleteMany({ _id: { $in: req.body.data } });
     deleteable_images.forEach((imageObj) => {
-        fs.unlinkSync(path.resolve('../client/public/allImages') + '/' + imageObj.image.fileName);
+        fs.unlinkSync(path.resolve(deployed ? imagePath2 : imagePath) + '/' + imageObj.image.fileName);
     });
     const images = await Image.find({});
     res.json({ success: true, data: images });
