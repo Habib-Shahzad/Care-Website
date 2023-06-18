@@ -73,7 +73,7 @@ const imageObj = {
         const imageChange = event => {
             let reader = new FileReader();
             if (event.target.files && event.target.files[0]) {
-                if (event.target.files[0].size / 1024 < 300) {
+                if (event.target.files[0].size / 1024 < 3000) {
                     reader.readAsDataURL(event.target.files[0]);
                     const objectUrl = URL.createObjectURL(event.target.files[0]);
                     reader.onload = ((theFile) => {
@@ -85,7 +85,7 @@ const imageObj = {
                         };
                     });
                 } else {
-                    alert("Size too large. Must be below 300kb.");
+                    alert("Size too large. Must be below 3Mb.");
                 }
             }
         }
