@@ -114,7 +114,7 @@ const blogObj = {
         useEffect(() => {
             (
                 async () => {
-                    const response = await fetch(`${api}/blog/table-data-auto`, {
+                    const response = await fetch(`${api}/blog/table-data`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Cache-Control': 'no-store'

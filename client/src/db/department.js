@@ -116,7 +116,7 @@ const departmentObj = {
         useEffect(() => {
             (
                 async () => {
-                    const response = await fetch(`${api}/department/table-data-auto`, {
+                    const response = await fetch(`${api}/department/table-data`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Cache-Control': 'no-store'
@@ -379,7 +379,7 @@ const departmentObj = {
                                                 </FormControl>
                                             </Form.Group>
 
-                                       
+
                                         </Row>
 
 
