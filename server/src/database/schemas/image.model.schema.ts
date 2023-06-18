@@ -9,7 +9,8 @@ export class Image {
   name: string;
 
   @Prop({
-    type: { type: Object },
+    required: true,
+    type: Object,
   })
   image: {
     fileName: string;

@@ -14,6 +14,8 @@ import { useForm, Controller } from "react-hook-form";
 
 const createTableData = (data) => {
     const { _id, name, image } = data;
+    console.log(data);
+
     const filePath = image.filePath;
     return { _id, name, image, filePath };
 }

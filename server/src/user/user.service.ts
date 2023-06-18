@@ -23,7 +23,7 @@ export class UserService {
 
   addUser(data: any) {
     data.password = bcrypt.hashSync(data.password, 10);
-    return this.databaseService.addUser(data);
+    return { data: this.databaseService.addUser(data) };
   }
 
   async setActive(active: boolean, selected: string[]) {

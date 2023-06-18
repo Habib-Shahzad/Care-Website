@@ -68,13 +68,11 @@ export class AppController {
     }),
   )
   async addImage(
-    @Body()
-    data: {
-      name: string;
-    },
+    @Body('data') data,
     @UploadedFile() image: Express.Multer.File,
   ) {
-    return this.adminService.addImage(data.name, image);
+    const name = JSON.parse(data).name;
+    return this.adminService.addImage(name, image);
   }
 
   @Post('image/update')

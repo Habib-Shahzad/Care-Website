@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
+import * as fs from 'fs';
+import { uploadPath, path } from '../storage';
 
 @Injectable()
 export class AdminService {
@@ -10,7 +12,7 @@ export class AdminService {
   }
 
   addActivity(data: any) {
-    return this.databaseService.addActivity(data);
+    return { data: this.databaseService.addActivity(data) };
   }
 
   async updateActivity(data: any) {
@@ -37,17 +39,19 @@ export class AdminService {
     return this.databaseService.getImages();
   }
 
-  addImage(name: string, image: Express.Multer.File) {
+  async addImage(name: string, image: Express.Multer.File) {
     const fileName = image.filename;
     const filePath = '/allImages/' + fileName;
     const imageObj = {
       fileName,
       filePath,
     };
-    return this.databaseService.addImage({
-      name,
-      image: imageObj,
-    });
+    return {
+      data: await this.databaseService.addImage({
+        name,
+        image: imageObj,
+      }),
+    };
   }
 
   async updateImage(data: any) {
@@ -55,7 +59,15 @@ export class AdminService {
   }
 
   async deleteImages(ids: string[]) {
+    const deleteableImages = await this.databaseService.getImagesByIds(ids);
+    deleteableImages.forEach((imageObj) => {
+      try {
+        fs.unlinkSync(path.resolve(uploadPath) + '/' + imageObj.image.fileName);
+      } catch (err) {}
+    });
+
     await this.databaseService.deleteImages(ids);
+
     return {
       success: true,
       data: await this.databaseService.getImages(),
@@ -67,7 +79,7 @@ export class AdminService {
   }
 
   addOutreachBlog(data: any) {
-    return this.databaseService.addOutreachBlog(data);
+    return { data: this.databaseService.addOutreachBlog(data) };
   }
 
   async updateOutreachBlog(data: any) {
@@ -94,8 +106,8 @@ export class AdminService {
     return this.databaseService.getBlogs();
   }
 
-  addBlog(data: any) {
-    return this.databaseService.addBlog(data);
+  async addBlog(data: any) {
+    return { data: this.databaseService.addBlog(data) };
   }
 
   async updateBlog(data: any) {
@@ -122,8 +134,8 @@ export class AdminService {
     return this.databaseService.getDepartments();
   }
 
-  addDepartment(data: any) {
-    return this.databaseService.addDepartment(data);
+  async addDepartment(data: any) {
+    return { data: await this.databaseService.addDepartment(data) };
   }
 
   async updateDepartment(data: any) {

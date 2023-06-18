@@ -34,7 +34,8 @@ export class DatabaseService {
 
   async addActivity(data: any): Promise<Activity> {
     const newActivity = new this.activityModel(data);
-    return newActivity.save();
+    await newActivity.save();
+    return newActivity;
   }
 
   async updateActivity(data: any): Promise<Activity> {
@@ -64,7 +65,8 @@ export class DatabaseService {
   }
   async addBlog(data: any): Promise<Blog> {
     const newBlog = new this.blogModel(data);
-    return newBlog.save();
+    await newBlog.save();
+    return newBlog;
   }
 
   async updateBlog(data: any): Promise<Blog> {
@@ -98,7 +100,8 @@ export class DatabaseService {
 
   async addDepartment(data: any): Promise<Department> {
     const newDepartment = new this.departmentModel(data);
-    return newDepartment.save();
+    await newDepartment.save();
+    return newDepartment;
   }
 
   async updateDepartment(data: any): Promise<Department> {
@@ -130,7 +133,8 @@ export class DatabaseService {
 
   async addOutreachBlog(data: any): Promise<OutreachBlog> {
     const newOutreachBlog = new this.outreachBlogModel(data);
-    return newOutreachBlog.save();
+    await newOutreachBlog.save();
+    return newOutreachBlog;
   }
 
   async updateOutreachBlog(data: any): Promise<OutreachBlog> {
@@ -195,7 +199,8 @@ export class DatabaseService {
 
   async addImage(data: any): Promise<Image> {
     const newImage = new this.imageModel(data);
-    return newImage.save();
+    await newImage.save();
+    return newImage;
   }
 
   async updateImage(data: any): Promise<Image> {
@@ -207,6 +212,10 @@ export class DatabaseService {
 
   async deleteImages(ids: string[]): Promise<void> {
     await this.imageModel.deleteMany({ _id: { $in: ids } }).exec();
+  }
+
+  async getImagesByIds(ids: string[]): Promise<Image[]> {
+    return this.imageModel.find({ _id: { $in: ids } }).exec();
   }
 
   async setImagesActive(active: boolean, selected: string[]): Promise<void> {
