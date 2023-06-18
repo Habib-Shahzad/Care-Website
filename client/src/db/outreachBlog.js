@@ -114,7 +114,7 @@ const outreachBlogObj = {
         useEffect(() => {
             (
                 async () => {
-                    const response = await fetch(`${api}/outreachBlog/table-data-auto`, {
+                    const response = await fetch(`${api}/outreachBlog/table-data`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Cache-Control': 'no-store'

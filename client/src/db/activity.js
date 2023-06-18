@@ -122,7 +122,7 @@ const activityObj = {
         useEffect(() => {
             (
                 async () => {
-                    const response = await fetch(`${api}/activity/table-data-auto`, {
+                    const response = await fetch(`${api}/activity/table-data`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Cache-Control': 'no-store'
@@ -321,7 +321,7 @@ const activityObj = {
                         </Form.Group>
                     </Row>
 
-                        
+
 
 
                     <Row style={classes.rowGap}>
