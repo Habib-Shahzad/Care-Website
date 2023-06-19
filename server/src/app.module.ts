@@ -25,9 +25,13 @@ import {
 } from './database/schemas/activity.model.schema';
 import { AdminService } from './admin/admin.service';
 import { DatabaseService } from './database/database.service';
-
+import { ServeStaticModule } from '@nestjs/serve-static';
+import * as path from 'path';
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: path.resolve('build'),
+    }),
     MongooseModule.forRootAsync({
       imports: [
         ConfigModule.forRoot({
