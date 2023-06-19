@@ -344,7 +344,7 @@ export default function EnhancedTable(props) {
                     else if (key === 'image') {
                       tableRow.push(
                         <TableCell key={c} component="th" id={labelId} scope="row" padding="none">
-                          <img className={'img'} src={row[key].filePath} alt="Preview"></img>
+                          <img className={'img table-image'} src={row[key].filePath} alt="Preview"></img>
                         </TableCell>
                       );
                     }
