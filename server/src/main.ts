@@ -6,11 +6,7 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.use(
-    express.static(
-      '/Users/habib/Documents/Habib University/Summer 2022/Care-Website/client/build',
-    ),
-  );
+  app.use(express.static('../client/build'));
 
   app.use(cookieParser());
   app.setGlobalPrefix('api');

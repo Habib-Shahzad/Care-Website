@@ -1,9 +1,8 @@
+const environment = "RELEASE";
 
-
-const api = "http://localhost:3000/api";
-// const api = 'https://54.169.250.44/api';
-// const api = 'https://asherewecare.pk/api';
-// const api = 'https://macaddictstore.com/api';
-
+const api =
+    environment === "dev"
+        ? "http://localhost:3000/api"
+        : "https://asherewecare.pk/api";
 
 export default api;
