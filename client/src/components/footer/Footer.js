@@ -44,12 +44,12 @@ function Footer(props) {
                         <div className="special">
                             <i
                                 onClick={() => {
-                                    window.open("https://www.facebook.com/Caredimc", "_blank");
+                                    window.open("https://www.facebook.com/profile.php?id=100092137862296&mibextid=LQQJ4d", "_blank");
                                 }}
                                 className="fa fa-facebook" />
                             <i
                                 onClick={() => {
-                                    window.open("https://instagram.com/dimc_cares", "_blank");
+                                    window.open("https://www.instagram.com/asherewecare/", "_blank");
                                 }}
                                 className="fa fa-instagram" />
                             <i
@@ -62,7 +62,7 @@ function Footer(props) {
 
                     <Col >
                         <p className='footer-links'>
-                            <a href="mailto:dimccaresorg.pr@gmail.com">dimccaresorg.pr@gmail.com</a>
+                            <a href="mailto:careorg.pr@gmail.com">careorg.pr@gmail.com</a>
                         </p>
                     </Col>
                 </Row>

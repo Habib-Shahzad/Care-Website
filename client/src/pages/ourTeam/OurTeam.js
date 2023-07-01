@@ -370,16 +370,8 @@ function OurTeam(props) {
                     Meet The Team
                 </h1>
                 <p >
-                    This highly prized department is the face of CARE, and is responsible for
+                CARE, a community & nonprofit organization dedicated to promoting well-being and health, encompasses various departments to ensure effective operations.
 
-                    the conduction of all CARE-associated events, both on-campus, off-
-                    campus, and online. The “Event Planning” division is responsible for
-
-                    conducting annual batch events, special visits to welfare organizations,
-                    and other forms of fundraiser events. The “W.H.O. Awareness” division is
-                    responsible for conducting awareness campaigns in accordance with
-                    W.H.O. monthly events. These awareness campaigns may be conducted
-                    online or physically.
                 </p>
             </div>
 

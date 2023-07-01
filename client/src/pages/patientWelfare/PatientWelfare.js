@@ -56,9 +56,8 @@ function PatientWelfare(props) {
                         Care Patient Welfare
                     </h1>
                     <p>
-                        Many disadvantaged patients feel frustrated and helpless during their hospital visits. The declining health of their loved ones compounded by their financial strains and the confusing health care system sends them into a spiral of depression. We aim to provide holistic care to our patients by not only assisting them financially but also guiding them during their time in the hospital to find the answers they are so desperately in search of.
-                        From assisting young adults with an early cancer diagnosis to providing life-saving hepatitis medication and even organizing blood donation drives for bone marrow transplant patients, the programme strives to help any and all who reach out for help. We primarily focus on providing financial support for diagnostic tests in DOWs Radiology and Blood lab department.
-                        So donate now to join us in this journey of bringing smiles to the needy during their toughest time!
+                    Many disadvantaged patients experience feelings of frustration and helplessness when they visit the hospital. The deteriorating health of their loved ones, coupled with financial burdens and the complexity of the healthcare system, can lead them into a state of depression. Our objective is to offer comprehensive care to these patients by not only providing financial assistance but also guiding them during their hospital stays, helping them find the answers they desperately seek. Whether it's supporting young adults with an early cancer diagnosis, supplying life-saving medication for hepatitis, or organizing blood donation drives for bone marrow transplant recipients, our program strives to assist anyone who reaches out for help. Join us in bringing smiles to those in need during their most challenging times by making a donation today!
+
                     </p>
                 </div>
             </div>

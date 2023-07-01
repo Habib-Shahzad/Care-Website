@@ -9,23 +9,23 @@ function OurAims(props) {
     const aims = [
         {
             name: "Fundraising",
-            content: "CARE takes priority for various fundraising projects organized by the Department of Events, Campaigning, and Outreach(ECO).Most of these events are conducted for the students of Dow University of Health Sciences, with 100 % of the profits directed towards use in future collaboration and donation drives, and welfare projects initiated by CARE.",
+            content: "CARE takes priority for various fundraising projects organized by the Department of Events, Campaigning, and Outreach (ECO). Most of these events are conducted for students, with 100% of the profits directed towards use in future collaboration and donation drives, as well as welfare projects initiated by CARE.",
         },
         {
             name: "Awareness Campaigns",
-            content: "In a country with limited access to higher education, and a literacy rate of under 60% - it is our aim to spread awareness regarding important W.H.O.monthly topics, including World Blood Donor Day, World Lung Cancer Day, Breast Cancer Awareness Month, and more.Using these campaigns, important information regarding the nature of disease, etiology of disease, prevalence of disease, and treatment of disease will be shared with the public via CARE."
+            content: "In a nation where higher education is not easily accessible and the literacy rate stands below 60%, our objective is to raise awareness about significant monthly topics recognized by the World Health Organization (WHO). These topics encompass events like World Blood Donor Day, World Lung Cancer Day, Breast Cancer Awareness Month, and others. Through these campaigns, CARE aims to disseminate vital information about the nature, causes, prevalence, and treatment of diseases to the general public."
         },
         {
             name: "Bringing Social Changes",
-            content: "stigmas and issues, which is the top cause of mental health & self - esteem issues within the youth of the country. CARE has launched the “Community Outreach” program, which aims to create a social change and address various stigmas within our culture, including racism, bullying, child abuse, depression, and more.These sessions will be delivered to school, college, and university students across Karachi."
+            content: "The Community Outreach program tackles societal stigmas and challenges, which significantly contribute to mental health and self-esteem issues among the youth. The program is designed to drive social transformation and address various cultural stigmas such as racism, bullying, child abuse, depression, and more. These informative sessions will be conducted for students at schools, colleges, and universities throughout Karachi."
         },
         {
             name: "Medical Development and Research",
-            content: "CARE's highly skilled Department of Research will consistently work towards writing in medical research articles, and aims for publications within well- known journals of the medical industry.The research will focus on epidemiology, community medicine, and public health in order to provide a better understanding regarding disease prevalence within our community."
+            content: "Our proficient Department of Research is dedicated to producing medical research articles and strives to have them published in reputable journals within the medical industry. The research conducted will primarily concentrate on epidemiology, community medicine, and public health, aiming to enhance our understanding of disease prevalence within our community."
         },
         {
             name: "Collaborations",
-            content: "CARE actively seeks to participate with other welfare organizations, or external organizations, companies, or businesses with alike interests.Collectively, we can achieve a better tomorrow."
+            content: "CARE actively seeks collaboration with other welfare organizations, external entities, companies, or businesses that share similar interests. Together, we can work towards creating a brighter future."
         },
     ]
 
