@@ -12,10 +12,6 @@ import {
 } from 'src/database/schemas/department.model.schema';
 import { Image, ImageSchema } from 'src/database/schemas/image.model.schema';
 import {
-  OutreachBlog,
-  OutreachBlogSchema,
-} from 'src/database/schemas/outreach-blog.model.schema';
-import {
   Activity,
   ActivitySchema,
 } from 'src/database/schemas/activity.model.schema';
@@ -27,7 +23,6 @@ import {
       { name: Blog.name, schema: BlogSchema },
       { name: Department.name, schema: DepartmentSchema },
       { name: Image.name, schema: ImageSchema },
-      { name: OutreachBlog.name, schema: OutreachBlogSchema },
       { name: Activity.name, schema: ActivitySchema },
     ]),
   ],

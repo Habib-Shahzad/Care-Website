@@ -9,10 +9,7 @@ import {
   DepartmentDocument,
 } from './schemas/department.model.schema';
 import { Image, ImageDocument } from './schemas/image.model.schema';
-import {
-  OutreachBlog,
-  OutreachBlogDocument,
-} from './schemas/outreach-blog.model.schema';
+import { BlogType } from './enums/blog.type.enum';
 
 @Injectable()
 export class DatabaseService {
@@ -23,8 +20,6 @@ export class DatabaseService {
     @InjectModel(Department.name)
     private departmentModel: Model<DepartmentDocument>,
     @InjectModel(Image.name) private imageModel: Model<ImageDocument>,
-    @InjectModel(OutreachBlog.name)
-    private outreachBlogModel: Model<OutreachBlogDocument>,
   ) {}
 
   // Activity
@@ -63,6 +58,14 @@ export class DatabaseService {
   async getBlogs(): Promise<Blog[]> {
     return this.blogModel.find().populate('imageList').exec();
   }
+
+  async getBlogsByType(blogType: BlogType): Promise<Blog[]> {
+    return this.blogModel
+      .find({ blogType: blogType })
+      .populate('imageList')
+      .exec();
+  }
+
   async addBlog(data: any): Promise<Blog> {
     const newBlog = new this.blogModel(data);
     await newBlog.save();
@@ -120,39 +123,6 @@ export class DatabaseService {
     selected: string[],
   ): Promise<void> {
     await this.departmentModel.updateMany(
-      { _id: { $in: selected } },
-      { active: active },
-    );
-  }
-
-  // OutreachBlog
-
-  async getOutreachBlogs(): Promise<OutreachBlog[]> {
-    return this.outreachBlogModel.find().populate('imageList').exec();
-  }
-
-  async addOutreachBlog(data: any): Promise<OutreachBlog> {
-    const newOutreachBlog = new this.outreachBlogModel(data);
-    await newOutreachBlog.save();
-    return newOutreachBlog;
-  }
-
-  async updateOutreachBlog(data: any): Promise<OutreachBlog> {
-    const { _id, ...updateData } = data;
-    return this.outreachBlogModel
-      .findByIdAndUpdate(_id, updateData, { new: true })
-      .exec();
-  }
-
-  async deleteOutreachBlogs(ids: string[]): Promise<void> {
-    await this.outreachBlogModel.deleteMany({ _id: { $in: ids } }).exec();
-  }
-
-  async setOutreachBlogsActive(
-    active: boolean,
-    selected: string[],
-  ): Promise<void> {
-    await this.outreachBlogModel.updateMany(
       { _id: { $in: selected } },
       { active: active },
     );

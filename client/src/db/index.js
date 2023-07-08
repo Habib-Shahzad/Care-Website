@@ -3,4 +3,3 @@ export { default as activityObj } from './activity';
 export { default as blogObj } from './blog';
 export { default as imageObj } from './image';
 export { default as departmentObj } from './department';
-export { default as outreachBlogObj } from './outreachBlog';

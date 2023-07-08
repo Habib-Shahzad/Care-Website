@@ -5,6 +5,7 @@ import {
   Body,
   UseInterceptors,
   UploadedFile,
+  Param,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AdminService } from './admin/admin.service';
@@ -12,6 +13,7 @@ import { SetActiveReqDto } from './admin/dto/set.active.req.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import { myStorage } from './storage';
+import { BlogType } from './database/enums/blog.type.enum';
 
 @Controller()
 export class AppController {
@@ -85,41 +87,19 @@ export class AppController {
     return this.adminService.deleteImages(body.data);
   }
 
-  // OutreachBlog Endpoints
-
-  @Get('outreachBlog/table-data')
-  async getOutreachBlogTableData() {
-    return {
-      data: await this.adminService.getOutreachBlogs(),
-    };
-  }
-
-  @Post('outreachBlog/add')
-  async addOutreachBlog(@Body() data: any) {
-    return this.adminService.addOutreachBlog(data);
-  }
-
-  @Post('outreachBlog/update')
-  async updateOutreachBlog(@Body() data: any) {
-    return this.adminService.updateOutreachBlog(data);
-  }
-
-  @Post('outreachBlog/delete')
-  async deleteOutreachBlogs(@Body() body: { data: string[] }) {
-    return this.adminService.deleteOutreachBlogs(body.data);
-  }
-
-  @Post('outreachBlog/set-active')
-  async setOutreachBlogsActive(@Body() data: SetActiveReqDto) {
-    return this.adminService.setOutreachBlogsActive(data.active, data.selected);
-  }
-
   // Blog Endpoints
 
   @Get('blog/table-data')
   async getBlogTableData() {
     return {
       data: await this.adminService.getBlogs(),
+    };
+  }
+
+  @Get('blog-by-type/:blogType')
+  async getBlogTableDataByType(@Param('blogType') blogType: BlogType) {
+    return {
+      data: await this.adminService.getBlogsByType(blogType),
     };
   }
 

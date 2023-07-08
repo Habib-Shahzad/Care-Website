@@ -7,7 +7,7 @@ import {
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Footer, MainNavbar } from './components';
-import { Home, CommunityOutreach, PatientWelfare, OurTeam, OurAims, OurActivities } from './pages';
+import { Home, CommunityOutreach, PatientWelfare, OurTeam, OurAims, OurActivities, ResearchDev } from './pages';
 import 'swiper/scss'; // core Swiper
 import 'swiper/scss/navigation'; // Navigation module
 import 'swiper/scss/pagination'; // Pagination module
@@ -82,6 +82,15 @@ function App() {
                 <>
                   <MainNavbar />
                   <CommunityOutreach />
+                  <Footer />
+                </>
+              } />
+
+            <Route path="/research-dev" element=
+              {
+                <>
+                  <MainNavbar />
+                  <ResearchDev />
                   <Footer />
                 </>
               } />

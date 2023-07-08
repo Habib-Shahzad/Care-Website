@@ -17,9 +17,36 @@ import api from '../api';
 import { useForm, Controller } from "react-hook-form";
 import Autocomplete from '@mui/material/Autocomplete';
 
+
+
+export const BlogTypeToLabel = {
+    PATIENT_WELFARE: 'Patient Welfare',
+    COMMUNITY_OUTREACH: 'Community Outreach',
+    RESEARCH_DEVELOPMENT: 'Research & Development',
+}
+
+export const BlogTypes = [
+    {
+        key: 'PATIENT_WELFARE',
+        label: 'Patient Welfare',
+    },
+    {
+        key: 'COMMUNITY_OUTREACH',
+        label: 'Community Outreach',
+    },
+    {
+        key: 'RESEARCH_DEVELOPMENT',
+        label: 'Research & Development',
+    },
+]
+
+
 const createTableData = (data) => {
-    const { _id, title, active } = data;
-    return { _id, title, active };
+    const { _id, title, blogType, active } = data;
+
+    const typeLabel = BlogTypeToLabel[blogType] ?? '-';
+
+    return { _id, title, blogType: typeLabel, active };
 }
 
 const startAction = async (obj, selected, setOriginalTableRows, setTableRows) => {
@@ -53,6 +80,7 @@ const blogObj = {
     createTableData: createTableData,
     headCells: [
         { id: 'title', numeric: false, disablePadding: true, label: 'Title' },
+        { id: 'blog-type', numeric: false, disablePadding: true, label: 'Blog Type' },
         { id: 'active', numeric: false, disablePadding: false, label: 'Active' },
     ],
     ManyChild: '',
@@ -82,6 +110,7 @@ const blogObj = {
         const blogEditObj = {
             title: '',
             content: '',
+            blogType: '',
             active: true,
             imageList: [],
         };
@@ -93,6 +122,7 @@ const blogObj = {
         const [loading, setLoading] = useState(true);
 
         const [imagesArray, setImagesArray] = useState([]);
+
 
         useEffect(() => {
 
@@ -140,6 +170,7 @@ const blogObj = {
 
 
         const onSubmit = async data => {
+
             data.imageList = data.imageList.map(imageObj => imageObj._id);
 
             setLoading(true);
@@ -222,6 +253,58 @@ const blogObj = {
                                     <FormHelperText id="title-helper">Enter Blog Title</FormHelperText>
                                 }
                                 <FormHelperText error={errors.title ? true : false} id="name-helper">{errors.title && <>{errors.title.message}</>}</FormHelperText>
+
+                            </FormControl>
+                        </Form.Group>
+
+
+                        <Form.Group as={Col} md={6} controlId="blogType">
+                            <FormControl style={classes.formControl}>
+                                <Controller
+                                    render={(props) => (
+                                        <Autocomplete
+                                            defaultValue={editObj ?
+                                                {
+                                                    key: editObj.blogType,
+                                                    label: BlogTypeToLabel[editObj.blogType] ?? ''
+
+                                                }
+                                                : undefined}
+                                            isOptionEqualToValue={(option, value) => {
+                                                return option.key === value
+                                            }}
+                                            id="select-blogType"
+                                            color="secondary"
+                                            options={BlogTypes}
+                                            getOptionLabel={(option) => {
+
+                                                console.log(option)
+
+                                                return option.label
+                                            }}
+                                            onChange={(e, data) => {
+                                                props.field.onChange(data.key);
+                                            }}
+                                            renderInput={(params) =>
+                                                <TextField
+                                                    error={errors.blogType ? true : false}
+                                                    color="secondary"
+                                                    {...params}
+                                                    label="Blog Type"
+                                                />
+                                            }
+                                        />
+                                    )}
+                                    rules={{ required: "Select a blog type!" }}
+                                    onChange={([, data]) => data}
+                                    defaultValue={undefined}
+                                    name={"blogType"}
+                                    control={control}
+                                />
+                                {!errors.blogType &&
+                                    <FormHelperText id="name-helper">Select Blog Type</FormHelperText>
+                                }
+                                <FormHelperText error={errors.blogType ? true : false} id="name-helper">{errors.blogType && <>{errors.blogType.message}</>}</FormHelperText>
 
                             </FormControl>
                         </Form.Group>

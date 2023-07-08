@@ -57,6 +57,13 @@ function Footer(props) {
                                     window.open("https://api.whatsapp.com/send?phone=923332401013", "_blank");
                                 }}
                                 className="fa fa-whatsapp" />
+
+                            <i
+                                onClick={() => {
+                                    window.open("https://twitter.com/asherewecare?s=21", "_blank");
+                                }}
+                                className="fa fa-twitter" />
+
                         </div>
                     </Col>
 

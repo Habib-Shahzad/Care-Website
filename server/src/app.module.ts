@@ -14,10 +14,6 @@ import {
   Department,
   DepartmentSchema,
 } from './database/schemas/department.model.schema';
-import {
-  OutreachBlog,
-  OutreachBlogSchema,
-} from './database/schemas/outreach-blog.model.schema';
 import { Image, ImageSchema } from './database/schemas/image.model.schema';
 import {
   Activity,
@@ -64,7 +60,6 @@ import * as path from 'path';
       { name: Blog.name, schema: BlogSchema },
       { name: Department.name, schema: DepartmentSchema },
       { name: Image.name, schema: ImageSchema },
-      { name: OutreachBlog.name, schema: OutreachBlogSchema },
       { name: Activity.name, schema: ActivitySchema },
     ]),
     UserModule,

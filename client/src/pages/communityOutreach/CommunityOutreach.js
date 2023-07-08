@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Row, Col, Carousel } from 'react-bootstrap';
 import api from '../../api';
+import { BlogTypes } from '../../constants';
 import './CommunityOutreach.scss';
 
 
@@ -12,7 +13,7 @@ function EventsCamp(props) {
     useEffect(() => {
         (
             async () => {
-                const response = await fetch(`${api}/outreachBlog/table-data`, {
+                const response = await fetch(`${api}/blog-by-type/${BlogTypes.COMMUNITY_OUTREACH}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

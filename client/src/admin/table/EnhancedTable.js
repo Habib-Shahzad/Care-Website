@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
-import { userObj, activityObj, blogObj, imageObj, departmentObj, outreachBlogObj } from '../../db';
+import { userObj, activityObj, blogObj, imageObj, departmentObj } from '../../db';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
@@ -88,7 +88,6 @@ export default function EnhancedTable(props) {
   else if (model === 'blog') tableFetch = blogObj;
   else if (model === 'image') tableFetch = imageObj;
   else if (model === 'department') tableFetch = departmentObj;
-  else if (model === 'outreachBlog') tableFetch = outreachBlogObj;
   else tableFetch = {};
 
   const [order, setOrder] = React.useState('asc');

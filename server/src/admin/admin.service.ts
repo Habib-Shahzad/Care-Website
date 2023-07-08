@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import * as fs from 'fs';
 import { uploadPath, path } from '../storage';
+import { BlogType } from 'src/database/enums/blog.type.enum';
 
 @Injectable()
 export class AdminService {
@@ -74,36 +75,12 @@ export class AdminService {
     };
   }
 
-  getOutreachBlogs() {
-    return this.databaseService.getOutreachBlogs();
-  }
-
-  addOutreachBlog(data: any) {
-    return { data: this.databaseService.addOutreachBlog(data) };
-  }
-
-  async updateOutreachBlog(data: any) {
-    return { data: await this.databaseService.updateOutreachBlog(data) };
-  }
-
-  async deleteOutreachBlogs(ids: string[]) {
-    await this.databaseService.deleteOutreachBlogs(ids);
-    return {
-      success: true,
-      data: await this.databaseService.getOutreachBlogs(),
-    };
-  }
-
-  async setOutreachBlogsActive(active: boolean, ids: string[]) {
-    await this.databaseService.setOutreachBlogsActive(active, ids);
-    return {
-      success: true,
-      data: await this.databaseService.getOutreachBlogs(),
-    };
-  }
-
   getBlogs() {
     return this.databaseService.getBlogs();
+  }
+
+  getBlogsByType(blogType: BlogType) {
+    return this.databaseService.getBlogsByType(blogType);
   }
 
   async addBlog(data: any) {

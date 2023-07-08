@@ -16,14 +16,14 @@ function Home(props) {
                 <Container>
                     <Row>
                         <Col className='home-init-col1 front' >
-                            <h2 >As here we Care</h2>
+                            <h2 >AS HERE WE CARE</h2>
                             <div className='content w-100'>
                                 <p>
-                                    CARE is a student-led society established at the Dow International Medical College, Karachi, and aims to create a viable, purposeful, and an unfaltering difference within our problem-ridden community and city in order to have a better tomorrow for all.
+                                    CARE is a student-led community organization founded in Karachi, Pakistan. Our primary objective is to effect meaningful and sustainable change within our society, which is plagued by various challenges. We strive to contribute towards building a better future for all by addressing these issues with unwavering dedication and purpose.
                                 </p>
                             </div>
 
-                            <div className='home-init-buttons' style={{display: 'flex'}}>
+                            <div className='home-init-buttons' style={{ display: 'flex' }}>
                                 <div className='member-button'>
                                     <Button
                                         onClick={() => {
@@ -35,7 +35,7 @@ function Home(props) {
                                     </Button>
                                 </div>
 
-                                <div style={{paddingLeft: '2rem'}} className='support-button'>
+                                <div style={{ paddingLeft: '2rem' }} className='support-button'>
                                     <Button
                                         onClick={() => {
                                             window.open("https://api.whatsapp.com/send?phone=923332401013", "_blank");

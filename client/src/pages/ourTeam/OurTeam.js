@@ -165,7 +165,7 @@ function OurTeam(props) {
     //                 image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
     //             },
     //         ]
-                
+
     //     },
     //     {
     //         name: 'Department of Community Outreach',
@@ -334,7 +334,7 @@ function OurTeam(props) {
     //                 image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
     //             },
     //         ]
-                
+
     //     }
 
     // ];
@@ -370,7 +370,7 @@ function OurTeam(props) {
                     Meet The Team
                 </h1>
                 <p >
-                CARE, a community & nonprofit organization dedicated to promoting well-being and health, encompasses various departments to ensure effective operations.
+                    CARE, a community & nonprofit organization dedicated to promoting well-being and health, encompasses various departments to ensure effective operations.
 
                 </p>
             </div>
@@ -381,32 +381,34 @@ function OurTeam(props) {
             {
                 departments.map((department, index) => {
                     return (
-                        <div className='box' key={index} >
-                            <div className="text-center">
-                                <h3 className="pink-text">{department.name}</h3>
-                            </div>
+                        <div className='box-container'>
+                            <div className='box' key={index} >
+                                <div className="text-center">
+                                    <h3 className="pink-text">{department.name}</h3>
+                                </div>
 
-                            <div className="department-members">
-                                {
-                                    department.members.map((member, index) => {
-                                        return (
-                                            <Card className='member-card' key={index} style={{ width: '18rem' }}>
-                                                <Card.Img
-                                                    variant="top"
-                                                    src={member.image.image.filePath} />
-                                                <Card.Body>
-                                                    <Card.Title>{member.name}</Card.Title>
-                                                    <Card.Text>
-                                                        {member.role}
-                                                    </Card.Text>
-                                                </Card.Body>
-                                            </Card>
+                                <div className="department-members">
+                                    {
+                                        department.members.map((member, index) => {
+                                            return (
+                                                <Card className='member-card' key={index} style={{ width: '18rem' }}>
+                                                    <Card.Img
+                                                        variant="top"
+                                                        src={member.image.image.filePath} />
+                                                    <Card.Body>
+                                                        <Card.Title>{member.name}</Card.Title>
+                                                        <Card.Text>
+                                                            {member.role}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            )
+                                        }
                                         )
                                     }
-                                    )
-                                }
+                                </div>
+                                <div className='margin-global-top-2' />
                             </div>
-                            <div className='margin-global-top-2' />
                         </div>
                     )
                 })

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Row, Col, Carousel } from 'react-bootstrap';
 import api from '../../api';
+import { BlogTypes } from '../../constants';
 import './ResearchDev.scss';
 
 
-function EventsCamp(props) {
+function ResearchDev(props) {
 
     const [blogs, setBlogs] = useState([]);
 
@@ -12,7 +13,7 @@ function EventsCamp(props) {
     useEffect(() => {
         (
             async () => {
-                const response = await fetch(`${api}/outreachBlog/table-data`, {
+                const response = await fetch(`${api}/blog-by-type/${BlogTypes.RESEARCH_DEVELOPMENT}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -26,7 +27,7 @@ function EventsCamp(props) {
 
     }, [])
 
-   
+
     return (
         <div className='events-page'>
 
@@ -229,4 +230,4 @@ function EventsCamp(props) {
     );
 }
 
-export default EventsCamp;
+export default ResearchDev;

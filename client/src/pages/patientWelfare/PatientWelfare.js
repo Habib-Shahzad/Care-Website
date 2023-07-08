@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../api';
 import { Carousel } from 'react-bootstrap';
+import { BlogTypes } from '../../constants';
 import './PatientWelfare.scss';
+
 
 
 function PatientWelfare(props) {
@@ -31,7 +33,7 @@ function PatientWelfare(props) {
     useEffect(() => {
         (
             async () => {
-                const response = await fetch(`${api}/blog/table-data`, {
+                const response = await fetch(`${api}/blog-by-type/${BlogTypes.PATIENT_WELFARE}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -56,7 +58,7 @@ function PatientWelfare(props) {
                         Care Patient Welfare
                     </h1>
                     <p>
-                    Many disadvantaged patients experience feelings of frustration and helplessness when they visit the hospital. The deteriorating health of their loved ones, coupled with financial burdens and the complexity of the healthcare system, can lead them into a state of depression. Our objective is to offer comprehensive care to these patients by not only providing financial assistance but also guiding them during their hospital stays, helping them find the answers they desperately seek. Whether it's supporting young adults with an early cancer diagnosis, supplying life-saving medication for hepatitis, or organizing blood donation drives for bone marrow transplant recipients, our program strives to assist anyone who reaches out for help. Join us in bringing smiles to those in need during their most challenging times by making a donation today!
+                        Many disadvantaged patients experience feelings of frustration and helplessness when they visit the hospital. The deteriorating health of their loved ones, coupled with financial burdens and the complexity of the healthcare system, can lead them into a state of depression. Our objective is to offer comprehensive care to these patients by not only providing financial assistance but also guiding them during their hospital stays, helping them find the answers they desperately seek. Whether it's supporting young adults with an early cancer diagnosis, supplying life-saving medication for hepatitis, or organizing blood donation drives for bone marrow transplant recipients, our program strives to assist anyone who reaches out for help. Join us in bringing smiles to those in need during their most challenging times by making a donation today!
 
                     </p>
                 </div>

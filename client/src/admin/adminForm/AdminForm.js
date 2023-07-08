@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider, Typography } from '@mui/material';
 import { Container, Col, Row } from 'react-bootstrap';
-import { userObj, activityObj, blogObj, imageObj, departmentObj, outreachBlogObj } from '../../db';
+import { userObj, activityObj, blogObj, imageObj, departmentObj } from '../../db';
 import { useParams } from 'react-router';
 import './AdminForm.scss';
 
@@ -54,7 +54,6 @@ function AdminForm(props) {
     else if (model === 'blog') formFetch = blogObj;
     else if (model === 'image') formFetch = imageObj;
     else if (model === 'department') formFetch = departmentObj;
-    else if (model === 'outreachBlog') formFetch = outreachBlogObj;
     else formFetch = {};
 
 
