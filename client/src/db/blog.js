@@ -165,8 +165,16 @@ const blogObj = {
             handleSubmit,
             formState: { errors },
             reset,
-            getValues
+            getValues,
+            setValue
         } = useForm();
+
+
+        useEffect(() => {
+            if (editObj)
+                setValue('blogType', editObj.blogType);
+
+        }, [editObj, setValue])
 
 
         const onSubmit = async data => {

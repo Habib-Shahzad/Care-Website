@@ -27,6 +27,19 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  // Home Page Endpoints
+  @Get('home-page/data')
+  async getHomePageData() {
+    return {
+      data: await this.adminService.getHomePageData(),
+    };
+  }
+
+  @Post('home-page/update')
+  async updateHomePageData(@Body() data: any) {
+    return this.adminService.updateHomePageData(data);
+  }
+
   // Activities Endpoints
   @Get('activity/table-data')
   async getActivityTableData() {

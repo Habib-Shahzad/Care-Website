@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import './Home.scss';
 import { Designer1, Designer2 } from '../../components';
 import { FaWpforms } from 'react-icons/fa';
+import api from '../../api';
 
 function Home(props) {
+
+    const [homePageData, setHomePageData] = useState(null);
+
+    useEffect(() => {
+        (
+            async () => {
+                const response = await fetch(`${api}/home-page/data`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    withCredentials: true
+                });
+                const content = await response.json();
+                setHomePageData(content?.data);
+            })();
+
+    }, [])
+
     return (
         <div className='home'>
 
@@ -19,7 +40,7 @@ function Home(props) {
                             <h2 >AS HERE WE CARE</h2>
                             <div className='content w-100'>
                                 <p>
-                                    CARE is a student-led community organization founded in Karachi, Pakistan. Our primary objective is to effect meaningful and sustainable change within our society, which is plagued by various challenges. We strive to contribute towards building a better future for all by addressing these issues with unwavering dedication and purpose.
+                                    {homePageData?.mainContent}
                                 </p>
                             </div>
 
@@ -50,7 +71,7 @@ function Home(props) {
 
                         <Col className='front' >
                             <div className='home-image-container front'>
-                                <img src='/home-image.jpeg' alt="main_image" />
+                                <img src={homePageData?.mainImage?.image.filePath} alt="main_image" />
                             </div>
                         </Col>
                     </Row>
@@ -109,7 +130,7 @@ function Home(props) {
                         </Col>
                         <Col className='ambass-col2 front' >
                             <div className='ambass-image-container front'>
-                                <img src='/ambass-image.jpg' alt="main_image" />
+                                <img src={homePageData?.ambassadorImage?.image.filePath} alt="ambass_image" />
                             </div>
                         </Col>
                     </Row>

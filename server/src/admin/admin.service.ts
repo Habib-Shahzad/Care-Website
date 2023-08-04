@@ -8,6 +8,14 @@ import { BlogType } from 'src/database/enums/blog.type.enum';
 export class AdminService {
   constructor(private readonly databaseService: DatabaseService) {}
 
+  getHomePageData() {
+    return this.databaseService.getHomePageData();
+  }
+
+  async updateHomePageData(data: any) {
+    return { data: await this.databaseService.updateHomePage(data) };
+  }
+
   getActivities() {
     return this.databaseService.getActivities();
   }

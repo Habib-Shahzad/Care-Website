@@ -15,6 +15,10 @@ import {
   Activity,
   ActivitySchema,
 } from 'src/database/schemas/activity.model.schema';
+import {
+  HomePage,
+  HomePageSchema,
+} from 'src/database/schemas/home.page.model.schema';
 
 @Module({
   imports: [
@@ -24,6 +28,7 @@ import {
       { name: Department.name, schema: DepartmentSchema },
       { name: Image.name, schema: ImageSchema },
       { name: Activity.name, schema: ActivitySchema },
+      { name: HomePage.name, schema: HomePageSchema },
     ]),
   ],
   providers: [UserService, DatabaseService, JwtService],

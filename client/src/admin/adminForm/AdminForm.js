@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider, Typography } from '@mui/material';
 import { Container, Col, Row } from 'react-bootstrap';
-import { userObj, activityObj, blogObj, imageObj, departmentObj } from '../../db';
+import { modelToTable } from '../../db';
 import { useParams } from 'react-router';
 import './AdminForm.scss';
 
@@ -49,13 +49,8 @@ function AdminForm(props) {
     const { model, id } = useParams();
 
     let formFetch = {};
-    if (model === 'user') formFetch = userObj;
-    else if (model === 'activity') formFetch = activityObj;
-    else if (model === 'blog') formFetch = blogObj;
-    else if (model === 'image') formFetch = imageObj;
-    else if (model === 'department') formFetch = departmentObj;
-    else formFetch = {};
 
+    formFetch = modelToTable?.[model] ?? {};
 
     if (Object.keys(formFetch).length === 0) {
         return <div>No data</div>;

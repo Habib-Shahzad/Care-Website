@@ -10,6 +10,7 @@ import {
 } from './schemas/department.model.schema';
 import { Image, ImageDocument } from './schemas/image.model.schema';
 import { BlogType } from './enums/blog.type.enum';
+import { HomePage, HomePageDocument } from './schemas/home.page.model.schema';
 
 @Injectable()
 export class DatabaseService {
@@ -20,7 +21,30 @@ export class DatabaseService {
     @InjectModel(Department.name)
     private departmentModel: Model<DepartmentDocument>,
     @InjectModel(Image.name) private imageModel: Model<ImageDocument>,
+    @InjectModel(HomePage.name) private homePageModel: Model<HomePageDocument>,
   ) {}
+
+  async getHomePageData(): Promise<HomePage> {
+    return this.homePageModel
+      .findOne()
+      .populate('mainImage')
+      .populate('ambassadorImage')
+      .exec();
+  }
+
+  async createHomePage(data: any): Promise<HomePage> {
+    const newHomePage = new this.homePageModel(data);
+    await newHomePage.save();
+    return newHomePage;
+  }
+
+  async updateHomePage(data: any) {
+    const { _id, ...updateData } = data;
+    if (!_id) return this.createHomePage(data);
+    return this.homePageModel
+      .findByIdAndUpdate(_id, updateData, { new: true })
+      .exec();
+  }
 
   // Activity
   async getActivities(): Promise<Activity[]> {

@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
-import { userObj, activityObj, blogObj, imageObj, departmentObj } from '../../db';
+import { modelToTable } from '../../db';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
@@ -23,6 +23,7 @@ import { useParams } from 'react-router';
 
 import LinearProgress from '@mui/material/LinearProgress';
 import './EnhancedTable.scss';
+import { HomePageContent } from '../../db/home-page';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -80,15 +81,11 @@ const PaperStyled = styled(Paper)(({ theme }) => ({
 export default function EnhancedTable(props) {
   const { model } = useParams();
 
+
   const location = useLocation();
   let tableFetch = {};
 
-  if (model === 'user') tableFetch = userObj;
-  else if (model === 'activity') tableFetch = activityObj;
-  else if (model === 'blog') tableFetch = blogObj;
-  else if (model === 'image') tableFetch = imageObj;
-  else if (model === 'department') tableFetch = departmentObj;
-  else tableFetch = {};
+  tableFetch = modelToTable?.[model] ?? {};
 
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState(tableFetch['ordering']);
@@ -133,6 +130,7 @@ export default function EnhancedTable(props) {
         setSelected([]);
         setPage(0);
         const rows = [];
+
         const response = await fetch(apiURL, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
@@ -144,6 +142,8 @@ export default function EnhancedTable(props) {
         content.data.forEach(element => {
           rows.push(createTableData(element));
         });
+
+
         setTimeout(() => {
           setTableRows(rows);
           setOriginalTableRows(rows);
@@ -212,6 +212,13 @@ export default function EnhancedTable(props) {
 
   const [deleteLoading, setDeleteLoading] = React.useState(false);
 
+
+
+  if (model === 'home-page') {
+    return <div>
+      <HomePageContent />
+    </div>
+  }
 
 
   if (Object.keys(tableFetch).length === 0) {

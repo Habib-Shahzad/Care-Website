@@ -23,6 +23,10 @@ import { AdminService } from './admin/admin.service';
 import { DatabaseService } from './database/database.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
+import {
+  HomePage,
+  HomePageSchema,
+} from './database/schemas/home.page.model.schema';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
@@ -61,6 +65,7 @@ import * as path from 'path';
       { name: Department.name, schema: DepartmentSchema },
       { name: Image.name, schema: ImageSchema },
       { name: Activity.name, schema: ActivitySchema },
+      { name: HomePage.name, schema: HomePageSchema },
     ]),
     UserModule,
     AdminAuthGuardModule,

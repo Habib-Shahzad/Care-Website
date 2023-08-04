@@ -30,6 +30,7 @@ import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import FeedIcon from '@mui/icons-material/Feed';
 import ImageIcon from '@mui/icons-material/Image';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import ArticleIcon from '@mui/icons-material/Article';
 
 const drawerWidth = 240;
 
@@ -262,6 +263,22 @@ export default function AdminLayout(props) {
                             <ListItemText
                                 disableTypography
                                 primary={<Typography style={{ color: 'black' }}>Departments</Typography>}
+                            />
+                        </ListItemButton>
+
+                    </ListItem>
+
+
+
+
+                    <ListItem component={Link} to="/admin/home-page" disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <ArticleIcon />
+                            </ListItemIcon>
+                            <ListItemText
+                                disableTypography
+                                primary={<Typography style={{ color: 'black' }}>Home Page</Typography>}
                             />
                         </ListItemButton>
 
