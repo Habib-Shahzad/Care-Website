@@ -57,8 +57,6 @@ export default function Home() {
       })()
    }, [])
 
-   console.log(homePageData)
-
    return (
       <>
          <Box mt={30}>
@@ -108,7 +106,11 @@ export default function Home() {
                                  borderRadius: '1rem',
                                  border: '1px solid #e82fb4',
                               }}
-                              src={`${API}${homePageData?.mainImage.image.filePath}`}
+                              src={
+                                 homePageData?.mainImage?.image?.filePath
+                                    ? `${API}${homePageData?.mainImage?.image?.filePath}`
+                                    : '/sample.jpeg'
+                              }
                               alt="Care"
                            />
                         )}
@@ -206,7 +208,7 @@ export default function Home() {
                      <Box mx="auto">
                         <MantineImage
                            radius="md"
-                           src={`${API}${homePageData?.ambassadorImage?.image.filePath}`}
+                           src={`${API}${homePageData?.ambassadorImage?.image?.filePath}`}
                            alt="Care"
                         />
                      </Box>
