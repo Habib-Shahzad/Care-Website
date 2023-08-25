@@ -1,5 +1,7 @@
 import PrimaryButton from '@/application/components/PrimaryButton'
 import Blog from '@/application/models/Blog.model'
+import NetworkingManager from '@/application/networking'
+import { useDataContext } from '@/application/providers/ContextProvider'
 import { Carousel } from '@mantine/carousel'
 import {
    Blockquote,
@@ -12,12 +14,34 @@ import {
    Title,
    useMantineTheme,
 } from '@mantine/core'
+import { useEffect, useState } from 'react'
 
 export default function ResearchDevelopment() {
-   const blogs: Blog[] = []
    const theme = useMantineTheme()
 
-   function Blog(props: { blog: Blog }) {
+   const [loading, setLoading] = useState(true)
+   const {
+      researchDevelopmentBlogs: blogs,
+      setResearchDevelopmentBlogs: setBlogs,
+   } = useDataContext()
+
+   async function listBlogs() {
+      if (blogs && blogs.length) {
+         setLoading(false)
+         return
+      }
+      const response = await NetworkingManager.listResearchDevelopmentBlogs()
+      setBlogs(response)
+      setLoading(false)
+   }
+
+   useEffect(() => {
+      ;(async () => {
+         await listBlogs()
+      })()
+   }, [])
+
+   function BlogComponent(props: { blog: Blog }) {
       const { blog } = props
       return (
          <>
@@ -36,18 +60,18 @@ export default function ResearchDevelopment() {
                            : 'light-pink'
                      }
                   >
-                     {blog.description}
+                     {blog.content}
                   </Text>
                </Box>
             </Grid.Col>
-            {blog.images?.length == 0 ? null : (
+            {blog.imageList?.length == 0 ? null : (
                <Grid.Col lg={4} md={4} sm={9}>
                   <Carousel maw={420} mx="auto" withIndicators height={300}>
-                     {blog.images.map((image, index) => (
+                     {blog.imageList.map((image, index) => (
                         <Image
                            key={index}
                            radius={'md'}
-                           src={image}
+                           src={`${API}${image.image.filePath}`}
                            alt="Care"
                            height={300}
                            width={420}
@@ -103,10 +127,10 @@ export default function ResearchDevelopment() {
                {blogs.map((blog, index) => (
                   <Grid key={index} mt={40}>
                      {isSmallDevice ? (
-                        <Blog blog={blog} />
+                        <BlogComponent blog={blog} />
                      ) : (
                         <Center>
-                           <Blog blog={blog} />
+                           <BlogComponent blog={blog} />
                         </Center>
                      )}
                   </Grid>

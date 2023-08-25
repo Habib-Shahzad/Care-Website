@@ -1,5 +1,7 @@
 import PrimaryButton from '@/application/components/PrimaryButton'
 import SecondaryButton from '@/application/components/SecondaryButton'
+import NetworkingManager, { API } from '@/application/networking'
+import { useDataContext } from '@/application/providers/ContextProvider'
 import {
    Blockquote,
    Box,
@@ -7,7 +9,8 @@ import {
    Container,
    Flex,
    Grid,
-   Image,
+   Loader,
+   Image as MantineImage,
    Text,
    Title,
    createStyles,
@@ -15,6 +18,9 @@ import {
 } from '@mantine/core'
 import { IconNotes } from '@tabler/icons-react'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+import Image from 'next/image'
 
 const useStyles = createStyles((theme) => ({
    bottom: {
@@ -31,6 +37,27 @@ const useStyles = createStyles((theme) => ({
 
 export default function Home() {
    const { classes } = useStyles()
+   const { homePageData, setHomePageData } = useDataContext()
+   const [loading, setLoading] = useState(true)
+
+   async function getData() {
+      if (homePageData) {
+         setLoading(false)
+         return
+      }
+
+      const response = await NetworkingManager.getHomePageData()
+      setHomePageData(response)
+      setLoading(false)
+   }
+
+   useEffect(() => {
+      ;(async () => {
+         await getData()
+      })()
+   }, [])
+
+   console.log(homePageData)
 
    return (
       <>
@@ -41,15 +68,14 @@ export default function Home() {
                      <Title order={3} className="dark-pink">
                         AS HERE WE CARE
                      </Title>
-                     <p>
-                        CARE is a student-led community organization founded in
-                        Karachi, Pakistan. Our primary objective is to effect
-                        meaningful and sustainable change within our society,
-                        which is plagued by various challenges. We strive to
-                        contribute towards building a better future for all by
-                        addressing these issues with unwavering dedication and
-                        purpose.
-                     </p>
+
+                     {loading ? (
+                        <Center>
+                           <Loader />
+                        </Center>
+                     ) : (
+                        <Text>{homePageData?.mainContent}</Text>
+                     )}
                      <Flex
                         wrap="wrap"
                         direction={{ base: 'column', sm: 'row' }}
@@ -70,7 +96,22 @@ export default function Home() {
 
                   <Grid.Col md={4} lg={3} sm={7}>
                      <Box mx="auto">
-                        <Image radius="md" src="/sample.jpeg" alt="Care" />
+                        {loading ? (
+                           <Center>
+                              <Loader />
+                           </Center>
+                        ) : (
+                           <Image
+                              height={300}
+                              width={350}
+                              style={{
+                                 borderRadius: '1rem',
+                                 border: '1px solid #e82fb4',
+                              }}
+                              src={`${API}${homePageData?.mainImage.image.filePath}`}
+                              alt="Care"
+                           />
+                        )}
                      </Box>
                   </Grid.Col>
                </Grid>
@@ -163,7 +204,11 @@ export default function Home() {
 
                   <Grid.Col md={4} lg={3}>
                      <Box mx="auto">
-                        <Image radius="md" src="/sample.jpeg" alt="Care" />
+                        <MantineImage
+                           radius="md"
+                           src={`${API}${homePageData?.ambassadorImage?.image.filePath}`}
+                           alt="Care"
+                        />
                      </Box>
                   </Grid.Col>
                </Grid>

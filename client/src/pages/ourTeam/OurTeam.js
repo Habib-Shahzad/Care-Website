@@ -394,7 +394,7 @@ function OurTeam(props) {
                                                 <Card className='member-card' key={index} style={{ width: '18rem' }}>
                                                     <Card.Img
                                                         variant="top"
-                                                        src={member.image.image.filePath} />
+                                                        src={member.`${API}${image.image.filePath}`} />
                                                     <Card.Body>
                                                         <Card.Title>{member.name}</Card.Title>
                                                         <Card.Text>

@@ -12,7 +12,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   app.enableCors({
-    origin: ['http://localhost:3001', 'https://asherewecare.pk'],
+    origin: ['http://localhost:3001', '${API}'],
     credentials: true,
   });
   await app.listen(3000);

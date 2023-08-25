@@ -1,6 +1,10 @@
+import Image from './Image.model'
+
 export default interface Blog {
+   _id: string
    title: string
-   description: string
-   images: string[]
-   type?: string | null
+   content: string
+   active: boolean
+   imageList: Image[]
+   blogType: string
 }

@@ -98,9 +98,10 @@ export default function CustomNavbar({ links }: HeaderActionProps) {
       )
    })
 
-   const theme = useMantineTheme()
-
+   const theme = useMantineColorScheme()
    const isDarkTheme = theme.colorScheme === 'dark'
+
+   const theme2 = useMantineTheme()
 
    const { toggleColorScheme } = useMantineColorScheme()
 
@@ -158,14 +159,14 @@ export default function CustomNavbar({ links }: HeaderActionProps) {
                   <IconSun
                      size="1rem"
                      stroke={2.5}
-                     color={theme.colors.yellow[4]}
+                     color={theme2.colors.yellow[4]}
                   />
                }
                offLabel={
                   <IconMoonStars
                      size="1rem"
                      stroke={2.5}
-                     color={theme.colors.blue[6]}
+                     color={theme2.colors.blue[6]}
                   />
                }
                onClick={() => toggleColorScheme()}

@@ -5,6 +5,7 @@ import { FC, ReactNode, useEffect } from 'react'
 
 import '@/styles/globals.scss'
 import { LayoutProvider } from '@/application/providers/LayoutProvider'
+import { DataContextProvider } from '@/application/providers/ContextProvider'
 
 const SafeHydrate: FC<{ children: ReactNode }> = (props) => {
    /*
@@ -58,9 +59,11 @@ const App = ({ Component, pageProps }: AppProps) => {
                }),
             }}
          >
-            <LayoutProvider>
-               <Component {...pageProps} />
-            </LayoutProvider>
+            <DataContextProvider>
+               <LayoutProvider>
+                  <Component {...pageProps} />
+               </LayoutProvider>
+            </DataContextProvider>
          </MantineProvider>
       </SafeHydrate>
    )
