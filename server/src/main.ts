@@ -16,6 +16,6 @@ async function bootstrap() {
     origin: ['http://localhost:3001', 'https://asherewecare.pk'],
     credentials: true,
   });
-  await app.listen(3001);
+  await app.listen(3000);
 }
 bootstrap();

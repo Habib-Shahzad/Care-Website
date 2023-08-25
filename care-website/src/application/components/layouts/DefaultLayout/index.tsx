@@ -3,7 +3,6 @@ import {
    ColorScheme,
    ColorSchemeProvider,
    MantineProvider,
-   useMantineTheme,
 } from '@mantine/core'
 
 import { useHotkeys } from '@mantine/hooks'
@@ -11,6 +10,9 @@ import { ReactNode, useState } from 'react'
 import { getCookie, setCookie } from 'cookies-next'
 import CustomNavbar from '../../core/Navbar'
 import Footer from '../../core/Footer'
+import { useRouter } from 'next/router'
+import AdminContextProvider from '@/admin/providers/AdminContextProvider'
+import AdminLayout from '../AdminLayout'
 
 export type DefaultLayoutProps = {
    children: ReactNode
@@ -22,6 +24,10 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
    const [colorScheme, setColorScheme] = useState<ColorScheme>(
       getCookie('mantine-color-scheme') as ColorScheme
    )
+
+   const router = useRouter()
+   const { pathname } = router
+   const isAdminPath = pathname.startsWith('/admin')
 
    const toggleColorScheme = (value?: ColorScheme) => {
       const nextColorScheme =
@@ -47,37 +53,43 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
    ]
 
    return (
-      <ColorSchemeProvider
-         colorScheme={colorScheme}
-         toggleColorScheme={toggleColorScheme}
-      >
-         <MantineProvider
-            theme={{
-               colorScheme,
-               fontFamily: 'Montserrat, sans-serif',
-            }}
-            withGlobalStyles
-            withNormalizeCSS
+      <>
+         <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
          >
-            <AppShell
-               styles={(theme) => {
-                  return {
-                     main: {
-                        backgroundColor:
-                           theme.colorScheme === 'dark'
-                              ? theme.colors.dark[8]
-                              : theme.colors.gray[0],
-                     },
-                  }
+            <MantineProvider
+               theme={{
+                  colorScheme,
+                  fontFamily: 'Montserrat, sans-serif',
                }}
-               navbarOffsetBreakpoint="sm"
-               header={<CustomNavbar links={routes} />}
-               footer={<Footer />}
+               withGlobalStyles
+               withNormalizeCSS
             >
-               {children}
-            </AppShell>
-         </MantineProvider>
-      </ColorSchemeProvider>
+               {isAdminPath ? (
+                  <AdminLayout>{children}</AdminLayout>
+               ) : (
+                  <AppShell
+                     styles={(theme) => {
+                        return {
+                           main: {
+                              backgroundColor:
+                                 theme.colorScheme === 'dark'
+                                    ? theme.colors.dark[8]
+                                    : theme.colors.gray[0],
+                           },
+                        }
+                     }}
+                     navbarOffsetBreakpoint="sm"
+                     header={<CustomNavbar links={routes} />}
+                     footer={<Footer />}
+                  >
+                     {children}
+                  </AppShell>
+               )}
+            </MantineProvider>
+         </ColorSchemeProvider>
+      </>
    )
 }
 
