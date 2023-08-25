@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap');
+
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+html,
+body {
+   max-width: 100vw;
+   overflow-x: hidden;
+   font-family: 'Montserrat' !important;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+$light-pink: #f178b6;
+$dark-pink: #e82fb4;
+
+.light-pink {
+   color: $light-pink;
+}
+
+.dark-pink {
+   color: $dark-pink;
+}
+
+.light-pink-bg {
+   background-color: $light-pink;
+}
+
+.dark-pink-bg {
+   background-color: $dark-pink;
+}
+
+.gray-color {
+   color: #e9ecef;
+}
+
+.font-weight-normal {
+   font-weight: 500;
+}
