@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000'
+export const API = 'http://localhost:3000'
 // export const API = 'https://asherewecare.pk'
 export const NETWORKING_API = `${API}/api`
 import axios from 'axios'

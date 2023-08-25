@@ -1,6 +1,10 @@
 import { AdminNetworkingManeger } from '@/admin/networking'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { User } from '../models/user.model'
+import Blog from '@/application/models/Blog.model'
+import Image from '@/application/models/Image.model'
+import Activity from '@/application/models/Activity.model'
+import Department from '@/application/models/Department.model'
 
 // Create the context
 type AdminDataContextType = {
@@ -9,6 +13,18 @@ type AdminDataContextType = {
 
    userList: User[]
    setUserList: React.Dispatch<React.SetStateAction<User[]>>
+
+   blogList: Blog[]
+   setBlogList: React.Dispatch<React.SetStateAction<Blog[]>>
+
+   imageList: Image[]
+   setImageList: React.Dispatch<React.SetStateAction<Image[]>>
+
+   activityList: Activity[]
+   setActivityList: React.Dispatch<React.SetStateAction<Activity[]>>
+
+   departmentList: Department[]
+   setDepartmentList: React.Dispatch<React.SetStateAction<Department[]>>
 }
 
 export const AdminDataContext = createContext<AdminDataContextType | undefined>(
@@ -29,6 +45,10 @@ export default function AdminDataContextProvider(props: {
    children: React.ReactNode
 }) {
    const [userList, setUserList] = useState<User[]>([])
+   const [blogList, setBlogList] = useState<Blog[]>([])
+   const [imageList, setImageList] = useState<Image[]>([])
+   const [activityList, setActivityList] = useState<Activity[]>([])
+   const [departmentList, setDepartmentList] = useState<Department[]>([])
    const [loading, setLoading] = useState(true)
 
    const { children } = props
@@ -39,7 +59,15 @@ export default function AdminDataContextProvider(props: {
             loading: loading,
             setLoading: setLoading,
             userList: userList,
-            setUserList: setUserList,
+            setUserList,
+            blogList,
+            setBlogList,
+            imageList,
+            setImageList,
+            activityList,
+            setActivityList,
+            departmentList,
+            setDepartmentList,
          }}
       >
          {children}

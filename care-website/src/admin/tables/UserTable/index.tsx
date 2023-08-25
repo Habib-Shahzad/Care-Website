@@ -56,6 +56,7 @@ export default function UserTable() {
          selectedUsers?.map((user) => user._id)
       )
       setUserList(response)
+      setSelectedUsers([])
       setLoading(false)
    }
 
@@ -66,6 +67,7 @@ export default function UserTable() {
          active
       )
       setUserList(response)
+      setSelectedUsers([])
       setLoading(false)
    }
 
@@ -76,6 +78,7 @@ export default function UserTable() {
          admin
       )
       setUserList(response)
+      setSelectedUsers([])
       setLoading(false)
    }
 
@@ -119,16 +122,16 @@ export default function UserTable() {
                   <td onClick={() => onRowClick(user)}>{user.email}</td>
                   <td onClick={() => onRowClick(user)}>
                      {user.admin ? (
-                        <IconSquareCheck size={24} />
+                        <IconSquareCheck color="green" size={24} />
                      ) : (
-                        <IconSquareRoundedX size={24} />
+                        <IconSquareRoundedX color="red" size={24} />
                      )}
                   </td>
                   <td onClick={() => onRowClick(user)}>
                      {user.active ? (
-                        <IconSquareCheck size={24} />
+                        <IconSquareCheck color="green" size={24} />
                      ) : (
-                        <IconSquareRoundedX size={24} />
+                        <IconSquareRoundedX color="red" size={24} />
                      )}
                   </td>
                   <td>
@@ -167,7 +170,6 @@ export default function UserTable() {
                   <span>{`${selectedUsers.length} user(s) selected`}</span>
                   <Flex
                      mih={50}
-                     bg="rgba(0, 0, 0, .3)"
                      gap="md"
                      justify="flex-start"
                      align="flex-start"

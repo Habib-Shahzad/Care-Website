@@ -50,7 +50,7 @@ export class AppController {
 
   @Post('activity/add')
   async addActivity(@Body() data: any) {
-    return this.adminService.addActivity(data);
+    return await this.adminService.addActivity(data);
   }
 
   @Post('activity/update')
@@ -86,6 +86,7 @@ export class AppController {
     @Body('data') data,
     @UploadedFile() image: Express.Multer.File,
   ) {
+    console.log(image);
     const name = JSON.parse(data).name;
     return this.adminService.addImage(name, image);
   }
@@ -128,7 +129,7 @@ export class AppController {
 
   @Post('blog/delete')
   async deleteBlogs(@Body() body: { data: string[] }) {
-    return this.adminService.deleteBlogs(body.data);
+    return await this.adminService.deleteBlogs(body.data);
   }
 
   @Post('blog/set-active')

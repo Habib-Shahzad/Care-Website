@@ -5,6 +5,8 @@ export type DepartmentDocument = Department & Document;
 
 @Schema()
 export class Department {
+  _id: MongooseSchema.Types.ObjectId;
+
   @Prop({ required: true })
   name: string;
 

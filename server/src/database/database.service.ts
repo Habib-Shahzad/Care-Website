@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 import { User, UserDocument } from './schemas/user.model.schema';
 import { Blog, BlogDocument } from './schemas/blog.model.schema';
 import { Activity, ActivityDocument } from './schemas/activity.model.schema';
@@ -61,6 +61,7 @@ export class DatabaseService {
     const { _id, ...updateData } = data;
     return this.activityModel
       .findByIdAndUpdate(_id, updateData, { new: true })
+      .populate('imageList')
       .exec();
   }
 
@@ -96,15 +97,34 @@ export class DatabaseService {
     return newBlog;
   }
 
+  async getBlog(id: ObjectId): Promise<Blog> {
+    return this.blogModel.findById(id).populate('imageList').exec();
+  }
+  async getDepartment(id: ObjectId): Promise<Department> {
+    return this.departmentModel
+      .findById(id)
+      .populate({
+        path: 'members',
+        populate: [{ path: 'image' }],
+      })
+      .exec();
+  }
+
+  async getActivity(id: ObjectId): Promise<Activity> {
+    return this.activityModel.findById(id).populate('imageList').exec();
+  }
+
   async updateBlog(data: any): Promise<Blog> {
     const { _id, ...updateData } = data;
     return this.blogModel
       .findByIdAndUpdate(_id, updateData, { new: true })
+      .populate('imageList')
       .exec();
   }
 
   async deleteBlogs(ids: string[]): Promise<void> {
-    await this.blogModel.deleteMany({ _id: { $in: ids } }).exec();
+    const data = await this.blogModel.deleteMany({ _id: { $in: ids } }).exec();
+    console.log(data);
   }
 
   async setBlogsActive(active: boolean, selected: string[]): Promise<void> {
@@ -133,7 +153,7 @@ export class DatabaseService {
 
   async updateDepartment(data: any): Promise<Department> {
     const { _id, ...updateData } = data;
-    return this.departmentModel
+    return await this.departmentModel
       .findByIdAndUpdate(_id, updateData, { new: true })
       .exec();
   }

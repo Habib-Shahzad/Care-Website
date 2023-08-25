@@ -1,9 +1,16 @@
 import Image from './Image.model'
 
-interface Member {
+export interface Member {
    name: string
    role: string
    image: Image
+   _id: string
+}
+
+export interface _Member {
+   name: string
+   role: string
+   image: string
    _id: string
 }
 

@@ -20,8 +20,9 @@ export class AdminService {
     return this.databaseService.getActivities();
   }
 
-  addActivity(data: any) {
-    return { data: this.databaseService.addActivity(data) };
+  async addActivity(data: any) {
+    const newActivity = await this.databaseService.addActivity(data);
+    return { data: await this.databaseService.getActivity(newActivity._id) };
   }
 
   async updateActivity(data: any) {
@@ -92,7 +93,8 @@ export class AdminService {
   }
 
   async addBlog(data: any) {
-    return { data: this.databaseService.addBlog(data) };
+    const newBlog = await this.databaseService.addBlog(data);
+    return { data: await this.databaseService.getBlog(newBlog._id) };
   }
 
   async updateBlog(data: any) {
@@ -120,7 +122,10 @@ export class AdminService {
   }
 
   async addDepartment(data: any) {
-    return { data: await this.databaseService.addDepartment(data) };
+    const newDepartment = await this.databaseService.addDepartment(data);
+    return {
+      data: await this.databaseService.getDepartment(newDepartment._id),
+    };
   }
 
   async updateDepartment(data: any) {
