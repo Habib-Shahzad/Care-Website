@@ -1,20 +1,20 @@
 import {
    createStyles,
-   Menu,
-   Center,
    Header,
    Container,
    Group,
-   Button,
    Burger,
    rem,
    Transition,
    Paper,
    useMantineTheme,
+   useMantineColorScheme,
+   Switch,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { IconChevronDown } from '@tabler/icons-react'
+import { IconChevronDown, IconMoonStars, IconSun } from '@tabler/icons-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const HEADER_HEIGHT = rem(65)
 
@@ -92,29 +92,28 @@ export default function CustomNavbar({ links }: HeaderActionProps) {
    const [opened, { toggle }] = useDisclosure(false)
    const items = links.map((link) => {
       return (
-         <a
-            key={link.label}
-            href={link.link}
-            className={classes.link}
-            onClick={(event) => event.preventDefault()}
-         >
+         <Link key={link.label} href={link.link} className={classes.link}>
             {link.label}
-         </a>
+         </Link>
       )
    })
 
    const theme = useMantineTheme()
 
+   const isDarkTheme = theme.colorScheme === 'dark'
+
+   const { toggleColorScheme } = useMantineColorScheme()
+
    return (
       <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={120}>
          <Container className={classes.inner} fluid>
             <Group>
-               {/* <Burger
+               <Burger
                   opened={opened}
                   onClick={toggle}
                   className={classes.burger}
                   size="sm"
-               /> */}
+               />
 
                <Transition
                   transition="pop-top-right"
@@ -150,6 +149,27 @@ export default function CustomNavbar({ links }: HeaderActionProps) {
             <Group spacing={5} className={classes.links}>
                {items}
             </Group>
+
+            <Switch
+               size="md"
+               color={isDarkTheme ? 'gray' : 'dark'}
+               checked={isDarkTheme}
+               onLabel={
+                  <IconSun
+                     size="1rem"
+                     stroke={2.5}
+                     color={theme.colors.yellow[4]}
+                  />
+               }
+               offLabel={
+                  <IconMoonStars
+                     size="1rem"
+                     stroke={2.5}
+                     color={theme.colors.blue[6]}
+                  />
+               }
+               onClick={() => toggleColorScheme()}
+            />
          </Container>
       </Header>
    )

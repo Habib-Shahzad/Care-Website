@@ -41,8 +41,8 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
       { link: '/patient-welfare', label: 'Patient Welfare' },
       { link: '/our-activities', label: 'Our Activities' },
 
-      { link: '/aims', label: 'Our Aims' },
-      { link: '/team', label: 'Know the Team' },
+      { link: '/our-aims', label: 'Our Aims' },
+      { link: '/our-team', label: 'Know the Team' },
       { link: '/contact', label: 'Contact Us' },
    ]
 

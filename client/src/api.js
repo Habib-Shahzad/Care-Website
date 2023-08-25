@@ -1,4 +1,4 @@
-const environment = "RELEASE";
+const environment = "dev";
 
 const api =
     environment === "dev"
