@@ -6,15 +6,16 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.use(express.static('../client/build'));
+  app.use(express.static('./build_frontend'));
+  app.use(express.static('./build_admin'));
 
   app.use(cookieParser());
   app.setGlobalPrefix('api');
 
   app.enableCors({
-    origin: ['http://localhost:3001', '${API}'],
+    origin: ['http://localhost:3001', 'https://asherewecare.pk'],
     credentials: true,
   });
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

@@ -14,7 +14,7 @@
 
 # production
 /build
-
+build_frontend/
 # misc
 .DS_Store
 *.pem

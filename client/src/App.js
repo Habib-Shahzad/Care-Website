@@ -6,8 +6,6 @@ import {
 } from "react-router-dom";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { Footer, MainNavbar } from './components';
-import { Home, CommunityOutreach, PatientWelfare, OurTeam, OurAims, OurActivities, ResearchDev } from './pages';
 import 'swiper/scss'; // core Swiper
 import 'swiper/scss/navigation'; // Navigation module
 import 'swiper/scss/pagination'; // Pagination module
@@ -60,79 +58,12 @@ function App() {
         <CSSTransition key={location.key} classNames="fade" timeout={300}>
           <Routes location={location}>
 
-
-            <Route path="/" element={
-              <>
-                <MainNavbar />
-                <Home />
-                <Footer />
-              </>
-            } />
-
             <Route path="admin/*" element=
               {
                 <>
                   <Admin loading={loading} />
                 </>
               } />
-
-
-            <Route path="/community-outreach" element=
-              {
-                <>
-                  <MainNavbar />
-                  <CommunityOutreach />
-                  <Footer />
-                </>
-              } />
-
-            <Route path="/research-dev" element=
-              {
-                <>
-                  <MainNavbar />
-                  <ResearchDev />
-                  <Footer />
-                </>
-              } />
-
-            <Route path="/patient-welfare" element=
-              {
-                <>
-                  <MainNavbar />
-                  <PatientWelfare />
-                  <Footer />
-                </>
-              } />
-
-            <Route path="/our-team" element=
-              {
-                <>
-                  <MainNavbar />
-                  <OurTeam />
-                  <Footer />
-                </>
-              } />
-
-            <Route path="/our-aims" element=
-              {
-                <>
-                  <MainNavbar />
-                  <OurAims />
-                  <Footer />
-                </>
-              } />
-
-            <Route path="/our-activities" element=
-              {
-                <>
-                  <MainNavbar />
-                  <OurActivities />
-                  <Footer />
-                </>
-              } />
-
-
-
 
           </Routes>
         </CSSTransition>

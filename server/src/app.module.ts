@@ -30,8 +30,13 @@ import {
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: path.resolve('build'),
+      rootPath: path.resolve('build_frontend'),
     }),
+
+    ServeStaticModule.forRoot({
+      rootPath: path.resolve('build_admin'),
+    }),
+
     MongooseModule.forRootAsync({
       imports: [
         ConfigModule.forRoot({

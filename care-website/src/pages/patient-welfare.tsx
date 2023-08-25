@@ -1,5 +1,4 @@
-import Blog from '@/application/models/Blog.model'
-import NetworkingManager from '@/application/networking'
+import NetworkingManager, { API } from '@/application/networking'
 import { useDataContext } from '@/application/providers/ContextProvider'
 import { Carousel } from '@mantine/carousel'
 import {

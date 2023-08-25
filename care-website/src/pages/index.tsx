@@ -67,13 +67,8 @@ export default function Home() {
                         AS HERE WE CARE
                      </Title>
 
-                     {loading ? (
-                        <Center>
-                           <Loader />
-                        </Center>
-                     ) : (
-                        <Text>{homePageData?.mainContent}</Text>
-                     )}
+                     <Text>{homePageData?.mainContent}</Text>
+
                      <Flex
                         wrap="wrap"
                         direction={{ base: 'column', sm: 'row' }}
@@ -206,11 +201,17 @@ export default function Home() {
 
                   <Grid.Col md={4} lg={3}>
                      <Box mx="auto">
-                        <MantineImage
-                           radius="md"
-                           src={`${API}${homePageData?.ambassadorImage?.image?.filePath}`}
-                           alt="Care"
-                        />
+                        {loading ? (
+                           <Center>
+                              <Loader />
+                           </Center>
+                        ) : (
+                           <MantineImage
+                              radius="md"
+                              src={`${API}${homePageData?.ambassadorImage?.image?.filePath}`}
+                              alt="Care"
+                           />
+                        )}
                      </Box>
                   </Grid.Col>
                </Grid>

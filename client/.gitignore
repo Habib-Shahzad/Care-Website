@@ -12,6 +12,7 @@ public/allImages
 
 # production
 /build
+/build_admin
 
 # misc
 .DS_Store

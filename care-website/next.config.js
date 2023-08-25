@@ -2,10 +2,11 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['swiperjs.com',
-      'asherewecare.pk'
-    ],
-  },
-}
+    domains: ['swiperjs.com', 'asherewecare.pk'],
+    unoptimized: true,
 
-module.exports = nextConfig
+  },
+  output: 'export',
+};
+
+module.exports = nextConfig;
