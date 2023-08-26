@@ -1,40 +1,124 @@
-import { Group, Pagination, ScrollArea, Table, TextInput } from '@mantine/core'
+import {
+   Center,
+   Group,
+   Pagination,
+   ScrollArea,
+   Table,
+   Text,
+   TextInput,
+   UnstyledButton,
+} from '@mantine/core'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import useStyles from './styles'
-import { IconSearch } from '@tabler/icons-react'
+import {
+   IconChevronDown,
+   IconChevronUp,
+   IconSearch,
+   IconSelector,
+} from '@tabler/icons-react'
 import { keys } from '@mantine/utils'
+import React from 'react'
 
 export type PaginatedTableProps<T> = {
    columns: any[]
    items: T[]
    render: (item: T) => JSX.Element
-   searchField?: string
+   searchField?: boolean
+   allowSorting?: boolean
+   sortingLabelToKey?: Record<string, string>
+}
+
+interface ThProps {
+   children: React.ReactNode
+   reversed: boolean
+   sorted: boolean
+   onSort(): void
+}
+
+function Th({ children, reversed, sorted, onSort }: ThProps) {
+   const { classes } = useStyles()
+   const Icon = sorted
+      ? reversed
+         ? IconChevronUp
+         : IconChevronDown
+      : IconSelector
+   return (
+      <th className={classes.th}>
+         <UnstyledButton onClick={onSort} className={classes.control}>
+            <Group position="apart">
+               <Text fw={500} fz="sm">
+                  {children}
+               </Text>
+               <Center className={classes.icon}>
+                  <Icon size="0.9rem" stroke={1.5} />
+               </Center>
+            </Group>
+         </UnstyledButton>
+      </th>
+   )
+}
+
+function filterData(data: any[], search: string) {
+   const query = search.toLowerCase().trim()
+   return data.filter((item) =>
+      keys(data[0]).some((key) => {
+         const itemKey = item[key]
+         if (!(typeof itemKey == 'string')) return null
+         return item[key].toLowerCase().includes(query)
+      })
+   )
+}
+
+function sortData(
+   data: any[],
+   payload: { sortBy: keyof any | null; reversed: boolean; search: string }
+) {
+   const { sortBy } = payload
+
+   if (!sortBy) {
+      return filterData(data, payload.search)
+   }
+
+   return filterData(
+      [...data].sort((a, b) => {
+         if (payload.reversed) {
+            return b[sortBy].localeCompare(a[sortBy])
+         }
+
+         return a[sortBy].localeCompare(b[sortBy])
+      }),
+      payload.search
+   )
 }
 
 export default function PaginatedTable<T>(props: PaginatedTableProps<T>) {
    const PAGE_SIZE = 15
    const { columns, items, render, searchField } = props
    const { classes } = useStyles()
+   const [sortBy, setSortBy] = useState<keyof any | null>(null)
 
    const [search, setSearch] = useState('')
-   const [filteredData, setFilteredData] = useState(items)
+   const [sortedData, setSortedData] = useState(items)
+
+   const [reverseSortDirection, setReverseSortDirection] = useState(false)
 
    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.currentTarget
       setSearch(value)
-      const lowercasedValue = value.toLowerCase().trim()
-      if (lowercasedValue === '') {
-         setFilteredData(items)
-      }
-      const filteredData = items.filter((item: any) => {
-         return keys(item).some((key) =>
-            item[key].toString().toLowerCase().includes(lowercasedValue)
-         )
-      })
+      setSortedData(
+         sortData(items, {
+            sortBy,
+            reversed: reverseSortDirection,
+            search: value,
+         })
+      )
+   }
 
-      setFilteredData(filteredData)
-
-      onPageChangeHandler(page)
+   const setSorting = (field: keyof any) => {
+      const reversed = field === sortBy ? !reverseSortDirection : false
+      setReverseSortDirection(reversed)
+      setSortBy(field)
+      setSortedData(sortData(items, { sortBy: field, reversed, search }))
    }
 
    const [records, setRecords] = useState<T[]>([])
@@ -44,9 +128,9 @@ export default function PaginatedTable<T>(props: PaginatedTableProps<T>) {
       (page: number) => {
          const from = (page - 1) * PAGE_SIZE
          const to = from + PAGE_SIZE
-         setRecords(filteredData.slice(from, to))
+         setRecords(sortedData.slice(from, to))
       },
-      [filteredData]
+      [sortedData]
    )
 
    const totalPages = useMemo(
@@ -56,21 +140,24 @@ export default function PaginatedTable<T>(props: PaginatedTableProps<T>) {
 
    useEffect(() => {
       onPageChangeHandler(page)
-   }, [filteredData, onPageChangeHandler, page])
+   }, [sortedData, onPageChangeHandler, page])
 
    return (
       <ScrollArea mx="auto">
          {!!searchField && (
-            <TextInput
-               placeholder="Search"
-               variant="filled"
-               icon={<IconSearch />}
-               onChange={handleSearchChange}
-            />
+            <>
+               <TextInput
+                  mt={30}
+                  mb={30}
+                  placeholder="Search"
+                  variant="filled"
+                  icon={<IconSearch />}
+                  onChange={handleSearchChange}
+               />
+            </>
          )}
          <Table
             highlightOnHover
-            // striped
             withColumnBorders
             withBorder
             verticalSpacing="xs"
@@ -80,7 +167,24 @@ export default function PaginatedTable<T>(props: PaginatedTableProps<T>) {
             <thead>
                <tr>
                   {columns.map((col, index) => (
-                     <th key={index}>{col}</th>
+                     <React.Fragment key={index}>
+                        {props.allowSorting &&
+                        !!props.sortingLabelToKey?.[col] ? (
+                           <Th
+                              sorted={sortBy === props.sortingLabelToKey?.[col]}
+                              reversed={reverseSortDirection}
+                              onSort={() =>
+                                 setSorting(
+                                    props.sortingLabelToKey?.[col] ?? ''
+                                 )
+                              }
+                           >
+                              {col}
+                           </Th>
+                        ) : (
+                           <th>{col}</th>
+                        )}
+                     </React.Fragment>
                   ))}
                </tr>
             </thead>

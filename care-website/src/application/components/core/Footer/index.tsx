@@ -81,7 +81,15 @@ export default function Footer() {
             </Box>
 
             <Box>
-               <PrimaryButton text="Code of Ethics" onClick={() => {}} />
+               <PrimaryButton
+                  text="Code of Ethics"
+                  onClick={() => {
+                     window.open(
+                        'https://drive.google.com/file/d/1ZFRCvcHLq_MdlO5kkWp3prp_Vvz_Jm6A/view',
+                        '_blank'
+                     )
+                  }}
+               />
             </Box>
          </Flex>
 

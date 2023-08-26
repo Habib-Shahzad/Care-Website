@@ -84,9 +84,22 @@ export default function Home() {
                      >
                         <PrimaryButton
                            text="Member Support"
-                           onClick={() => {}}
+                           onClick={() => {
+                              window.open(
+                                 'https://linktr.ee/CAREHumanResources',
+                                 '_blank'
+                              )
+                           }}
                         />
-                        <PrimaryButton text="Support Us" onClick={() => {}} />
+                        <PrimaryButton
+                           text="Support Us"
+                           onClick={() => {
+                              window.open(
+                                 'https://api.whatsapp.com/send?phone=923332401013',
+                                 '_blank'
+                              )
+                           }}
+                        />
                      </Flex>
                   </Grid.Col>
 
@@ -252,7 +265,15 @@ export default function Home() {
                   <Text>Make a Change</Text>
                </Center>
                <Center>
-                  <SecondaryButton text="Donate Now" onClick={() => {}} />
+                  <SecondaryButton
+                     text="Donate Now"
+                     onClick={() => {
+                        window.open(
+                           'https://api.whatsapp.com/send?phone=923332401013',
+                           '_blank'
+                        )
+                     }}
+                  />
                </Center>
             </Container>
          </Box>

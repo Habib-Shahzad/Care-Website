@@ -16,23 +16,12 @@ import ConfirmationDialog from '@/admin/components/Dialog'
 
 import Activity from '@/application/models/Activity.model'
 import ActivityForm from '@/admin/forms/ActivityForm'
+import { formatDate } from '@/utilities'
 
 export const activityTypeToLabel: Record<string, string> = {
    PATIENT_WELFARE: 'Patient Welfare',
    COMMUNITY_OUTREACH: 'Community Outreach',
    RESEARCH_DEVELOPMENT: 'Research & Development',
-}
-import { format } from 'date-fns'
-
-function formatDate(dateString: string) {
-   const date = new Date(dateString)
-
-   return date.toLocaleString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-   })
 }
 
 export default function ActivityTable() {
@@ -185,12 +174,13 @@ export default function ActivityTable() {
             onConfirm={handleDeleteSelected}
          />
 
-         <Box mb={30}>
-            {selectedActivities.length > 0 && (
+         <Box>
+            {selectedActivities.length > 0 && !loading && (
                <>
                   <span>{`${selectedActivities.length} activity(s) selected`}</span>
                   <Flex
-                     mih={50}
+                     mt={20}
+                     mih={20}
                      gap="md"
                      justify="flex-start"
                      align="flex-start"
@@ -242,7 +232,15 @@ export default function ActivityTable() {
 
          {loading && <TableSkeleton />}
          {!loading && (
-            <PaginatedTable searchField="name" {...activityTableProps} />
+            <PaginatedTable
+               allowSorting
+               sortingLabelToKey={{
+                  Title: 'title',
+                  Date: 'activityDate',
+               }}
+               searchField
+               {...activityTableProps}
+            />
          )}
       </div>
    )

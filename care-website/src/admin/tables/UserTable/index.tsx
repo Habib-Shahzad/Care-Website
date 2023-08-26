@@ -164,12 +164,13 @@ export default function UserTable() {
             onConfirm={handleDeleteSelected}
          />
 
-         <Box mb={30}>
-            {selectedUsers.length > 0 && (
+         <Box>
+            {selectedUsers.length > 0 && !loading && (
                <>
-                  <span>{`${selectedUsers.length} user(s) selected`}</span>
+                  <span>{`${selectedUsers.length} activity(s) selected`}</span>
                   <Flex
-                     mih={50}
+                     mt={20}
+                     mih={20}
                      gap="md"
                      justify="flex-start"
                      align="flex-start"
@@ -223,7 +224,7 @@ export default function UserTable() {
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && <PaginatedTable {...userTableProps} />}
+         {!loading && <PaginatedTable searchField {...userTableProps} />}
       </div>
    )
 }

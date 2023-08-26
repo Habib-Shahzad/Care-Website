@@ -173,12 +173,13 @@ export default function DepartmentTable() {
             onConfirm={handleDeleteSelected}
          />
 
-         <Box mb={30}>
-            {selectedDepartments.length > 0 && (
+         <Box>
+            {selectedDepartments.length > 0 && !loading && (
                <>
-                  <span>{`${selectedDepartments.length} department(s) selected`}</span>
+                  <span>{`${selectedDepartments.length} activity(s) selected`}</span>
                   <Flex
-                     mih={50}
+                     mt={20}
+                     mih={20}
                      gap="md"
                      justify="flex-start"
                      align="flex-start"
@@ -229,9 +230,7 @@ export default function DepartmentTable() {
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && (
-            <PaginatedTable searchField="name" {...departmentTableProps} />
-         )}
+         {!loading && <PaginatedTable searchField {...departmentTableProps} />}
       </div>
    )
 }

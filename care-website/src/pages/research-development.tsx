@@ -186,7 +186,15 @@ export default function ResearchDevelopment() {
                   <Text>Make a change</Text>
                </Center>
                <Center>
-                  <PrimaryButton text="Donate Now" onClick={() => {}} />
+                  <PrimaryButton
+                     text="Donate Now"
+                     onClick={() => {
+                        window.open(
+                           'https://api.whatsapp.com/send?phone=923332401013',
+                           '_blank'
+                        )
+                     }}
+                  />
                </Center>
             </Container>
          </Box>

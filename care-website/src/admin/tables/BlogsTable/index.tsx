@@ -171,12 +171,13 @@ export default function BlogTable() {
             onConfirm={handleDeleteSelected}
          />
 
-         <Box mb={30}>
-            {selectedBlogs.length > 0 && (
+         <Box>
+            {selectedBlogs.length > 0 && !loading && (
                <>
-                  <span>{`${selectedBlogs.length} blog(s) selected`}</span>
+                  <span>{`${selectedBlogs.length} activity(s) selected`}</span>
                   <Flex
-                     mih={50}
+                     mt={20}
+                     mih={20}
                      gap="md"
                      justify="flex-start"
                      align="flex-start"
@@ -227,7 +228,7 @@ export default function BlogTable() {
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && <PaginatedTable {...blogTableProps} />}
+         {!loading && <PaginatedTable searchField {...blogTableProps} />}
       </div>
    )
 }

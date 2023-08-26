@@ -3,6 +3,7 @@ import {
    ColorScheme,
    ColorSchemeProvider,
    MantineProvider,
+   createEmotionCache,
 } from '@mantine/core'
 
 import { useHotkeys } from '@mantine/hooks'
@@ -17,6 +18,8 @@ import AdminLayout from '../AdminLayout'
 export type DefaultLayoutProps = {
    children: ReactNode
 }
+
+const myCache = createEmotionCache({ key: 'mantine' })
 
 const DefaultLayout = (props: DefaultLayoutProps) => {
    const { children } = props
@@ -62,6 +65,7 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
             toggleColorScheme={toggleColorScheme}
          >
             <MantineProvider
+               emotionCache={myCache}
                theme={{
                   colorScheme,
                   fontFamily: 'Montserrat, sans-serif',

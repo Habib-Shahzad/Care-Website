@@ -13,6 +13,8 @@ import {
 } from '@mantine/core'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { formatDate, formatDate2 } from '@/utilities'
+import Activity from '@/application/models/Activity.model'
 
 export default function OurActivites() {
    const [loading, setLoading] = useState(true)
@@ -34,6 +36,20 @@ export default function OurActivites() {
       })()
    }, [])
 
+   const [sortedActivities, setSortedActivities] = useState<Activity[]>([])
+
+   useEffect(() => {
+      if (activities && activities.length) {
+         const sortedActivities = activities.sort((a, b) => {
+            return (
+               new Date(b.activityDate).getTime() -
+               new Date(a.activityDate).getTime()
+            )
+         })
+         setSortedActivities(sortedActivities)
+      }
+   }, [activities])
+
    return (
       <Box>
          <Container>
@@ -44,7 +60,7 @@ export default function OurActivites() {
             </Center>
 
             <Container>
-               {activities.map((activity, index) => (
+               {sortedActivities.map((activity, index) => (
                   <Box key={index}>
                      <Grid>
                         <Grid.Col md={6}>
@@ -74,7 +90,9 @@ export default function OurActivites() {
                         <Grid.Col md={6}>
                            <Container>
                               <Title order={3}>{activity.title}</Title>
-                              <Title order={4}>{activity.activityDate}</Title>
+                              <Title order={4}>
+                                 {formatDate2(activity.activityDate)}
+                              </Title>
                               <Text>{activity.content}</Text>
                            </Container>
                         </Grid.Col>
