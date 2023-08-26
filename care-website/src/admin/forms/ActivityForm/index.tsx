@@ -2,7 +2,6 @@ import { NotificationType, Notify } from '@/admin/components/Notification'
 import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import Activity from '@/application/models/Activity.model'
-import { API } from '@/application/networking'
 import {
    Avatar,
    Box,
@@ -235,7 +234,7 @@ export default function ActivityForm(props: ActivityFormProps) {
                         data={imageList.map((image) => ({
                            value: image._id,
                            label: image.name,
-                           image: `${API}/${image.image.filePath}`,
+                           image: `${image.image.filePath}`,
                         }))}
                         defaultValue={editActivity?.imageList?.map(
                            (image) => image?._id

@@ -21,6 +21,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import Image from 'next/image'
+import { shimmer, toBase64 } from '@/application/components/shimmer'
 
 const useStyles = createStyles((theme) => ({
    bottom: {
@@ -39,6 +40,8 @@ export default function Home() {
    const { classes } = useStyles()
    const { homePageData, setHomePageData } = useDataContext()
    const [loading, setLoading] = useState(true)
+
+   // useCallback
 
    async function getData() {
       if (homePageData) {
@@ -89,11 +92,7 @@ export default function Home() {
 
                   <Grid.Col md={4} lg={3} sm={7}>
                      <Box mx="auto">
-                        {loading ? (
-                           <Center>
-                              <Loader />
-                           </Center>
-                        ) : (
+                        {!loading && (
                            <Image
                               height={300}
                               width={350}
@@ -101,11 +100,13 @@ export default function Home() {
                                  borderRadius: '1rem',
                                  border: '1px solid #e82fb4',
                               }}
-                              src={
-                                 homePageData?.mainImage?.image?.filePath
-                                    ? `${API}${homePageData?.mainImage?.image?.filePath}`
-                                    : '/sample.jpeg'
+                              priority
+                              blurDataURL={
+                                 'data:image/svg+xml;base64,' +
+                                 toBase64(shimmer(200, 200))
                               }
+                              placeholder="blur"
+                              src={`${homePageData?.mainImage?.image?.filePath}`}
                               alt="Care"
                            />
                         )}
@@ -186,10 +187,10 @@ export default function Home() {
                                  style={{
                                     textDecoration: 'underline',
                                  }}
-                                 href="mailto:dimccaresorg.hr@gmail.com"
+                                 href="mailto:dcareorg.pr@gmail.com"
                                  target="_blank"
                               >
-                                 dimccaresorg.hr@gmail.com
+                                 careorg.pr@gmail.com
                               </Link>
                               . CARE reserves the right to make any amends in
                               the ambassadorship programme, provided it is
@@ -201,15 +202,10 @@ export default function Home() {
 
                   <Grid.Col md={4} lg={3}>
                      <Box mx="auto">
-                        {loading ? (
-                           <Center>
-                              <Loader />
-                           </Center>
-                        ) : (
+                        {!loading && (
                            <MantineImage
                               radius="md"
-                              src={`${API}${homePageData?.ambassadorImage?.image?.filePath}`}
-                              alt="Care"
+                              src={`${homePageData?.ambassadorImage?.image?.filePath}`}
                            />
                         )}
                      </Box>

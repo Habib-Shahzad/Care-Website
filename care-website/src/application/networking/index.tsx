@@ -1,7 +1,9 @@
-export const API = 'http://localhost:3000'
-// export const API = 'https://asherewecare.pk'
+// export const API = 'http://localhost:3000'
+export const API = 'https://asherewecare.pk'
+// export const API = 'http://54.169.250.44'
 export const NETWORKING_API = `${API}/api`
 import axios from 'axios'
+axios.defaults.withCredentials = true
 
 enum BlogType {
    PATIENT_WELFARE = 'PATIENT_WELFARE',
@@ -22,10 +24,17 @@ export default class NetworkingManager {
       }
    }
 
-   private static async modelData(modelName: string) {
+   private static async modelData(modelName: string, withImage = false) {
+      const tableApi = withImage ? 'table-data-image' : 'table-data'
       try {
          const response = await axios.get(
-            `${NETWORKING_API}/${modelName}/table-data`
+            `${NETWORKING_API}/${modelName}/${tableApi}`,
+            {
+               headers: {
+                  'Content-Type': 'application/json',
+                  'Cache-Control': 'no-cache',
+               },
+            }
          )
          const data = response.data
          const result = data?.data ?? []
@@ -65,6 +74,6 @@ export default class NetworkingManager {
    }
 
    public static async listDepartments() {
-      return await this.modelData('department')
+      return await this.modelData('department', true)
    }
 }

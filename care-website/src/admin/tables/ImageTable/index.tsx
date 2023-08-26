@@ -16,7 +16,6 @@ import { useDisclosure } from '@mantine/hooks'
 import ConfirmationDialog from '@/admin/components/Dialog'
 import Image from '@/application/models/Image.model'
 import ImageForm from '@/admin/forms/ImageForm'
-import { API } from '@/application/networking'
 import { keys } from '@mantine/utils'
 
 export const ImageTypeToLabel: Record<string, string> = {
@@ -62,7 +61,7 @@ export default function ImagesTable() {
          const images = await AdminNetworkingManager.listImages()
          //  const imagesWithFileSize = await Promise.all(
          //     images.map(async (image: Image) => {
-         //        const url = `${API}/${image.image.filePath}`
+         //        const url = `${image.image.filePath}`
          //        const fileSize = await getImageFileSize(url)
          //        return {
          //           ...image,
@@ -150,7 +149,7 @@ export default function ImagesTable() {
                   <td>{image.name}</td>
                   <td>
                      <Avatar
-                        src={`${API}/${image.image.filePath}`}
+                        src={`${image.image.filePath}`}
                         alt={image.name}
                         radius="xl"
                      />

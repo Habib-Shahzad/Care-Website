@@ -85,6 +85,6 @@ typings/
 
 dist/
 build/
-build_admin/
-build_frontend/
 out/
+
+care-website/public/allImages/*

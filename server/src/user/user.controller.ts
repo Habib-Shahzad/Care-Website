@@ -14,7 +14,7 @@ import { LoginReqDto } from './dto/login.req.dto';
 import { SetActiveReqDto } from '../admin/dto/set.active.req.dto';
 import { SetAdminReqDto } from 'src/admin/dto/set.admin.req.dto';
 
-@Controller('user')
+@Controller('api/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

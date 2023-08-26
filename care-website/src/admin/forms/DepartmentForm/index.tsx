@@ -2,7 +2,6 @@ import { NotificationType, Notify } from '@/admin/components/Notification'
 import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import Department, { _Member } from '@/application/models/Department.model'
-import { API } from '@/application/networking'
 import {
    Avatar,
    Box,
@@ -270,7 +269,7 @@ export default function DepartmentForm(props: ActivityFormProps) {
                                     data={imageList.map((image) => ({
                                        value: image._id,
                                        label: image.name,
-                                       image: `${API}/${image.image.filePath}`,
+                                       image: `${image.image.filePath}`,
                                     }))}
                                     filter={(value, item) => {
                                        if (!item) return true

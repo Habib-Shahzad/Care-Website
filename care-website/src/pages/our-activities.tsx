@@ -7,11 +7,12 @@ import {
    Container,
    Divider,
    Grid,
-   Image,
+   Image as MantineImage,
    Text,
    Title,
 } from '@mantine/core'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function OurActivites() {
    const [loading, setLoading] = useState(true)
@@ -56,7 +57,8 @@ export default function OurActivites() {
                               >
                                  {activity.imageList.map(
                                     (image: any, index: number) => (
-                                       <Image
+                                       <MantineImage
+                                          withPlaceholder
                                           key={index}
                                           radius={'md'}
                                           src={`${API}${image.image.filePath}`}

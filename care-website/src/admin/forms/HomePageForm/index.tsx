@@ -3,7 +3,7 @@ import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminContext } from '@/admin/providers/AdminContextProvider'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import Image from '@/application/models/Image.model'
-import { API, NETWORKING_API } from '@/application/networking'
+import { NETWORKING_API } from '@/application/networking'
 import {
    Avatar,
    Box,
@@ -194,7 +194,7 @@ export default function HomePageForm(props: HomePageFormProps) {
                            data={imageList.map((image) => ({
                               value: image._id,
                               label: image.name,
-                              image: `${API}/${image.image.filePath}`,
+                              image: `${image.image.filePath}`,
                            }))}
                            filter={(value, item) => {
                               if (!item) return true
@@ -220,7 +220,7 @@ export default function HomePageForm(props: HomePageFormProps) {
                            data={imageList.map((image) => ({
                               value: image._id,
                               label: image.name,
-                              image: `${API}/${image.image.filePath}`,
+                              image: `${image.image.filePath}`,
                            }))}
                            filter={(value, item) => {
                               if (!item) return true

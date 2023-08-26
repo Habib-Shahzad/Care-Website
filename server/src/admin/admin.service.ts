@@ -121,6 +121,10 @@ export class AdminService {
     return this.databaseService.getDepartments();
   }
 
+  getDepartmentsWithImages() {
+    return this.databaseService.getDepartmentsWithImages();
+  }
+
   async addDepartment(data: any) {
     const newDepartment = await this.databaseService.addDepartment(data);
     return {

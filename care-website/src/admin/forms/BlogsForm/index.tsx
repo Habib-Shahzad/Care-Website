@@ -3,7 +3,6 @@ import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { BlogTypeToLabel } from '@/admin/tables/BlogsTable'
 import Blog, { BlogType } from '@/application/models/Blog.model'
-import { API } from '@/application/networking'
 import {
    Avatar,
    Box,
@@ -227,7 +226,7 @@ export default function BlogForm(props: BlogFormProps) {
                         data={imageList.map((image) => ({
                            value: image._id,
                            label: image.name,
-                           image: `${API}/${image.image.filePath}`,
+                           image: `${image.image.filePath}`,
                         }))}
                         defaultValue={editBlog?.imageList?.map(
                            (image) => image?._id

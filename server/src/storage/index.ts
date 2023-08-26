@@ -7,7 +7,7 @@ import { diskStorage } from 'multer';
 
 const env = process.env.ENV_NAME;
 const path1 = path.resolve('../care-website/public/allImages');
-const path2 = path.resolve('build_frontend/allImages');
+const path2 = path.resolve('build/allImages');
 export const uploadPath = env === 'dev' ? path1 : path2;
 
 export const myStorage = diskStorage({

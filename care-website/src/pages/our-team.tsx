@@ -11,8 +11,9 @@ import {
    useMantineTheme,
 } from '@mantine/core'
 import { useDataContext } from '@/application/providers/ContextProvider'
-import NetworkingManager, { API } from '@/application/networking'
+import NetworkingManager from '@/application/networking'
 import Image from 'next/image'
+import { shimmer, toBase64 } from '@/application/components/shimmer'
 
 function OurTeam() {
    const [loading, setLoading] = useState(true)
@@ -85,6 +86,7 @@ function OurTeam() {
                         {department.members.map((member, index: number) => {
                            return (
                               <Card
+                                 key={index}
                                  sx={{
                                     background:
                                        theme.colorScheme == 'dark'
@@ -100,10 +102,16 @@ function OurTeam() {
                                  <Card.Section>
                                     <Center>
                                        <Image
-                                          src={`${API}${member.image.image.filePath}`}
+                                          blurDataURL={
+                                             'data:image/svg+xml;base64,' +
+                                             toBase64(shimmer(200, 200))
+                                          }
+                                          placeholder="blur"
+                                          src={`${member.image.image.filePath}`}
                                           height={200}
                                           width={200}
-                                          alt="Norway"
+                                          priority
+                                          alt="Team Member"
                                        />
                                     </Center>
                                  </Card.Section>
