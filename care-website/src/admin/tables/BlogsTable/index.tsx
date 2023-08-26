@@ -58,15 +58,17 @@ export default function BlogTable() {
    }
 
    const handleDeleteSelected = async () => {
-      console.log(selectedBlogs)
       if (selectedBlogs.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManager.deleteBlogs(
+         await AdminNetworkingManager.deleteBlogs(
             selectedBlogs?.map((blog) => blog._id)
          )
+         const updatedBlogList = blogList.filter(
+            (blog) => !selectedBlogs.includes(blog)
+         )
          setSelectedBlogs([])
-         setBlogList(response)
+         setBlogList(updatedBlogList)
          setLoading(false)
          closeDelete()
       } catch (error) {

@@ -9,6 +9,7 @@ type DialogProps = {
 
 export default function ConfirmationDialog(props: DialogProps) {
    const { opened, close, onConfirm, text } = props
+
    return (
       <Dialog
          radius="sm"
@@ -22,12 +23,7 @@ export default function ConfirmationDialog(props: DialogProps) {
             border: '1px solid #ccc',
          }}
          size="lg"
-         position={{
-            left: 'calc(50% - 250px)',
-            top: 'calc(50% - 250px)',
-            bottom: 'calc(50% - 250px)',
-            right: 'calc(50% - 250px)',
-         }}
+         position={{ top: 20, left: 20 }}
       >
          <Container>
             <Center>
@@ -35,9 +31,15 @@ export default function ConfirmationDialog(props: DialogProps) {
                   {text}
                </Text>
             </Center>
-
             <Center>
-               <Button mr={20} color="green" onClick={onConfirm}>
+               <Button
+                  mr={20}
+                  color="green"
+                  onClick={() => {
+                     onConfirm()
+                     close()
+                  }}
+               >
                   Yes
                </Button>
                <Button color="red" onClick={close}>

@@ -63,15 +63,17 @@ export default function ActivityTable() {
    }
 
    const handleDeleteSelected = async () => {
-      console.log(selectedActivities)
       if (selectedActivities.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManager.deleteActivities(
+         await AdminNetworkingManager.deleteActivities(
             selectedActivities?.map((activity) => activity._id)
          )
+         const updatedBlogList = activityList.filter(
+            (activity) => !selectedActivities.includes(activity)
+         )
          setSelectedActivites([])
-         setActivityList(response)
+         setActivityList(updatedBlogList)
          setLoading(false)
          closeDelete()
       } catch (error) {

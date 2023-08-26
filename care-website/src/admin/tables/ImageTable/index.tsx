@@ -95,15 +95,17 @@ export default function ImagesTable() {
    }
 
    const handleDeleteSelected = async () => {
-      console.log(selectedImages)
       if (selectedImages.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManager.deleteImages(
+         await AdminNetworkingManager.deleteImages(
             selectedImages?.map((image) => image._id)
          )
+         const updatedImageList = imageList.filter(
+            (image) => !selectedImages.includes(image)
+         )
          setSelectedImages([])
-         setImageList(response)
+         setImageList(updatedImageList)
          setLoading(false)
          closeDelete()
       } catch (error) {
@@ -181,13 +183,6 @@ export default function ImagesTable() {
    const [editImage, setEditImage] = useState<Image | undefined>(undefined)
    const [openImageForm, { open, close }] = useDisclosure(false)
 
-   function filterData(data: any[], search: string) {
-      const query = search.toLowerCase().trim()
-      return data.filter((item) =>
-         keys(data[0]).some((key) => item[key].toLowerCase().includes(query))
-      )
-   }
-
    return (
       <div>
          <ConfirmationDialog
@@ -209,7 +204,12 @@ export default function ImagesTable() {
                      direction="row"
                      wrap="wrap"
                   >
-                     <Button color="red" onClick={toggleDelete}>
+                     <Button
+                        color="red"
+                        onClick={() => {
+                           toggleDelete()
+                        }}
+                     >
                         Delete Selected
                      </Button>
                   </Flex>

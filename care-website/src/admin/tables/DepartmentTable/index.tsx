@@ -64,15 +64,17 @@ export default function DepartmentTable() {
    }
 
    const handleDeleteSelected = async () => {
-      console.log(selectedDepartments)
       if (selectedDepartments.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManager.deleteDepartments(
+         await AdminNetworkingManager.deleteDepartments(
             selectedDepartments?.map((department) => department._id)
          )
+         const updatedDepartmentList = departmentList.filter(
+            (department) => !selectedDepartments.includes(department)
+         )
          setSelectedDepartments([])
-         setDepartmentList(response)
+         setDepartmentList(updatedDepartmentList)
          setLoading(false)
          closeDelete()
       } catch (error) {

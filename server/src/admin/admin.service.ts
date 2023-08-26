@@ -30,11 +30,7 @@ export class AdminService {
   }
 
   async deleteActivities(ids: string[]) {
-    await this.databaseService.deleteActivities(ids);
-    return {
-      success: true,
-      data: await this.databaseService.getActivities(),
-    };
+    return await this.databaseService.deleteActivities(ids);
   }
 
   async setActivitiesActive(active: boolean, ids: string[]) {
@@ -76,12 +72,7 @@ export class AdminService {
       } catch (err) {}
     });
 
-    await this.databaseService.deleteImages(ids);
-
-    return {
-      success: true,
-      data: await this.databaseService.getImages(),
-    };
+    return await this.databaseService.deleteImages(ids);
   }
 
   getBlogs() {
@@ -103,12 +94,9 @@ export class AdminService {
   }
 
   async deleteBlogs(ids: string[]) {
-    await this.databaseService.deleteBlogs(ids);
-    return {
-      success: true,
-      data: await this.databaseService.getBlogs(),
-    };
+    return await this.databaseService.deleteBlogs(ids);
   }
+
   async setBlogsActive(active: boolean, ids: string[]) {
     await this.databaseService.setBlogsActive(active, ids);
     return {
@@ -137,11 +125,7 @@ export class AdminService {
   }
 
   async deleteDepartments(ids: string[]) {
-    await this.databaseService.deleteDepartments(ids);
-    return {
-      success: true,
-      data: await this.databaseService.getDepartments(),
-    };
+    return await this.databaseService.deleteDepartments(ids);
   }
 
   async setDepartmentsActive(active: boolean, ids: string[]) {

@@ -2,7 +2,6 @@ import LoginComponent from '@/admin/components/Login'
 import { useAdminContext } from '@/admin/providers/AdminContextProvider'
 import { Center, Container, Loader } from '@mantine/core'
 
-import { UserDB } from '@/admin/database/user'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import UserTable from '@/admin/tables/UserTable'
 import BlogTable from '@/admin/tables/BlogsTable'
