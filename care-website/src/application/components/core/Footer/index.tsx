@@ -105,16 +105,42 @@ export default function Footer() {
                position="left"
                noWrap
             >
-               <ActionIcon size="lg">
+               <ActionIcon
+                  onClick={() => {
+                     const link =
+                        'https://www.facebook.com/profile.php?id=100092137862296&mibextid=LQQJ4d'
+                     window.open(link, '_blank')
+                  }}
+                  size="lg"
+               >
                   <IconBrandFacebook size="1.05rem" stroke={1.5} />
                </ActionIcon>
-               <ActionIcon size="lg">
+               <ActionIcon
+                  onClick={() => {
+                     const link = 'https://www.instagram.com/asherewecare/'
+                     window.open(link, '_blank')
+                  }}
+                  size="lg"
+               >
                   <IconBrandInstagram size="1.05rem" stroke={1.5} />
                </ActionIcon>
-               <ActionIcon size="lg">
+               <ActionIcon
+                  onClick={() => {
+                     const link =
+                        'https://api.whatsapp.com/send?phone=923332401013'
+                     window.open(link, '_blank')
+                  }}
+                  size="lg"
+               >
                   <IconBrandWhatsapp size="1.05rem" stroke={1.5} />
                </ActionIcon>
-               <ActionIcon size="lg">
+               <ActionIcon
+                  onClick={() => {
+                     const link = 'https://twitter.com/asherewecare?s=21'
+                     window.open(link, '_blank')
+                  }}
+                  size="lg"
+               >
                   <IconBrandTwitter size="1.05rem" stroke={1.5} />
                </ActionIcon>
             </Group>

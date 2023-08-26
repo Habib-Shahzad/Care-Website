@@ -49,7 +49,10 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
 
       { link: '/our-aims', label: 'Our Aims' },
       { link: '/our-team', label: 'Know the Team' },
-      { link: '/contact', label: 'Contact Us' },
+      {
+         link: 'https://api.whatsapp.com/send?phone=923332401013',
+         label: 'Contact Us',
+      },
    ]
 
    return (
