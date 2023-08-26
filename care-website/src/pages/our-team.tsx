@@ -9,9 +9,10 @@ import {
    Text,
    Title,
    useMantineTheme,
+   Image as MantineImage,
 } from '@mantine/core'
 import { useDataContext } from '@/application/providers/ContextProvider'
-import NetworkingManager from '@/application/networking'
+import NetworkingManager, { API } from '@/application/networking'
 import Image from 'next/image'
 import { shimmer, toBase64 } from '@/application/components/shimmer'
 
@@ -101,17 +102,14 @@ function OurTeam() {
                               >
                                  <Card.Section>
                                     <Center>
-                                       <Image
-                                          blurDataURL={
-                                             'data:image/svg+xml;base64,' +
-                                             toBase64(shimmer(200, 200))
-                                          }
-                                          placeholder="blur"
-                                          src={`${member.image.image.filePath}`}
+                                       <MantineImage
+                                          mb={10}
+                                          src={`${API}${member.image.image.filePath}`}
                                           height={200}
-                                          width={200}
-                                          priority
+                                          width={180}
                                           alt="Team Member"
+                                          radius={'md'}
+                                          sx={{}}
                                        />
                                     </Center>
                                  </Card.Section>

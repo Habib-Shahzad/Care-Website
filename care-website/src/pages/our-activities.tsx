@@ -69,7 +69,7 @@ export default function OurActivites() {
                                  maw={420}
                                  mx="auto"
                                  withIndicators
-                                 height={300}
+                                 height={500}
                               >
                                  {activity.imageList.map(
                                     (image: any, index: number) => (
@@ -79,7 +79,7 @@ export default function OurActivites() {
                                           radius={'md'}
                                           src={`${API}${image.image.filePath}`}
                                           alt="Care"
-                                          height={300}
+                                          height={500}
                                           width={420}
                                        />
                                     )

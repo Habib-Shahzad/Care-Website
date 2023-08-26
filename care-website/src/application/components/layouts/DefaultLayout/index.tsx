@@ -12,14 +12,11 @@ import { getCookie, setCookie } from 'cookies-next'
 import CustomNavbar from '../../core/Navbar'
 import Footer from '../../core/Footer'
 import { useRouter } from 'next/router'
-import AdminContextProvider from '@/admin/providers/AdminContextProvider'
 import AdminLayout from '../AdminLayout'
 
 export type DefaultLayoutProps = {
    children: ReactNode
 }
-
-const myCache = createEmotionCache({ key: 'mantine' })
 
 const DefaultLayout = (props: DefaultLayoutProps) => {
    const { children } = props
@@ -65,7 +62,6 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
             toggleColorScheme={toggleColorScheme}
          >
             <MantineProvider
-               emotionCache={myCache}
                theme={{
                   colorScheme,
                   fontFamily: 'Montserrat, sans-serif',

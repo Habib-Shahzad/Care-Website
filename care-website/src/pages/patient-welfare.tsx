@@ -93,7 +93,7 @@ export default function PatientWelfare() {
                            maw={420}
                            mx="auto"
                            withIndicators
-                           height={300}
+                           height={500}
                         >
                            {blog.imageList.map((image, index) => (
                               <Image
@@ -101,7 +101,7 @@ export default function PatientWelfare() {
                                  radius={'md'}
                                  src={`${API}${image.image.filePath}`}
                                  alt="Care"
-                                 height={300}
+                                 height={500}
                                  width={420}
                               />
                            ))}
