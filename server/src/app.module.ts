@@ -27,11 +27,13 @@ import {
   HomePage,
   HomePageSchema,
 } from './database/schemas/home.page.model.schema';
+import { BackendController } from './backend/backend.controller';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: path.resolve('build'),
     }),
+
     MongooseModule.forRootAsync({
       imports: [
         ConfigModule.forRoot({
@@ -70,7 +72,7 @@ import {
     UserModule,
     AdminAuthGuardModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, BackendController],
   providers: [AppService, AdminService, DatabaseService],
 })
 export class AppModule {}

@@ -5,6 +5,8 @@ export type ActivityDocument = Activity & Document;
 
 @Schema()
 export class Activity {
+  _id: MongooseSchema.Types.ObjectId;
+
   @Prop({
     type: [
       { type: MongooseSchema.Types.ObjectId, ref: 'Image', required: true },

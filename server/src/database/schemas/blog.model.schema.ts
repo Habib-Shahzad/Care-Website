@@ -6,6 +6,8 @@ export type BlogDocument = Blog & Document;
 
 @Schema()
 export class Blog {
+  _id: MongooseSchema.Types.ObjectId;
+
   @Prop({ required: true })
   title: string;
 
