@@ -148,6 +148,10 @@ export class AdminNetworkingManager {
       return await this.addModelData('blog', data)
    }
 
+   public static async addUser(data: any) {
+      return await this.addModelData('user', data)
+   }
+
    public static async addImage(data: any) {
       const response = await axios.post(`${API}/image/add`, data, {
          headers: {
@@ -187,6 +191,10 @@ export class AdminNetworkingManager {
 
    public static async updateDepartment(id: string, data: any) {
       return await this.updateModelData('department', { ...data, _id: id })
+   }
+
+   public static async updateUser(id: string, data: any) {
+      return await this.updateModelData('user', { ...data, _id: id })
    }
 
    public static async updateHomePage(data: any) {

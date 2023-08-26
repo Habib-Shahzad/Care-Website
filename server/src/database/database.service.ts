@@ -65,8 +65,20 @@ export class DatabaseService {
       .exec();
   }
 
+  async updateUser(data: any): Promise<User> {
+    const { _id, ...updateData } = data;
+
+    return this.userModel
+      .findByIdAndUpdate(_id, updateData, { new: true })
+      .exec();
+  }
+
   async deleteActivities(ids: string[]): Promise<void> {
     await this.activityModel.deleteMany({ _id: { $in: ids } }).exec();
+  }
+
+  async deleteUsers(ids: string[]): Promise<void> {
+    await this.userModel.deleteMany({ _id: { $in: ids } }).exec();
   }
 
   async setActivitiesActive(

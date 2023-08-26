@@ -81,11 +81,32 @@ function sortData(
 
    return filterData(
       [...data].sort((a, b) => {
-         if (payload.reversed) {
-            return b[sortBy].localeCompare(a[sortBy])
+         const key1 = a[sortBy]
+         const key2 = b[sortBy]
+
+         if (typeof key1 == 'number' && typeof key2 == 'number') {
+            if (payload.reversed) {
+               return key2 - key1
+            }
+
+            return key1 - key2
          }
 
-         return a[sortBy].localeCompare(b[sortBy])
+         if (typeof key1 == 'boolean' && typeof key2 == 'boolean') {
+            if (payload.reversed) {
+               return key2 ? -1 : 1
+            }
+
+            return key1 ? -1 : 1
+         }
+
+         if (typeof key1 == 'string' && typeof key2 == 'string') {
+            if (payload.reversed) {
+               return b[sortBy].localeCompare(a[sortBy])
+            }
+
+            return a[sortBy].localeCompare(b[sortBy])
+         }
       }),
       payload.search
    )

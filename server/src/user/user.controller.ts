@@ -58,7 +58,33 @@ export class UserController {
   @UseGuards(AdminAuthGuardService)
   @Post('/add')
   async addUser(@Body() data: any) {
-    return this.userService.addUser(data);
+    try {
+      return await this.userService.addUser(data);
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
+  // @UseGuards(AdminAuthGuardService)
+  // @Post('/update')
+  // async updateUser(@Body() data: any) {
+  //   try {
+  //     return await this.userService.updateUser(data);
+  //   } catch (err) {
+  //     return null;
+  //   }
+  // }
+
+  @UseGuards(AdminAuthGuardService)
+  @Post('/delete')
+  async deleteUser(@Body() body: { data: string[] }) {
+    try {
+      return await this.userService.deleteUsers(body.data);
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 
   @UseGuards(AdminAuthGuardService)

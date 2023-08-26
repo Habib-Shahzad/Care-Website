@@ -21,9 +21,9 @@ export class UserService {
     return this.databaseService.getAllUsers();
   }
 
-  addUser(data: any) {
+  async addUser(data: any) {
     data.password = bcrypt.hashSync(data.password, 10);
-    return { data: this.databaseService.addUser(data) };
+    return { data: await this.databaseService.addUser(data) };
   }
 
   async setActive(active: boolean, selected: string[]) {
@@ -33,6 +33,10 @@ export class UserService {
       success: true,
       data: users,
     };
+  }
+
+  async updateUser(data: any) {
+    return { data: await this.databaseService.updateUser(data) };
   }
 
   async setAdmin(admin: boolean, selected: string[]) {
@@ -58,6 +62,10 @@ export class UserService {
       successAdmin: adminUser !== null,
       admin_user: adminUser,
     };
+  }
+
+  async deleteUsers(selected: string[]) {
+    return await this.databaseService.deleteUsers(selected);
   }
 
   async login(data: LoginReqDto) {

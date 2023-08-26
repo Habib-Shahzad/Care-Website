@@ -8,12 +8,14 @@ import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { Box, Button, Checkbox, Flex } from '@mantine/core'
 import {
+   IconEdit,
    IconLock,
    IconSquareCheck,
    IconSquareRoundedX,
 } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
 import ConfirmationDialog from '@/admin/components/Dialog'
+import UserForm from '@/admin/forms/UsersForm'
 
 export default function UserTable() {
    const [selectedUsers, setSelectedUsers] = useState<User[]>([])
@@ -52,10 +54,13 @@ export default function UserTable() {
 
    const handleDeleteSelected = async () => {
       setLoading(true)
-      const response = await AdminNetworkingManager.deleteUsers(
+      await AdminNetworkingManager.deleteUsers(
          selectedUsers?.map((user) => user._id)
       )
-      setUserList(response)
+      const updatedUserList = userList.filter(
+         (user) => !selectedUsers.includes(user)
+      )
+      setUserList(updatedUserList)
       setSelectedUsers([])
       setLoading(false)
    }
@@ -89,6 +94,8 @@ export default function UserTable() {
          setSelectedUsers([...userList])
       }
    }
+
+   const [openBlogForm, { open, close }] = useDisclosure(false)
 
    const userTableProps = useMemo<PaginatedTableProps<User>>(
       () => ({
@@ -136,8 +143,8 @@ export default function UserTable() {
                   </td>
                   <td>
                      <Button
-                        leftIcon={<IconLock />}
                         disabled
+                        leftIcon={<IconLock />}
                         color="blue"
                         variant="white"
                         onClick={() => {}}
@@ -164,7 +171,19 @@ export default function UserTable() {
             onConfirm={handleDeleteSelected}
          />
 
+         <UserForm opened={openBlogForm} handleOnClose={close} />
+
          <Box>
+            {selectedUsers.length == 0 && (
+               <Button
+                  color="green"
+                  onClick={() => {
+                     open()
+                  }}
+               >
+                  Add new
+               </Button>
+            )}
             {selectedUsers.length > 0 && !loading && (
                <>
                   <span>{`${selectedUsers.length} activity(s) selected`}</span>
@@ -224,7 +243,18 @@ export default function UserTable() {
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && <PaginatedTable searchField {...userTableProps} />}
+         {!loading && (
+            <PaginatedTable
+               allowSorting
+               sortingLabelToKey={{
+                  'First Name': 'firstName',
+                  Admin: 'admin',
+                  Active: 'active',
+               }}
+               searchField
+               {...userTableProps}
+            />
+         )}
       </div>
    )
 }
