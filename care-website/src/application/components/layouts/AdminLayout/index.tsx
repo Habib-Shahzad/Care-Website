@@ -5,6 +5,7 @@ import AdminDataContextProvider, {
    AdminDataContext,
 } from '@/admin/providers/AdminDataContext'
 import { AppShell, Footer } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
 import { ReactNode } from 'react'
 
 export default function AdminLayout(props: { children: ReactNode }) {
@@ -42,6 +43,7 @@ export default function AdminLayout(props: { children: ReactNode }) {
                      </Footer>
                   }
                >
+                  <Notifications />
                   {children}
                </AppShell>
             </AdminDataContextProvider>

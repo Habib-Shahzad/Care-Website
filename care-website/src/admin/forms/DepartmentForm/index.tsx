@@ -1,4 +1,5 @@
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { NotificationType, Notify } from '@/admin/components/Notification'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import Department, { _Member } from '@/application/models/Department.model'
 import { API } from '@/application/networking'
@@ -63,7 +64,7 @@ export default function DepartmentForm(props: ActivityFormProps) {
 
    async function listImages() {
       try {
-         const images = await AdminNetworkingManeger.listImages()
+         const images = await AdminNetworkingManager.listImages()
          setImageList(images)
       } catch (error) {
          console.log(error)
@@ -116,18 +117,30 @@ export default function DepartmentForm(props: ActivityFormProps) {
       useAdminDataContext()
 
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
-      if (data.members.length === 0) return
+      if (data.members.length === 0) {
+         Notify({
+            title: 'Members are required!',
+            message: 'Please add at least one member',
+            type: NotificationType.ERROR,
+         })
+         return
+      }
 
       setLoading(true)
 
       if (!editDepartment) {
-         const newDepartment = await AdminNetworkingManeger.addDepartment(data)
+         const newDepartment = await AdminNetworkingManager.addDepartment(data)
          setDepartmentList([newDepartment, ...departmentList])
          handleOnClose()
          reset()
          setLoading(false)
+         Notify({
+            title: 'Department added!',
+            message: 'Department has been added successfully',
+            type: NotificationType.SUCCESS,
+         })
       } else {
-         const updatedActivity = await AdminNetworkingManeger.updateDepartment(
+         const updatedActivity = await AdminNetworkingManager.updateDepartment(
             editDepartment?._id,
             data
          )
@@ -140,18 +153,25 @@ export default function DepartmentForm(props: ActivityFormProps) {
          setEditDepartment(undefined)
          setLoading(false)
          reset()
+
+         Notify({
+            title: 'Department updated!',
+            message: 'Department has been updated successfully',
+            type: NotificationType.SUCCESS,
+         })
       }
 
       setLoading(false)
    }
 
    useEffect(() => {
-      const fixedMembers = editDepartment?.members.map((member) => ({
-         ...member,
-         image: member.image._id,
-      }))
+      // if (!editDepartment) return
+      // const fixedMembers = editDepartment?.members.map((member) => ({
+      //    ...member,
+      //    image: member.image,
+      // }))
       setValue('name', editDepartment?.name ?? '')
-      setValue('members', editDepartment?.members ? fixedMembers ?? [] : [])
+      setValue('members', editDepartment?.members ?? [])
       setValue('active', editDepartment?.active ?? true)
    }, [editDepartment])
 
@@ -216,74 +236,80 @@ export default function DepartmentForm(props: ActivityFormProps) {
                   <Divider mt={30} />
 
                   <Container>
-                     {memberFields.map((field, index) => (
-                        <div key={field.id}>
-                           <Flex
-                              sx={{
-                                 justifyContent: 'space-around',
-                              }}
-                           >
-                              <TextInput
-                                 {...register(`members.${index}.name`, {
-                                    required: 'Name is required!',
-                                 })}
-                                 withAsterisk
-                                 label="Member Name"
-                                 sx={{ width: '15rem', zIndex: 10 }}
-                              />
+                     {memberFields.map((field, index) => {
+                        console.log(field)
 
-                              <Select
-                                 searchable
-                                 dropdownPosition="top"
-                                 onChange={(value) => {
-                                    setValue(`members.${index}.image`, value)
+                        return (
+                           <div key={field.id}>
+                              <Flex
+                                 sx={{
+                                    justifyContent: 'space-around',
                                  }}
-                                 defaultValue={field.image}
-                                 ml={20}
-                                 sx={{ width: '15rem', zIndex: 10 }}
-                                 label="Choose image"
-                                 placeholder="Pick one"
-                                 itemComponent={AutoCompleteItem}
-                                 data={imageList.map((image) => ({
-                                    value: image._id,
-                                    label: image.name,
-                                    image: `${API}/${image.image.filePath}`,
-                                 }))}
-                                 filter={(value, item) => {
-                                    if (!item) return true
-                                    if (!item.label) return true
-                                    return item?.label
-                                       ?.toLowerCase()
-                                       .includes(value?.toLowerCase()?.trim())
-                                 }}
-                              />
-
-                              <Center ml={20} mt={20}>
-                                 <IconTrashFilled
-                                    color="red"
-                                    onClick={() => {
-                                       console.log(index)
-                                       membersRemove(index)
-                                    }}
-                                    style={{
-                                       cursor: 'pointer',
-                                    }}
-                                    stroke={5}
+                              >
+                                 <TextInput
+                                    {...register(`members.${index}.name`, {
+                                       required: 'Name is required!',
+                                    })}
+                                    withAsterisk
+                                    label="Member Name"
+                                    sx={{ width: '15rem', zIndex: 10 }}
                                  />
-                              </Center>
-                           </Flex>
-                           <TextInput
-                              {...register(`members.${index}.role`, {
-                                 required: 'Role is required!',
-                              })}
-                              defaultValue={field.role}
-                              withAsterisk
-                              label="Member Role"
-                              sx={{ width: '15rem', zIndex: 10 }}
-                           />
-                           <Divider mt={20} mb={15} />
-                        </div>
-                     ))}
+
+                                 <Select
+                                    searchable
+                                    dropdownPosition="top"
+                                    onChange={(value) => {
+                                       setValue(`members.${index}.image`, value)
+                                    }}
+                                    defaultValue={field.image}
+                                    ml={20}
+                                    sx={{ width: '15rem', zIndex: 10 }}
+                                    label="Choose image"
+                                    placeholder="Pick one"
+                                    itemComponent={AutoCompleteItem}
+                                    data={imageList.map((image) => ({
+                                       value: image._id,
+                                       label: image.name,
+                                       image: `${API}/${image.image.filePath}`,
+                                    }))}
+                                    filter={(value, item) => {
+                                       if (!item) return true
+                                       if (!item.label) return true
+                                       return item?.label
+                                          ?.toLowerCase()
+                                          .includes(
+                                             value?.toLowerCase()?.trim()
+                                          )
+                                    }}
+                                 />
+
+                                 <Center ml={20} mt={20}>
+                                    <IconTrashFilled
+                                       color="red"
+                                       onClick={() => {
+                                          console.log(index)
+                                          membersRemove(index)
+                                       }}
+                                       style={{
+                                          cursor: 'pointer',
+                                       }}
+                                       stroke={5}
+                                    />
+                                 </Center>
+                              </Flex>
+                              <TextInput
+                                 {...register(`members.${index}.role`, {
+                                    required: 'Role is required!',
+                                 })}
+                                 defaultValue={field.role}
+                                 withAsterisk
+                                 label="Member Role"
+                                 sx={{ width: '15rem', zIndex: 10 }}
+                              />
+                              <Divider mt={20} mb={15} />
+                           </div>
+                        )
+                     })}
                   </Container>
 
                   <Group mt="xl" position="right">
@@ -291,7 +317,11 @@ export default function DepartmentForm(props: ActivityFormProps) {
                         variant="subtle"
                         color="red"
                         ml="md"
-                        onClick={handleOnClose}
+                        onClick={() => {
+                           reset()
+                           setEditDepartment(undefined)
+                           handleOnClose()
+                        }}
                         disabled={loading}
                         loading={loading}
                      >

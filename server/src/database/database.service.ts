@@ -136,13 +136,15 @@ export class DatabaseService {
 
   // Department
   async getDepartments(): Promise<Department[]> {
-    return this.departmentModel
-      .find()
-      .populate({
-        path: 'members',
-        populate: [{ path: 'image' }],
-      })
-      .exec();
+    return (
+      this.departmentModel
+        .find()
+        // .populate({
+        //   path: 'members',
+        //   populate: [{ path: 'image' }],
+        // })
+        .exec()
+    );
   }
 
   async addDepartment(data: any): Promise<Department> {

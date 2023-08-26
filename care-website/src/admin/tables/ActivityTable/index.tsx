@@ -3,7 +3,7 @@ import PaginatedTable, {
    PaginatedTableProps,
 } from '@/admin/components/PaginatedTable'
 import TableSkeleton from '@/admin/components/TableSkeleton'
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { Box, Button, Checkbox, Flex } from '@mantine/core'
 import {
@@ -45,7 +45,7 @@ export default function ActivityTable() {
    async function listActivities() {
       setLoading(true)
       try {
-         const activitys = await AdminNetworkingManeger.listActivities()
+         const activitys = await AdminNetworkingManager.listActivities()
          setActivityList(activitys)
       } catch (error) {
          console.log(error)
@@ -78,7 +78,7 @@ export default function ActivityTable() {
       if (selectedActivities.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManeger.deleteActivities(
+         const response = await AdminNetworkingManager.deleteActivities(
             selectedActivities?.map((activity) => activity._id)
          )
          setSelectedActivites([])
@@ -94,7 +94,7 @@ export default function ActivityTable() {
    const handleActivation = async (active: boolean) => {
       if (selectedActivities.length === 0) return
       setLoading(true)
-      const response = await AdminNetworkingManeger.setActivitiesActive(
+      const response = await AdminNetworkingManager.setActivitiesActive(
          selectedActivities?.map((activity) => activity._id),
          active
       )
@@ -241,7 +241,9 @@ export default function ActivityTable() {
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && <PaginatedTable {...activityTableProps} />}
+         {!loading && (
+            <PaginatedTable searchField="name" {...activityTableProps} />
+         )}
       </div>
    )
 }

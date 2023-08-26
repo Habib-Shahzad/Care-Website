@@ -3,7 +3,7 @@ import PaginatedTable, {
    PaginatedTableProps,
 } from '@/admin/components/PaginatedTable'
 import TableSkeleton from '@/admin/components/TableSkeleton'
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { Box, Button, Checkbox, Flex } from '@mantine/core'
 import {
@@ -31,7 +31,7 @@ export default function BlogTable() {
    async function listBlogs() {
       setLoading(true)
       try {
-         const blogs = await AdminNetworkingManeger.listBlogs()
+         const blogs = await AdminNetworkingManager.listBlogs()
          setBlogList(blogs)
       } catch (error) {
          console.log(error)
@@ -62,7 +62,7 @@ export default function BlogTable() {
       if (selectedBlogs.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManeger.deleteBlogs(
+         const response = await AdminNetworkingManager.deleteBlogs(
             selectedBlogs?.map((blog) => blog._id)
          )
          setSelectedBlogs([])
@@ -78,7 +78,7 @@ export default function BlogTable() {
    const handleActivation = async (active: boolean) => {
       if (selectedBlogs.length === 0) return
       setLoading(true)
-      const response = await AdminNetworkingManeger.setBlogsActive(
+      const response = await AdminNetworkingManager.setBlogsActive(
          selectedBlogs?.map((blog) => blog._id),
          active
       )

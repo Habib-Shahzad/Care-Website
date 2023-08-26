@@ -9,9 +9,12 @@ import BlogTable from '@/admin/tables/BlogsTable'
 import ActivityTable from '@/admin/tables/ActivityTable'
 import DepartmentTable from '@/admin/tables/DepartmentTable'
 import ImagesTable from '@/admin/tables/ImageTable'
+import HomePageForm from '@/admin/forms/HomePageForm'
+import { useDisclosure } from '@mantine/hooks'
 
 export default function Admin() {
    const { adminUserState, loading, activeTab } = useAdminContext()
+   const [openHomePageForm, { open, close }] = useDisclosure(true)
 
    return (
       <div>
@@ -32,6 +35,14 @@ export default function Admin() {
                      <>{activeTab === 'Activities' && <ActivityTable />}</>
                      <>{activeTab === 'Department' && <DepartmentTable />}</>
                      <>{activeTab === 'Images' && <ImagesTable />}</>
+                     <>
+                        {activeTab === 'Home Page' && (
+                           <HomePageForm
+                              opened={openHomePageForm}
+                              handleOnClose={close}
+                           />
+                        )}
+                     </>
                   </Container>
                )}
             </>

@@ -1,10 +1,11 @@
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { User } from '../models/user.model'
 import Blog from '@/application/models/Blog.model'
 import Image from '@/application/models/Image.model'
 import Activity from '@/application/models/Activity.model'
 import Department from '@/application/models/Department.model'
+import HomePageData from '@/application/models/Home.page.model'
 
 // Create the context
 type AdminDataContextType = {
@@ -25,6 +26,9 @@ type AdminDataContextType = {
 
    departmentList: Department[]
    setDepartmentList: React.Dispatch<React.SetStateAction<Department[]>>
+
+   homePageData: HomePageData | null
+   setHomePageData: React.Dispatch<React.SetStateAction<HomePageData | null>>
 }
 
 export const AdminDataContext = createContext<AdminDataContextType | undefined>(
@@ -49,6 +53,7 @@ export default function AdminDataContextProvider(props: {
    const [imageList, setImageList] = useState<Image[]>([])
    const [activityList, setActivityList] = useState<Activity[]>([])
    const [departmentList, setDepartmentList] = useState<Department[]>([])
+   const [homePageData, setHomePageData] = useState<HomePageData | null>(null)
    const [loading, setLoading] = useState(true)
 
    const { children } = props
@@ -68,6 +73,8 @@ export default function AdminDataContextProvider(props: {
             setActivityList,
             departmentList,
             setDepartmentList,
+            homePageData,
+            setHomePageData,
          }}
       >
          {children}

@@ -1,9 +1,8 @@
 import Image from './Image.model'
 
 export default interface HomePageData {
-   _id: string
-   mainContent: string
-   mainImage: Image
-   ambassadorImage: Image
-   __v: number
+   _id: string | null
+   mainContent: string | null
+   mainImage: Image | null
+   ambassadorImage: Image | null
 }

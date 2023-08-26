@@ -3,7 +3,7 @@ import PaginatedTable, {
    PaginatedTableProps,
 } from '@/admin/components/PaginatedTable'
 import TableSkeleton from '@/admin/components/TableSkeleton'
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { Box, Button, Checkbox, Flex } from '@mantine/core'
 import {
@@ -35,7 +35,7 @@ export default function DepartmentTable() {
    async function listDepartments() {
       setLoading(true)
       try {
-         const departments = await AdminNetworkingManeger.listDepartments()
+         const departments = await AdminNetworkingManager.listDepartments()
          setDepartmentList(departments)
       } catch (error) {
          console.log(error)
@@ -68,7 +68,7 @@ export default function DepartmentTable() {
       if (selectedDepartments.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManeger.deleteDepartments(
+         const response = await AdminNetworkingManager.deleteDepartments(
             selectedDepartments?.map((department) => department._id)
          )
          setSelectedDepartments([])
@@ -84,7 +84,7 @@ export default function DepartmentTable() {
    const handleActivation = async (active: boolean) => {
       if (selectedDepartments.length === 0) return
       setLoading(true)
-      const response = await AdminNetworkingManeger.setDepartmentsActive(
+      const response = await AdminNetworkingManager.setDepartmentsActive(
          selectedDepartments?.map((department) => department._id),
          active
       )
@@ -219,8 +219,8 @@ export default function DepartmentTable() {
                <Button
                   color="green"
                   onClick={() => {
-                     open()
                      setEditDepartment(undefined)
+                     open()
                   }}
                >
                   Add new
@@ -229,7 +229,9 @@ export default function DepartmentTable() {
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && <PaginatedTable {...departmentTableProps} />}
+         {!loading && (
+            <PaginatedTable searchField="name" {...departmentTableProps} />
+         )}
       </div>
    )
 }

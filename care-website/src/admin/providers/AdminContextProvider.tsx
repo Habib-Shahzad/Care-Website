@@ -1,4 +1,4 @@
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { User } from '../models/user.model'
 
@@ -36,7 +36,7 @@ export default function AdminContextProvider(props: {
 
    useEffect(() => {
       ;(async () => {
-         const response = await AdminNetworkingManeger.loggedInUser()
+         const response = await AdminNetworkingManager.loggedInUser()
          if (response.successAdmin) {
             setAdminUserState(response.admin_user)
          }

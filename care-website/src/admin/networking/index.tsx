@@ -1,15 +1,25 @@
 import Blog from '@/application/models/Blog.model'
 import { NETWORKING_API as API } from '@/application/networking'
 
-// const API = 'http://localhost:3000/api'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
-export class AdminNetworkingManeger {
+export class AdminNetworkingManager {
    public static async loggedInUser() {
       const response = await axios.get(`${API}/user/loggedIn`)
       const content = response.data
       return content ?? null
+   }
+
+   public static async getHomePageData() {
+      const response = await axios.get(`${API}/home-page/data`, {
+         headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-store',
+         },
+      })
+      const content = response.data
+      return content?.data
    }
 
    public static async loginUser(email: string, password: string) {
@@ -177,5 +187,9 @@ export class AdminNetworkingManeger {
 
    public static async updateDepartment(id: string, data: any) {
       return await this.updateModelData('department', { ...data, _id: id })
+   }
+
+   public static async updateHomePage(data: any) {
+      return await this.updateModelData('home-page', data)
    }
 }

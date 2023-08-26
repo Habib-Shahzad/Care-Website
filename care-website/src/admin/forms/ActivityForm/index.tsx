@@ -1,4 +1,5 @@
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { NotificationType, Notify } from '@/admin/components/Notification'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import Activity from '@/application/models/Activity.model'
 import { API } from '@/application/networking'
@@ -64,7 +65,7 @@ export default function ActivityForm(props: ActivityFormProps) {
 
    async function listImages() {
       try {
-         const images = await AdminNetworkingManeger.listImages()
+         const images = await AdminNetworkingManager.listImages()
          setImageList(images)
       } catch (error) {
          console.log(error)
@@ -100,18 +101,32 @@ export default function ActivityForm(props: ActivityFormProps) {
    const { activityList, setActivityList, setLoading } = useAdminDataContext()
 
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
-      if (data.imageList.length === 0) return
+      if (data.imageList.length === 0) {
+         Notify({
+            title: 'No Images Selected',
+            message: 'Please select at least one image',
+            type: NotificationType.ERROR,
+         })
+
+         return
+      }
 
       setLoading(true)
 
       if (!editActivity) {
-         const newActivity = await AdminNetworkingManeger.addActivity(data)
+         const newActivity = await AdminNetworkingManager.addActivity(data)
          setActivityList([newActivity, ...activityList])
          handleOnClose()
          reset()
          setLoading(false)
+
+         Notify({
+            title: 'Activity Added',
+            message: 'Activity has been added successfully',
+            type: NotificationType.SUCCESS,
+         })
       } else {
-         const updatedActivity = await AdminNetworkingManeger.updateActivity(
+         const updatedActivity = await AdminNetworkingManager.updateActivity(
             editActivity?._id,
             data
          )
@@ -124,6 +139,12 @@ export default function ActivityForm(props: ActivityFormProps) {
          setEditActivitiy(undefined)
          setLoading(false)
          reset()
+
+         Notify({
+            title: 'Activity Updated',
+            message: 'Activity has been updated successfully',
+            type: NotificationType.SUCCESS,
+         })
       }
 
       setLoading(false)

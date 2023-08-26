@@ -31,7 +31,7 @@ import {
    IconSun,
 } from '@tabler/icons-react'
 import { useAdminContext } from '@/admin/providers/AdminContextProvider'
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 
 const useStyles = createStyles((theme) => ({
    header: {
@@ -187,7 +187,7 @@ export default function AdminNavbarSimple() {
                      className={classes.link}
                      onClick={async (event) => {
                         event.preventDefault()
-                        await AdminNetworkingManeger.logoutUser()
+                        await AdminNetworkingManager.logoutUser()
                         setAdminUserState(null)
                      }}
                   >

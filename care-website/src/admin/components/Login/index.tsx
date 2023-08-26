@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { AdminNetworkingManeger as AdminNetworkingManager } from '@/admin/networking'
+import { AdminNetworkingManager as AdminNetworkingManager } from '@/admin/networking'
 import { useAdminContext } from '@/admin/providers/AdminContextProvider'
 import {
    Anchor,

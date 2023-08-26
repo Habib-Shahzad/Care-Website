@@ -4,7 +4,7 @@ import PaginatedTable, {
 } from '@/admin/components/PaginatedTable'
 import TableSkeleton from '@/admin/components/TableSkeleton'
 import { User } from '@/admin/models/user.model'
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { Box, Button, Checkbox, Flex } from '@mantine/core'
 import {
@@ -24,7 +24,7 @@ export default function UserTable() {
    async function listUsers() {
       setLoading(true)
       try {
-         const users = await AdminNetworkingManeger.listUsers()
+         const users = await AdminNetworkingManager.listUsers()
          setUserList(users)
       } catch (error) {
          console.log(error)
@@ -52,7 +52,7 @@ export default function UserTable() {
 
    const handleDeleteSelected = async () => {
       setLoading(true)
-      const response = await AdminNetworkingManeger.deleteUsers(
+      const response = await AdminNetworkingManager.deleteUsers(
          selectedUsers?.map((user) => user._id)
       )
       setUserList(response)
@@ -62,7 +62,7 @@ export default function UserTable() {
 
    const handleActivation = async (active: boolean) => {
       setLoading(true)
-      const response = await AdminNetworkingManeger.setUsersActive(
+      const response = await AdminNetworkingManager.setUsersActive(
          selectedUsers?.map((user) => user._id),
          active
       )
@@ -73,7 +73,7 @@ export default function UserTable() {
 
    const handleAdmin = async (admin: boolean) => {
       setLoading(true)
-      const response = await AdminNetworkingManeger.setUsersAdmin(
+      const response = await AdminNetworkingManager.setUsersAdmin(
          selectedUsers?.map((user) => user._id),
          admin
       )

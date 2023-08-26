@@ -1,4 +1,4 @@
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { BlogTypeToLabel } from '@/admin/tables/BlogsTable'
 import Blog, { BlogType } from '@/application/models/Blog.model'
@@ -29,6 +29,7 @@ import {
    IMAGE_MIME_TYPE,
 } from '@mantine/dropzone'
 import { set } from 'date-fns'
+import { NotificationType, Notify } from '@/admin/components/Notification'
 
 type BlogFormProps = {
    opened: boolean
@@ -49,7 +50,7 @@ export default function ImageForm(props: BlogFormProps) {
 
    async function listImages() {
       try {
-         const images = await AdminNetworkingManeger.listImages()
+         const images = await AdminNetworkingManager.listImages()
          setImageList(images)
       } catch (error) {
          console.log(error)
@@ -76,12 +77,19 @@ export default function ImageForm(props: BlogFormProps) {
       },
    })
 
-   const { blogList, setBlogList, setLoading } = useAdminDataContext()
+   const { setLoading } = useAdminDataContext()
 
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
       const { name, image } = data
 
-      if (!name || !image) return
+      if (!name || !image) {
+         Notify({
+            title: 'Fill all the fields',
+            message: 'Please fill all the fields',
+            type: NotificationType.ERROR,
+         })
+         return
+      }
 
       const formData = new FormData()
       formData.append('data', JSON.stringify({ name }))
@@ -91,14 +99,24 @@ export default function ImageForm(props: BlogFormProps) {
 
       if (!editImage) {
          try {
-            const newImage = await AdminNetworkingManeger.addImage(formData)
+            const newImage = await AdminNetworkingManager.addImage(formData)
             setImageList([newImage, ...imageList])
             handleOnClose()
             reset()
             setLoading(false)
+            Notify({
+               title: 'Image Added',
+               message: 'Image has been added successfully',
+               type: NotificationType.SUCCESS,
+            })
          } catch (error) {
             setLoading(false)
             handleOnClose()
+            Notify({
+               title: 'Error',
+               message: 'Something went wrong',
+               type: NotificationType.ERROR,
+            })
          }
       } else {
       }

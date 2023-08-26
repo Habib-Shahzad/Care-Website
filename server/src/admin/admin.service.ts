@@ -124,7 +124,7 @@ export class AdminService {
   async addDepartment(data: any) {
     const newDepartment = await this.databaseService.addDepartment(data);
     return {
-      data: await this.databaseService.getDepartment(newDepartment._id),
+      data: newDepartment,
     };
   }
 

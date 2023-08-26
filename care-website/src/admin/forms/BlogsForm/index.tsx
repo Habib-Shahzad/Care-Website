@@ -1,4 +1,5 @@
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { NotificationType, Notify } from '@/admin/components/Notification'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { BlogTypeToLabel } from '@/admin/tables/BlogsTable'
 import Blog, { BlogType } from '@/application/models/Blog.model'
@@ -54,7 +55,7 @@ type FormValues = {
    title: string
    content: string
    imageList: string[]
-   type: string
+   blogType: string
    active: boolean
 }
 
@@ -64,7 +65,7 @@ export default function BlogForm(props: BlogFormProps) {
 
    async function listImages() {
       try {
-         const images = await AdminNetworkingManeger.listImages()
+         const images = await AdminNetworkingManager.listImages()
          setImageList(images)
       } catch (error) {
          console.log(error)
@@ -97,17 +98,30 @@ export default function BlogForm(props: BlogFormProps) {
    const { blogList, setBlogList, setLoading } = useAdminDataContext()
 
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
-      if (data.imageList.length === 0) return
+      if (data.imageList.length === 0) {
+         Notify({
+            title: 'Select an Image',
+            message: 'Please select at least one image',
+            type: NotificationType.ERROR,
+         })
+         return
+      }
       setLoading(true)
 
       if (!editBlog) {
-         const newBlog = await AdminNetworkingManeger.addBlog(data)
+         const newBlog = await AdminNetworkingManager.addBlog(data)
          setBlogList([newBlog, ...blogList])
          handleOnClose()
          reset()
          setLoading(false)
+
+         Notify({
+            title: 'Blog Added',
+            message: 'Blog has been added successfully',
+            type: NotificationType.SUCCESS,
+         })
       } else {
-         const updatedBlog = await AdminNetworkingManeger.updateBlog(
+         const updatedBlog = await AdminNetworkingManager.updateBlog(
             editBlog._id,
             data
          )
@@ -120,6 +134,12 @@ export default function BlogForm(props: BlogFormProps) {
          setEditBlog(undefined)
          setLoading(false)
          reset()
+
+         Notify({
+            title: 'Blog Updated',
+            message: 'Blog has been updated successfully',
+            type: NotificationType.SUCCESS,
+         })
       }
    }
 
@@ -161,9 +181,13 @@ export default function BlogForm(props: BlogFormProps) {
                         />
 
                         <Select
-                           defaultValue={editBlog?.blogType ?? ''}
+                           defaultValue={editBlog?.blogType ?? undefined}
                            sx={{ width: '20rem', zIndex: 10 }}
                            label="Blog title"
+                           onChange={(value) => {
+                              if (!value) return
+                              setValue('blogType', value)
+                           }}
                            data={Object.keys(BlogType).map((type) => ({
                               value: type,
                               label: BlogTypeToLabel[type],

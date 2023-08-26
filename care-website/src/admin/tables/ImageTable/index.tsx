@@ -3,7 +3,7 @@ import PaginatedTable, {
    PaginatedTableProps,
 } from '@/admin/components/PaginatedTable'
 import TableSkeleton from '@/admin/components/TableSkeleton'
-import { AdminNetworkingManeger } from '@/admin/networking'
+import { AdminNetworkingManager } from '@/admin/networking'
 import { useAdminDataContext } from '@/admin/providers/AdminDataContext'
 import { Avatar, Box, Button, Checkbox, Flex, TextInput } from '@mantine/core'
 import {
@@ -59,7 +59,7 @@ export default function ImagesTable() {
    async function listImages() {
       setLoading(true)
       try {
-         const images = await AdminNetworkingManeger.listImages()
+         const images = await AdminNetworkingManager.listImages()
          //  const imagesWithFileSize = await Promise.all(
          //     images.map(async (image: Image) => {
          //        const url = `${API}/${image.image.filePath}`
@@ -100,7 +100,7 @@ export default function ImagesTable() {
       if (selectedImages.length === 0) return
       setLoading(true)
       try {
-         const response = await AdminNetworkingManeger.deleteImages(
+         const response = await AdminNetworkingManager.deleteImages(
             selectedImages?.map((image) => image._id)
          )
          setSelectedImages([])
@@ -233,14 +233,14 @@ export default function ImagesTable() {
                   >
                      Add new
                   </Button>
-
-                  {/* <TextInput></TextInput> */}
                </>
             )}
          </Box>
 
          {loading && <TableSkeleton />}
-         {!loading && <PaginatedTable {...imageTableProps} />}
+         {!loading && (
+            <PaginatedTable searchField="name" {...imageTableProps} />
+         )}
       </div>
    )
 }
