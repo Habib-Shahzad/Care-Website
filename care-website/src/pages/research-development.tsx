@@ -71,7 +71,7 @@ export default function ResearchDevelopment() {
                         <Image
                            key={index}
                            radius={'md'}
-                           src={`${API}${image.url}`}
+                           src={image.url}
                            alt="Care"
                            height={300}
                            width={420}

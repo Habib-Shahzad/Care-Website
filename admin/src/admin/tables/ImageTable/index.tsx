@@ -138,11 +138,7 @@ export default function ImagesTable() {
                   </td>
                   <td>{image.name}</td>
                   <td>
-                     <Avatar
-                        src={`${image.url}`}
-                        alt={image.name}
-                        radius="xl"
-                     />
+                     <Avatar src={image.url} alt={image.name} radius="xl" />
                   </td>
                   <td>{image?.['fileSize']?.bytes ?? 'N/A'}</td>
 

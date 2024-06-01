@@ -269,7 +269,7 @@ export default function DepartmentForm(props: ActivityFormProps) {
                                     data={imageList.map((image) => ({
                                        value: image._id,
                                        label: image.name,
-                                       image: `${image.url}`,
+                                       image: image.url,
                                     }))}
                                     filter={(value, item) => {
                                        if (!item) return true
