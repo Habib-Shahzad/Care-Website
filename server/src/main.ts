@@ -12,6 +12,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000',
       'http://localhost:3001',
+      'https://asherewecare-admin.vercel.app',
       'https://asherewecare.pk',
     ],
     credentials: true,
