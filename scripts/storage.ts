@@ -1,7 +1,7 @@
 import * as AWS from 'aws-sdk';
 
 import * as dotenv from 'dotenv';
-import { UploadFile } from '../src/storage/models/upload.file.model';
+import { UploadFile } from './models';
 dotenv.config();
 
 const IMAGE_BUCKET = process.env.IMAGE_BUCKET;

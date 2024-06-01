@@ -9,9 +9,9 @@ import {
   CareImageSchema,
   ImageDocument,
   ImageSchema,
-} from '../src/image/entities/image.entity';
+  UploadFile
+} from './models';
 import { StorageService } from './storage';
-import { UploadFile } from '../src/storage/models/upload.file.model';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
