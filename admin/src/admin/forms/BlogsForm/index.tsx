@@ -226,7 +226,7 @@ export default function BlogForm(props: BlogFormProps) {
                         data={imageList.map((image) => ({
                            value: image._id,
                            label: image.name,
-                           image: `${image.image.filePath}`,
+                           image: `${image.url}`,
                         }))}
                         defaultValue={editBlog?.imageList?.map(
                            (image) => image?._id

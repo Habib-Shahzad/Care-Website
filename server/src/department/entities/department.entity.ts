@@ -20,7 +20,7 @@ export class Department {
         role: { type: String, required: true },
         image: {
           type: MongooseSchema.Types.ObjectId,
-          ref: 'Image',
+          ref: 'CareImage',
           required: true,
         },
       },

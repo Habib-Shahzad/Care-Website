@@ -64,7 +64,7 @@ export class ActivityController {
   }
 
   @UseGuards(AdminGuard)
-  @Delete('delete-multiple')
+  @Post('delete-multiple')
   async removeMany(@Body() body: { data: string[] }) {
     return await this.activityService.deleteMany(body.data);
   }

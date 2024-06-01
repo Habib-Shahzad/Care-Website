@@ -194,7 +194,7 @@ export default function HomePageForm(props: HomePageFormProps) {
                            data={imageList.map((image) => ({
                               value: image._id,
                               label: image.name,
-                              image: `${image.image.filePath}`,
+                              image: `${image.url}`,
                            }))}
                            filter={(value, item) => {
                               if (!item) return true
@@ -220,7 +220,7 @@ export default function HomePageForm(props: HomePageFormProps) {
                            data={imageList.map((image) => ({
                               value: image._id,
                               label: image.name,
-                              image: `${image.image.filePath}`,
+                              image: `${image.url}`,
                            }))}
                            filter={(value, item) => {
                               if (!item) return true

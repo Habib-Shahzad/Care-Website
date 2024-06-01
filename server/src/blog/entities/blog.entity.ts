@@ -24,7 +24,7 @@ export class Blog {
 
   @Prop({
     type: [
-      { type: MongooseSchema.Types.ObjectId, ref: 'Image', required: true },
+      { type: MongooseSchema.Types.ObjectId, ref: 'CareImage', required: true },
     ],
   })
   imageList: MongooseSchema.Types.ObjectId[];

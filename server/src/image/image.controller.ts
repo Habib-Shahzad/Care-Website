@@ -73,8 +73,16 @@ export class ImageController {
     return this.imageService.remove(id);
   }
 
-  @Delete('delete-multiple')
+  @Post('delete-multiple')
   async removeMany(@Body() body: { data: string[] }) {
-    return await this.imageService.deleteMany(body.data);
+    const ids = body.data;
+
+    const images = await this.imageService.findByIds(ids);
+    const promises = images.map((image) => {
+      const key = image.url.split('/').pop();
+      return this.storageService.delete(key);
+    });
+    await Promise.all(promises);
+    await this.imageService.deleteMany(ids);
   }
 }

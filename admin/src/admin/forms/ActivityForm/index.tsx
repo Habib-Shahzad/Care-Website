@@ -234,7 +234,7 @@ export default function ActivityForm(props: ActivityFormProps) {
                         data={imageList.map((image) => ({
                            value: image._id,
                            label: image.name,
-                           image: `${image.image.filePath}`,
+                           image: `${image.url}`,
                         }))}
                         defaultValue={editActivity?.imageList?.map(
                            (image) => image?._id

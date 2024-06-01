@@ -32,7 +32,7 @@ export class ImageService {
       .exec();
   }
 
-  findByIds(ids: string) {
+  findByIds(ids: string[]) {
     return this.imageModel.find({ _id: { $in: ids } }).exec();
   }
 
