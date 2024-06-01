@@ -18,6 +18,13 @@ import { AdminGuard } from '../admin-auth-guard/admin-auth-guard.service';
 export class DepartmentController {
   constructor(private readonly departmentService: DepartmentService) {}
 
+  @Get('table-data-image')
+  async findAllWithImages() {
+    return {
+      data: await this.departmentService.findAllWithImages(),
+    };
+  }
+
   @Get('table-data')
   async findAll() {
     return {
