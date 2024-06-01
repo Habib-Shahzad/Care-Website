@@ -3,22 +3,16 @@ import {
    ColorScheme,
    ColorSchemeProvider,
    MantineProvider,
-   createEmotionCache,
 } from '@mantine/core'
 
 import { useHotkeys } from '@mantine/hooks'
-import { ReactNode, useState } from 'react'
 import { getCookie, setCookie } from 'cookies-next'
-import CustomNavbar from '../../core/Navbar'
-import Footer from '../../core/Footer'
 import { useRouter } from 'next/router'
-import AdminLayout from '../AdminLayout'
+import { PropsWithChildren, useState } from 'react'
+import Footer from '../../core/Footer'
+import CustomNavbar from '../../core/Navbar'
 
-export type DefaultLayoutProps = {
-   children: ReactNode
-}
-
-const DefaultLayout = (props: DefaultLayoutProps) => {
+const DefaultLayout = (props: PropsWithChildren) => {
    const { children } = props
 
    const [colorScheme, setColorScheme] = useState<ColorScheme>(
@@ -69,27 +63,23 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
                withGlobalStyles
                withNormalizeCSS
             >
-               {isAdminPath ? (
-                  <AdminLayout>{children}</AdminLayout>
-               ) : (
-                  <AppShell
-                     styles={(theme) => {
-                        return {
-                           main: {
-                              backgroundColor:
-                                 theme.colorScheme === 'dark'
-                                    ? theme.colors.dark[8]
-                                    : theme.colors.gray[0],
-                           },
-                        }
-                     }}
-                     navbarOffsetBreakpoint="sm"
-                     header={<CustomNavbar links={routes} />}
-                     footer={<Footer />}
-                  >
-                     {children}
-                  </AppShell>
-               )}
+               <AppShell
+                  styles={(theme) => {
+                     return {
+                        main: {
+                           backgroundColor:
+                              theme.colorScheme === 'dark'
+                                 ? theme.colors.dark[8]
+                                 : theme.colors.gray[0],
+                        },
+                     }
+                  }}
+                  navbarOffsetBreakpoint="sm"
+                  header={<CustomNavbar links={routes} />}
+                  footer={<Footer />}
+               >
+                  {children}
+               </AppShell>
             </MantineProvider>
          </ColorSchemeProvider>
       </>

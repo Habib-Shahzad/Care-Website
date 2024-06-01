@@ -1,101 +1,67 @@
 import {
-  Body,
   Controller,
   Get,
   Post,
-  Req,
-  Res,
+  Body,
+  Patch,
+  Param,
+  Delete,
   UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { AdminAuthGuardService } from 'src/admin-auth-guard/admin-auth-guard.service';
-import { Request, Response } from 'express';
-import { LoginReqDto } from './dto/login.req.dto';
-import { SetActiveReqDto } from '../admin/dto/set.active.req.dto';
-import { SetAdminReqDto } from 'src/admin/dto/set.admin.req.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { AdminGuard } from '../admin-auth-guard/admin-auth-guard.service';
 
-@Controller('api/user')
+@UseGuards(AdminGuard)
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(AdminAuthGuardService)
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto);
+  }
+
   @Get('table-data')
-  async getTableData() {
-    return { data: await this.userService.getTableData() };
+  async findAll() {
+    return {
+      data: await this.userService.findAll(),
+    };
   }
 
-  @Get('/loggedIn')
-  isLoggedIn(@Req() request: Request) {
-    return this.userService.getLoginStatus(
-      request.cookies?.['access_token_admin'],
-    );
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.userService.findOne(id);
   }
 
-  @Post('/logout-admin')
-  async logout(@Res() res: Response) {
-    return res
-      .clearCookie('access_token_admin')
-      .status(200)
-      .json({ message: 'Successfully logged out' });
+  @Patch('set-active')
+  async setActive(@Body() data: { active: boolean; selected: string[] }) {
+    await this.userService.setActive(data.active, data.selected);
+    return {
+      success: true,
+      data: await this.userService.findAll(),
+    };
   }
 
-  @Post('/admin-login')
-  async login(@Body() data: LoginReqDto, @Res() res: Response) {
-    const response = await this.userService.login(data);
-    if (response?.success) {
-      res
-        .cookie('access_token_admin', response?.token, {
-          httpOnly: true,
-          maxAge: 1000 * 60 * 60 * 7,
-        })
-        .status(200)
-        .json(response);
-    } else {
-      res.json(response);
-    }
+  @Patch('set-admin')
+  async setAdmin(@Body() data: { admin: boolean; selected: string[] }) {
+    await this.userService.setAdmin(data.admin, data.selected);
+    return {
+      success: true,
+      data: await this.userService.findAll(),
+    };
   }
 
-  @UseGuards(AdminAuthGuardService)
-  @Post('/add')
-  async addUser(@Body() data: any) {
-    try {
-      return await this.userService.addUser(data);
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
+  @Patch()
+  async update(@Body() data: UpdateUserDto) {
+    return {
+      data: await this.userService.update(data),
+    };
   }
 
-  // @UseGuards(AdminAuthGuardService)
-  // @Post('/update')
-  // async updateUser(@Body() data: any) {
-  //   try {
-  //     return await this.userService.updateUser(data);
-  //   } catch (err) {
-  //     return null;
-  //   }
-  // }
-
-  @UseGuards(AdminAuthGuardService)
-  @Post('/delete')
-  async deleteUser(@Body() body: { data: string[] }) {
-    try {
-      return await this.userService.deleteUsers(body.data);
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-  }
-
-  @UseGuards(AdminAuthGuardService)
-  @Post('/set-active')
-  async setActive(@Body() data: SetActiveReqDto) {
-    return this.userService.setActive(data.active, data.selected);
-  }
-
-  @UseGuards(AdminAuthGuardService)
-  @Post('/set-admin')
-  async setAdmin(@Body() data: SetAdminReqDto) {
-    return this.userService.setAdmin(data.admin, data.selected);
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.userService.remove(id);
   }
 }

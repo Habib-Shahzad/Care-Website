@@ -1,4 +1,3 @@
-
 .DS_Store
 
 *.sh
@@ -82,9 +81,10 @@ typings/
 
 *.cer
 
-
 dist/
 build/
 out/
 
 care-website/public/allImages/*
+
+BACKUP/

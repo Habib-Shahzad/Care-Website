@@ -1,12 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import * as cookieParser from 'cookie-parser';
-import * as express from 'express';
-import * as path from 'path';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(express.static(path.resolve('build')));
+  app.setGlobalPrefix('api');
 
   app.use(cookieParser());
 

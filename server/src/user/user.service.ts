@@ -1,111 +1,62 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { JwtService } from '@nestjs/jwt';
-import { DatabaseService } from 'src/database/database.service';
-import { LoginReqDto } from './dto/login.req.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user.entity';
+
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  tokenSecret: string;
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  constructor(
-    private readonly configService: ConfigService,
-    private readonly databaseService: DatabaseService,
-    private readonly jwtService: JwtService,
-  ) {
-    this.tokenSecret = this.configService.get('TOKEN_SECRET');
-  }
-
-  getTableData() {
-    return this.databaseService.getAllUsers();
-  }
-
-  async addUser(data: any) {
+  async create(data: CreateUserDto) {
     data.password = bcrypt.hashSync(data.password, 10);
-    return { data: await this.databaseService.addUser(data) };
+    const newUser = new this.userModel(data);
+    await newUser.save();
+    return newUser;
+  }
+
+  findAll() {
+    return this.userModel.find().exec();
+  }
+
+  findOne(id: string) {
+    return this.userModel.findById(id).exec();
+  }
+
+  findByEmail(email: string) {
+    return this.userModel.findOne({ email: email }).exec();
+  }
+
+  update(data: UpdateUserDto) {
+    const { _id, ...updateData } = data;
+
+    return this.userModel
+      .findByIdAndUpdate(_id, updateData, { new: true })
+      .exec();
+  }
+
+  remove(id: string) {
+    return this.userModel.deleteOne({ _id: id }).exec();
+  }
+
+  deleteMany(ids: string[]) {
+    return this.userModel.deleteMany({ _id: { $in: ids } }).exec();
   }
 
   async setActive(active: boolean, selected: string[]) {
-    await this.databaseService.setUserActive(active, selected);
-    const users = await this.getTableData();
-    return {
-      success: true,
-      data: users,
-    };
-  }
-
-  async updateUser(data: any) {
-    return { data: await this.databaseService.updateUser(data) };
+    await this.userModel.updateMany(
+      { _id: { $in: selected } },
+      { active: active },
+    );
   }
 
   async setAdmin(admin: boolean, selected: string[]) {
-    await this.databaseService.setUserAdmin(admin, selected);
-    const users = await this.getTableData();
-    return {
-      success: true,
-      data: users,
-    };
-  }
-
-  async getLoginStatus(adminToken: string) {
-    let adminUser = null;
-
-    if (adminToken) {
-      const adminData = this.jwtService.verify(adminToken, {
-        secret: this.tokenSecret,
-      });
-      adminUser = await this.databaseService.getUserByID(adminData.user_id);
-    }
-
-    return {
-      successAdmin: adminUser !== null,
-      admin_user: adminUser,
-    };
-  }
-
-  async deleteUsers(selected: string[]) {
-    return await this.databaseService.deleteUsers(selected);
-  }
-
-  async login(data: LoginReqDto) {
-    const user = await this.databaseService.getUserByEmail(data.email);
-
-    if (!user) {
-      return {
-        success: false,
-        data: null,
-        message: 'User not found',
-      };
-    }
-    const userObj = user.toObject();
-
-    if (!user.admin) {
-      return {
-        success: false,
-        data: null,
-        message: 'User is not an admin',
-      };
-    }
-
-    if (user && (await bcrypt.compare(data.password, user.password))) {
-      const payload = { user_id: user._id, email: data.email };
-      const token = await this.jwtService.signAsync(payload, {
-        secret: this.tokenSecret,
-      });
-      userObj['token'] = token;
-
-      return {
-        success: true,
-        data: userObj,
-        token,
-      };
-    } else {
-      return {
-        success: false,
-        data: null,
-        message: 'Invalid credentials',
-      };
-    }
+    await this.userModel.updateMany(
+      { _id: { $in: selected } },
+      { admin: admin },
+    );
   }
 }

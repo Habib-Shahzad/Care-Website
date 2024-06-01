@@ -8,15 +8,16 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
+import { ConfigKeys } from '../config/app.configuration';
 
 @Injectable()
-export class AdminAuthGuardService implements CanActivate {
+export class AdminGuard implements CanActivate {
   readonly tokenSecret: string;
   constructor(
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {
-    this.tokenSecret = this.configService.get('TOKEN_SECRET');
+    this.tokenSecret = this.configService.get(ConfigKeys.TOKEN_SECRET);
   }
 
   canActivate(context: ExecutionContext): boolean {

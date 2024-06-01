@@ -4,7 +4,8 @@ export const API =
       ? 'http://localhost:3000'
       : 'https://asherewecare.pk'
 // export const API = 'http://54.169.250.44'
-export const NETWORKING_API = `${API}/api`
+
+const NETWORKING_API = `${API}/api`
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
