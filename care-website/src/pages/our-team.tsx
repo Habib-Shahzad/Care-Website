@@ -104,7 +104,7 @@ function OurTeam() {
                                     <Center>
                                        <MantineImage
                                           mb={10}
-                                          src={member.image.url}
+                                          src={member.image?.url}
                                           height={200}
                                           width={180}
                                           alt="Team Member"

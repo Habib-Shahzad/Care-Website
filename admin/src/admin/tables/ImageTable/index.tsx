@@ -49,7 +49,7 @@ export default function ImagesTable() {
          const images = await AdminNetworkingManager.listImages()
          //  const imagesWithFileSize = await Promise.all(
          //     images.map(async (image: Image) => {
-         //        const url = `${image.url}`
+         //        const url = `${image?.url}`
          //        const fileSize = await getImageFileSize(url)
          //        return {
          //           ...image,
@@ -138,11 +138,11 @@ export default function ImagesTable() {
                   </td>
                   <td>{image.name}</td>
                   <td>
-                     <Avatar src={image.url} alt={image.name} radius="xl" />
+                     <Avatar src={image?.url} alt={image.name} radius="xl" />
                   </td>
                   <td>{image?.['fileSize']?.bytes ?? 'N/A'}</td>
 
-                  <td>{image.url ?? 'N/A'}</td>
+                  <td>{image?.url ?? 'N/A'}</td>
 
                   <td>
                      <Button

@@ -58,7 +58,7 @@ export default function CommunityOutreach() {
                         <Image
                            key={index}
                            radius={'md'}
-                           src={image.url}
+                           src={image?.url}
                            alt="Care"
                            height={500}
                            width={420}
