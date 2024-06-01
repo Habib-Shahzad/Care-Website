@@ -10,14 +10,14 @@ export class HomePage {
 
   @Prop({
     type: MongooseSchema.Types.ObjectId,
-    ref: 'Image',
+    ref: 'CareImage',
     required: true,
   })
   mainImage: MongooseSchema.Types.ObjectId;
 
   @Prop({
     type: MongooseSchema.Types.ObjectId,
-    ref: 'Image',
+    ref: 'CareImage',
     required: true,
   })
   ambassadorImage: MongooseSchema.Types.ObjectId;
