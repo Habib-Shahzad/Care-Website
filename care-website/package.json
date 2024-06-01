@@ -11,35 +11,25 @@
   "devDependencies": {
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
-    "@types/react-dom": "18.2.7"
+    "@types/react-dom": "18.2.7",
+    "typescript": "5.1.6"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/server": "^11.11.0",
     "@mantine/carousel": "^6.0.19",
     "@mantine/core": "^6.0.19",
-    "@mantine/dates": "^6.0.19",
-    "@mantine/dropzone": "^6.0.19",
-    "@mantine/form": "^6.0.19",
     "@mantine/hooks": "^6.0.19",
     "@mantine/next": "^6.0.19",
-    "@mantine/notifications": "^6.0.19",
     "@tabler/icons-react": "^2.32.0",
-    "add": "^2.0.6",
     "axios": "^1.4.0",
-    "blurhash": "^2.0.5",
     "cookies-next": "^3.0.0",
-    "date-fns": "^2.30.0",
-    "dayjs": "^1.11.9",
     "embla-carousel-react": "^8.0.0-rc12",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.45.4",
-    "sass": "^1.66.1",
-    "typescript": "5.1.6",
-    "yarn": "^1.22.19"
+    "sass": "^1.66.1"
   }
 }
