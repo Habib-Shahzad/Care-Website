@@ -119,7 +119,7 @@ export default function Home() {
                                  toBase64(shimmer(200, 200))
                               }
                               placeholder="blur"
-                              src={`${homePageData?.mainImage?.image?.filePath}`}
+                              src={`${homePageData?.mainImage?.url}`}
                               alt="Care"
                            />
                         )}
@@ -218,7 +218,7 @@ export default function Home() {
                         {!loading && (
                            <MantineImage
                               radius="md"
-                              src={`${homePageData?.ambassadorImage?.image?.filePath}`}
+                              src={`${homePageData?.ambassadorImage?.url}`}
                            />
                         )}
                      </Box>
