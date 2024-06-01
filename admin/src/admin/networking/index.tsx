@@ -22,7 +22,7 @@ export class AdminNetworkingManager {
    }
 
    public static async loginUser(email: string, password: string) {
-      const response = await axios.post(`${API}/user/admin-login`, {
+      const response = await axios.post(`${API}/auth/admin-login`, {
          email: email,
          password: password,
       })
@@ -30,7 +30,7 @@ export class AdminNetworkingManager {
    }
 
    public static async logoutUser() {
-      await axios.post(`${API}/user/logout-admin`)
+      await axios.post(`${API}/auth/logout-admin`)
    }
 
    public static async listModelData(model: string) {
