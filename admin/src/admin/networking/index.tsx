@@ -1,40 +1,73 @@
 import { NETWORKING_API as API } from '@/application/networking'
-
 import axios from 'axios'
-axios.defaults.withCredentials = true
+
+const webClient = axios.create({
+   baseURL: API,
+   withCredentials: true,
+})
+
+webClient.interceptors.request.use((config) => {
+   let token
+   if (typeof window !== 'undefined') {
+      token = localStorage.getItem('access_token_admin')
+   }
+   if (token) {
+      config.headers['authorization'] = `Bearer ${token}`
+   }
+   return config
+})
+
+webClient.interceptors.response.use(
+   (response) => {
+      return response
+   },
+   async (error) => {
+      if (error.response?.status === 403) {
+         if (typeof window !== 'undefined') {
+            localStorage.removeItem('access_token_admin')
+         }
+      }
+      return Promise.reject(error)
+   }
+)
 
 export class AdminNetworkingManager {
    public static async loggedInUser() {
-      const response = await axios.get(`${API}/auth`)
+      const response = await webClient.get(`auth`)
       const content = response.data
       return content ?? null
    }
 
    public static async getHomePageData() {
-      const response = await axios.get(`${API}/home-page/data`, {
-         headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-store',
-         },
-      })
+      const response = await webClient.get(`home-page/data`)
       const content = response.data
       return content?.data
    }
 
    public static async loginUser(email: string, password: string) {
-      const response = await axios.post(`${API}/auth/admin-login`, {
+      const response = await webClient.post(`auth/admin-login`, {
          email: email,
          password: password,
       })
-      return response.data
+      const data = response.data
+      const token = data?.token
+
+      if (token) {
+         localStorage.setItem('access_token_admin', token)
+      }
+
+      return data
    }
 
    public static async logoutUser() {
-      await axios.post(`${API}/auth/logout-admin`)
+      await webClient.post(`auth/logout-admin`)
+      if (typeof window !== 'undefined') {
+         localStorage.removeItem('access_token_admin')
+      }
    }
 
    public static async listModelData(model: string) {
-      const response = await axios.get(`${API}/${model}/table-data`)
+      const response = await webClient.get(`${model}/table-data`)
       const content = response.data
       return content?.data
    }
@@ -44,7 +77,7 @@ export class AdminNetworkingManager {
       selected: string[],
       active: boolean
    ) {
-      const response = await axios.patch(`${API}/${model}/set-active`, {
+      const response = await webClient.patch(`${model}/set-active`, {
          selected: selected,
          active: active,
       })
@@ -53,7 +86,7 @@ export class AdminNetworkingManager {
    }
 
    public static async setUsersAdmin(selected: string[], admin: boolean) {
-      const response = await axios.post(`${API}/user/set-admin`, {
+      const response = await webClient.post(`user/set-admin`, {
          selected: selected,
          admin: admin,
       })
@@ -84,7 +117,7 @@ export class AdminNetworkingManager {
    }
 
    private static async deleteModelData(model: string, selected: string[]) {
-      const response = await axios.post(`${API}/${model}/delete-multiple`, {
+      const response = await webClient.post(`${model}/delete-multiple`, {
          data: selected,
       })
       const content = response.data
@@ -133,7 +166,7 @@ export class AdminNetworkingManager {
    }
 
    private static async addModelData(model: string, data: any) {
-      const response = await axios.post(`${API}/${model}`, data, {
+      const response = await webClient.post(`${model}`, data, {
          headers: {
             'Content-Type': 'application/json',
             'Cache-Control': 'no-store',
@@ -152,7 +185,7 @@ export class AdminNetworkingManager {
    }
 
    public static async addImage(data: any) {
-      const response = await axios.post(`${API}/image/add`, data, {
+      const response = await webClient.post(`image/add`, data, {
          headers: {
             'Content-Type': 'multipart/form-data',
          },
@@ -170,7 +203,7 @@ export class AdminNetworkingManager {
    }
 
    private static async updateModelData(model: string, data: any) {
-      const response = await axios.patch(`${API}/${model}`, data, {
+      const response = await webClient.patch(`${model}`, data, {
          headers: {
             'Content-Type': 'application/json',
             'Cache-Control': 'no-store',

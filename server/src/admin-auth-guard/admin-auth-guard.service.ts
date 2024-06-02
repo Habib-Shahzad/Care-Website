@@ -22,7 +22,9 @@ export class AdminGuard implements CanActivate {
 
   canActivate(context: ExecutionContext): boolean {
     const req: Request = context.switchToHttp().getRequest();
-    const token = req.cookies?.access_token_admin;
+
+    const authorization = req.headers.authorization;
+    const token = authorization?.split(' ')[1];
 
     if (!token) {
       throw new ForbiddenException(
@@ -34,6 +36,7 @@ export class AdminGuard implements CanActivate {
       this.jwtService.verify(token, {
         secret: this.tokenSecret,
       });
+      req['token'] = token;
     } catch (err) {
       console.log(err);
       throw new UnauthorizedException('Invalid Token');

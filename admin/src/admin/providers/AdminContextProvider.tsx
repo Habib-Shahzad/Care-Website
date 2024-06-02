@@ -36,9 +36,11 @@ export default function AdminContextProvider(props: {
 
    useEffect(() => {
       ;(async () => {
-         const response = await AdminNetworkingManager.loggedInUser()
-         if (response.successAdmin) {
-            setAdminUserState(response.admin_user)
+         const response = await AdminNetworkingManager.loggedInUser().catch(
+            () => null
+         )
+         if (response?.successAdmin) {
+            setAdminUserState(response?.admin_user)
          }
          setLoading(false)
       })()

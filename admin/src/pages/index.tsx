@@ -1,13 +1,13 @@
-import { redirect } from 'next/dist/server/api-utils'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+export const getServerSideProps = async () => {
+   return {
+      redirect: {
+         destination: '/admin',
+         permanent: false,
+      },
+   }
+}
 
 function index() {
-   const router = useRouter()
-   useEffect(() => {
-      router.replace('/admin')
-   }, [])
-
    return <></>
 }
 

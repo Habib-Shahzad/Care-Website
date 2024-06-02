@@ -1,17 +1,25 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthService } from './auth.service';
 import { LoginReqDto } from './dto/login.req.dto';
+import { AdminGuard } from '../admin-auth-guard/admin-auth-guard.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @UseGuards(AdminGuard)
   @Get()
-  isLoggedIn(@Req() request: Request) {
-    return this.authService.getLoginStatus(
-      request.cookies?.['access_token_admin'],
-    );
+  isLoggedIn(@Req() request: Request & { token: string }) {
+    return this.authService.getLoginStatus(request?.token);
   }
 
   @Post('/logout-admin')

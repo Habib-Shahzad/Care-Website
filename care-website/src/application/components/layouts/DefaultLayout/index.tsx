@@ -7,7 +7,6 @@ import {
 
 import { useHotkeys } from '@mantine/hooks'
 import { getCookie, setCookie } from 'cookies-next'
-import { useRouter } from 'next/router'
 import { PropsWithChildren, useState } from 'react'
 import Footer from '../../core/Footer'
 import CustomNavbar from '../../core/Navbar'
@@ -18,10 +17,6 @@ const DefaultLayout = (props: PropsWithChildren) => {
    const [colorScheme, setColorScheme] = useState<ColorScheme>(
       getCookie('mantine-color-scheme') as ColorScheme
    )
-
-   const router = useRouter()
-   const { pathname } = router
-   const isAdminPath = pathname.startsWith('/admin')
 
    const toggleColorScheme = (value?: ColorScheme) => {
       const nextColorScheme =
