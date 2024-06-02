@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pm2-start": "pm2 start npm --name 'app' -- start -- -p 3001"
   },
   "devDependencies": {
     "@types/node": "20.3.1",
