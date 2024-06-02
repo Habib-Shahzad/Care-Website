@@ -19,7 +19,7 @@ export default class NetworkingManager {
    private static async listBlogs(blogType: BlogType) {
       try {
          const response = await axios.get(
-            `${NETWORKING_API}/blog-by-type/${blogType}`
+            `${NETWORKING_API}/blog/by-type/${blogType}`
          )
          const data = response.data
          return data?.data ?? []

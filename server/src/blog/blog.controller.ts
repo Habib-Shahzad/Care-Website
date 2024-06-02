@@ -25,19 +25,18 @@ export class BlogController {
     return { data: await this.blogService.findAll() };
   }
 
-  @UseGuards(AdminGuard)
-  @Post()
-  async create(@Body() data: CreateBlogDto) {
-    const newBlog = await this.blogService.create(data);
-    return { data: await this.blogService.findOne(newBlog._id) };
-  }
-
-  @UseGuards(AdminGuard)
   @Get('by-type/:type')
   async findByType(@Param('type') type: BlogType) {
     return {
       data: await this.blogService.findByType(type),
     };
+  }
+
+  @UseGuards(AdminGuard)
+  @Post()
+  async create(@Body() data: CreateBlogDto) {
+    const newBlog = await this.blogService.create(data);
+    return { data: await this.blogService.findOne(newBlog._id) };
   }
 
   @Get(':id')
