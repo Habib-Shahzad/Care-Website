@@ -9,7 +9,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { ObjectId } from 'mongoose';
+import { ObjectId, Types } from 'mongoose';
 import { ImageService } from './image.service';
 import { CreateImageDto } from './dto/create-image.dto';
 import { UpdateImageDto } from './dto/update-image.dto';
@@ -38,15 +38,15 @@ export class ImageController {
     @Body() data: CreateImageDto,
   ) {
     const url = await this.storageService.upload(new UploadFile(image));
-    const newActivity = await this.imageService.create({
+    const newData = await this.imageService.create({
       ...data,
       url,
     });
-    return { data: await this.imageService.findOne(newActivity._id) };
+    return { data: await this.imageService.findOne(newData._id) };
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: ObjectId) {
+  async findOne(@Param('id') id: Types.ObjectId) {
     return {
       data: this.imageService.findOne(id),
     };

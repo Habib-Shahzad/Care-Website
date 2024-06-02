@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreateImageDto } from './dto/create-image.dto';
 import { UpdateImageDto } from './dto/update-image.dto';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model, ObjectId } from 'mongoose';
-import { CareImage as Image, CareImageDocument } from './entities/image.entity';
+import { CareImage } from './entities/image.entity';
+import { Model, ObjectId, Types } from 'mongoose';
 
 @Injectable()
 export class ImageService {
   constructor(
-    @InjectModel(Image.name) private imageModel: Model<CareImageDocument>,
+    @InjectModel(CareImage.name) private imageModel: Model<CareImage>,
   ) {}
 
   async create(data: CreateImageDto) {
@@ -21,7 +21,7 @@ export class ImageService {
     return this.imageModel.find().exec();
   }
 
-  findOne(id: ObjectId) {
+  findOne(id: Types.ObjectId) {
     return this.imageModel.findById(id).exec();
   }
 
