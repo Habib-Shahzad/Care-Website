@@ -45,7 +45,7 @@ export default function LoginComponent() {
 
       if (response.success) {
          setAdminUserState(response.data)
-         router.push('/admin')
+         router.reload()
       } else {
          setLoginMessage(response.message)
       }
