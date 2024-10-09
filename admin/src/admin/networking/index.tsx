@@ -185,7 +185,7 @@ export class AdminNetworkingManager {
    }
 
    public static async addImage(data: any) {
-      const response = await webClient.post(`image/add`, data, {
+      const response = await webClient.post('image', data, {
          headers: {
             'Content-Type': 'multipart/form-data',
          },
