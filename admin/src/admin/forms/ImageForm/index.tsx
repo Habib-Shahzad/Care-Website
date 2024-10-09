@@ -92,7 +92,7 @@ export default function ImageForm(props: BlogFormProps) {
       }
 
       const formData = new FormData()
-      formData.append('data', JSON.stringify({ name }))
+      formData.append('name', name)
       formData.append('image', image)
 
       setLoading(true)
