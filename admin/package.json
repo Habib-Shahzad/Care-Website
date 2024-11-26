@@ -27,7 +27,7 @@
     "@mantine/next": "^6.0.19",
     "@mantine/notifications": "^6.0.19",
     "@tabler/icons-react": "^2.32.0",
-    "axios": "^1.7.2",
+    "axios": "^1.7.8",
     "cookies-next": "^3.0.0",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
